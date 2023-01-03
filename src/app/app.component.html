@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  <span>{{ toolbarTitle }}</span>
+  <span class="fill-remaining-space"></span>
+
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+    [matMenuTriggerFor]="menu"
+    #menuTrigger="matMenuTrigger"
+    (mouseover)="menuTrigger.openMenu()"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu" [overlapTrigger]="false">
+    <span (mouseleave)="menuTrigger.closeMenu()">
+      <button mat-menu-item>
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Logout</span>
+      </button>
+    </span>
+  </mat-menu>
+</mat-toolbar>
