@@ -4,6 +4,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { PropertyService } from '../services/root/layout/property.service';
+import { PropertyModel } from '../model/root/layout/property';
 
 @Component({
   selector: 'app-root',
@@ -11,22 +12,22 @@ import { PropertyService } from '../services/root/layout/property.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit, OnDestroy {
-  toolbarTitle = '-';
-  rootLayoutPropSub: Subscription = new Subscription();
+  rootLayoutProperty: PropertyModel | undefined;
+  rootLayoutPropertySub: Subscription = new Subscription();
 
   constructor(private rootLayoutProp: PropertyService) {}
 
   ngOnInit() {
-    this.rootLayoutPropSub = this.rootLayoutProp
-      .getToolbarTitle()
-      .subscribe((title) => {
-        this.toolbarTitle = title;
+    this.rootLayoutPropertySub = this.rootLayoutProp
+      .getRootLayoutProperty()
+      .subscribe((item: PropertyModel) => {
+        this.rootLayoutProperty = item;
       });
   }
 
   ngOnDestroy(): void {
-    if (this.rootLayoutPropSub) {
-      this.rootLayoutPropSub.unsubscribe();
+    if (this.rootLayoutPropertySub) {
+      this.rootLayoutPropertySub.unsubscribe();
     }
   }
 }

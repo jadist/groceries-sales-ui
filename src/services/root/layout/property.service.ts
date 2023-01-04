@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Subject, startWith } from 'rxjs';
+import { PropertyModel } from '../../../model/root/layout/property';
 
 @Injectable()
 export class PropertyService {
-  private _toolbarTitle = new Subject<string>();
-  
-  getToolbarTitle() {
-    return this._toolbarTitle
-      .asObservable()
-      .pipe(startWith('Jadist Groceries'));
+  private _rootLayoutProperty = new Subject<PropertyModel>();
+  getRootLayoutProperty() {
+    return this._rootLayoutProperty.asObservable().pipe(
+      startWith({
+        ToolbarTitle: 'Jadist Groceries',
+      })
+    );
   }
-  setToolbarTitle(value: string) {
-    this._toolbarTitle.next(value);
+  setRootLayoutProperty(value: PropertyModel) {
+    this._rootLayoutProperty.next(value);
   }
 }
