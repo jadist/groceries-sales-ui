@@ -2,16 +2,12 @@ export interface PropertyModel {
   version: {
     '1': string;
   };
+  title: string;
+  description: string;
+  urlParamName: string;
   data: {
-    title: string;
-    description: string;
-    parent: {
-      name: string;
-      value: string;
-    };
-    content: {
-      name: string;
-      value: string;
-    };
+    sub_title: string;
+    sub_desc: string;
+    urlParamValue: string;
   }[];
 }
