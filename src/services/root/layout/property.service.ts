@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject, startWith } from 'rxjs';
 import { PropertyModel } from '../../../model/root/layout/property';
+import { SidebarStyleEnum } from '../../../text/root/sidebar/style';
 
 @Injectable()
 export class PropertyService {
@@ -10,6 +11,7 @@ export class PropertyService {
       startWith({
         ToolbarTitle: 'Jadist Groceries',
         UseSidebar: true,
+        SidebarStyle: SidebarStyleEnum.TitleOnly,
       })
     );
   }

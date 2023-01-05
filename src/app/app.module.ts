@@ -8,15 +8,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { ServiceModule } from './service.module';
 
+import { SidebarDummyComponent } from '../app/sidebar/dummy/sidebar-dummy.component';
+import { TitleOnlyComponent } from '../app/sidebar/title-only/title-only.component';
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SidebarDummyComponent, TitleOnlyComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
 
     MaterialModule,
-    ServiceModule
+    ServiceModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

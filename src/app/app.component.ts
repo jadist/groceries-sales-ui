@@ -1,10 +1,10 @@
-import { DEFAULT_RESIZE_TIME } from '@angular/cdk/scrolling';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Subscription } from 'rxjs';
 
 import { PropertyService } from '../services/root/layout/property.service';
 import { PropertyModel } from '../model/root/layout/property';
+import { SidebarStyleEnum } from '../text/root/sidebar/style';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +14,8 @@ import { PropertyModel } from '../model/root/layout/property';
 export class AppComponent implements OnInit, OnDestroy {
   rootLayoutProperty: PropertyModel | undefined;
   rootLayoutPropertySub: Subscription = new Subscription();
+
+  importedSidebarStyleEnum = SidebarStyleEnum;
 
   constructor(private rootLayoutProp: PropertyService) {}
 

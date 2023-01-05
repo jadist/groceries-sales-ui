@@ -27,7 +27,19 @@
     class="basis-1/4 bg-slate-200 h-[calc(100vh-65px)]"
     *ngIf="rootLayoutProperty?.UseSidebar"
   >
-    01
+    <div class="flex flex-col">
+      <app-sidebar-title-only
+        *ngIf="
+          rootLayoutProperty?.SidebarStyle ===
+          importedSidebarStyleEnum?.TitleOnly
+        "
+      ></app-sidebar-title-only>
+      <app-sidebar-dummy
+        *ngIf="
+          rootLayoutProperty?.SidebarStyle === importedSidebarStyleEnum?.Dummy
+        "
+      ></app-sidebar-dummy>
+    </div>
   </div>
   <div class="basis-3/4 h-[calc(100vh-65px)]">02</div>
 </div>
