@@ -9,6 +9,7 @@ export class PropertyService {
     return this._rootLayoutProperty.asObservable().pipe(
       startWith({
         ToolbarTitle: 'Jadist Groceries',
+        UseSidebar: true,
       })
     );
   }

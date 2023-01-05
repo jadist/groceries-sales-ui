@@ -23,7 +23,11 @@
 </mat-toolbar>
 
 <div class="flex flex-row">
-  <div class="basis-1/4">01</div>
-  <div class="basis-1/4">02</div>
-  <div class="basis-1/2">03</div>
+  <div
+    class="basis-1/4 bg-slate-200 h-[calc(100vh-65px)]"
+    *ngIf="rootLayoutProperty?.UseSidebar"
+  >
+    01
+  </div>
+  <div class="basis-3/4 h-[calc(100vh-65px)]">02</div>
 </div>
