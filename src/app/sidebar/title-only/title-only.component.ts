@@ -1,6 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
+import { Subscription } from 'rxjs';
+
 import { PropertyModel as SidebarModel } from '../../../model/root/sidebar/property';
+import { PropertyService as SidebarPropertyService } from '../../../services/root/sidebar/property.service';
 
 @Component({
   selector: 'app-sidebar-title-only',
@@ -8,54 +11,23 @@ import { PropertyModel as SidebarModel } from '../../../model/root/sidebar/prope
   styleUrls: ['./title-only.component.css'],
 })
 export class TitleOnlyComponent implements OnInit, OnDestroy {
-  // This default data SHOULD BE REPLACED from subscriptions
-  sidebarData: SidebarModel = {
-    version: {
-      '1': '1',
-    },
-    title: 'Shoes',
-    description: 'List of shoes types',
-    urlParamName: 'shoes',
-    data: [
-      {
-        sub_title: 'Boots',
-        sub_desc: 'Boots',
-        urlParamValue: "1",
-      },
-      {
-        sub_title: 'Clogs',
-        sub_desc: 'Clogs',
-        urlParamValue: "2",
-      },
-      {
-        sub_title: 'Loafers',
-        sub_desc: 'Loafers',
-        urlParamValue: "3",
-      },
-      {
-        sub_title: 'Moccasins',
-        sub_desc: 'Moccasins',
-        urlParamValue: "4",
-      },
-      {
-        sub_title: 'Sneakers',
-        sub_desc: 'Sneakers',
-        urlParamValue: "5",
-      },
-    ],
-  };
+  sidebarDataSubs: Subscription | undefined;
 
-  typesOfShoes: string[] = [
-    'Boots',
-    'Clogs',
-    'Loafers',
-    'Moccasins',
-    'Sneakers',
-  ];
+  sidebarData: SidebarModel | undefined;
 
-  constructor() {}
+  constructor(private sidebarPropertyService: SidebarPropertyService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.sidebarDataSubs = this.sidebarPropertyService
+      .getRootSidebarProperty()
+      .subscribe((item: SidebarModel) => {
+        this.sidebarData = item;
+      });
+  }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    if (this.sidebarDataSubs) {
+      this.sidebarDataSubs.unsubscribe();
+    }
+  }
 }
