@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Subscription } from 'rxjs';
 
@@ -15,7 +16,10 @@ export class TitleOnlyComponent implements OnInit, OnDestroy {
 
   sidebarData: SidebarModel | undefined;
 
-  constructor(private sidebarPropertyService: SidebarPropertyService) {}
+  constructor(
+    private router: Router,
+    private sidebarPropertyService: SidebarPropertyService
+  ) {}
 
   ngOnInit(): void {
     this.sidebarDataSubs = this.sidebarPropertyService
@@ -29,5 +33,14 @@ export class TitleOnlyComponent implements OnInit, OnDestroy {
     if (this.sidebarDataSubs) {
       this.sidebarDataSubs.unsubscribe();
     }
+  }
+
+  sidebarItemClick(link: string) {
+    const url = `${this.sidebarData?.urlParamName}/${link}`
+      .split('/')
+      .filter((item) => item.length > 0)
+      .join('/');
+
+    this.router.navigateByUrl(url);
   }
 }

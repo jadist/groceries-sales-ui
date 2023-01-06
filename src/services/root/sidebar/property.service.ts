@@ -10,17 +10,17 @@ export class PropertyService {
       startWith({
         title: 'Sidebar Title',
         description: 'Sidebar description',
-        urlParamName: 'sidebar',
+        urlParamName: '',
         data: [
           {
             sub_title: 'sidebar item 1',
             sub_desc: 'sidebar description 1',
-            urlParamValue: '1',
+            urlParamValue: 'login',
           },
           {
             sub_title: 'sidebar item 2',
             sub_desc: 'sidebar description 2',
-            urlParamValue: '2',
+            urlParamValue: 'register',
           },
         ],
       })

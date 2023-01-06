@@ -11,8 +11,19 @@ import { ServiceModule } from './service.module';
 import { SidebarDummyComponent } from '../app/sidebar/dummy/sidebar-dummy.component';
 import { TitleOnlyComponent } from '../app/sidebar/title-only/title-only.component';
 
+import { LoginComponent } from '../app/components/login/login.component';
+import { RegisterComponent } from '../app/components/register/register.component';
+
 @NgModule({
-  declarations: [AppComponent, SidebarDummyComponent, TitleOnlyComponent],
+  declarations: [
+    AppComponent,
+
+    SidebarDummyComponent,
+    TitleOnlyComponent,
+
+    LoginComponent,
+    RegisterComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

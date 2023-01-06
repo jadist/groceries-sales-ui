@@ -2,18 +2,13 @@
   <h1 class="font-medium text-5xl mt-0 mb-2 text-blue-600">
     {{ sidebarData?.title }}
   </h1>
-  <mat-selection-list #shoes [multiple]="false">
-    <mat-list-option *ngFor="let shoe of sidebarData?.data" [value]="shoe">
-      {{ shoe.sub_title }}
+  <mat-selection-list #sidebars [multiple]="false">
+    <mat-list-option
+      *ngFor="let sidebar of sidebarData?.data"
+      [value]="sidebar"
+      (click)="sidebarItemClick(sidebar.urlParamValue)"
+    >
+      {{ sidebar.sub_title }}
     </mat-list-option>
   </mat-selection-list>
-
-  <p>
-    Option selected:
-    {{
-      shoes.selectedOptions.hasValue()
-        ? shoes.selectedOptions.selected[0].value?.urlParamValue
-        : "None"
-    }}
-  </p>
 </div>

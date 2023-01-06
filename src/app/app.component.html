@@ -41,5 +41,14 @@
       ></app-sidebar-dummy>
     </div>
   </div>
-  <div class="basis-3/4 h-[calc(100vh-65px)]">02</div>
+  <!-- <div class="basis-3/4 bg-slate-100 h-[calc(100vh-65px)]">02</div> -->
+  <div
+    [ngClass]="
+      rootLayoutProperty?.SidebarStyle
+        ? 'basis-3/4 bg-slate-100 h-[calc(100vh-65px)]'
+        : 'basis-full bg-slate-100 h-[calc(100vh-65px)]'
+    "
+  >
+    <router-outlet></router-outlet>
+  </div>
 </div>
