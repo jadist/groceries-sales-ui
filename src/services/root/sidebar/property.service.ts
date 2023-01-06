@@ -8,9 +8,6 @@ export class PropertyService {
   getRootSidebarProperty() {
     return this._rootSidebarProperty.asObservable().pipe(
       startWith({
-        version: {
-          '1': '1',
-        },
         title: 'Sidebar Title',
         description: 'Sidebar description',
         urlParamName: 'sidebar',

@@ -1,6 +1,6 @@
 export interface PropertyModel {
-  version: {
-    '1': string;
+  version?: {
+    '1'?: any;
   };
   title: string;
   description: string;
