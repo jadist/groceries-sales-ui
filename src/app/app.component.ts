@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { PropertyService } from '../services/root/layout/property.service';
 import { PropertyModel } from '../model/root/layout/property';
 import { SidebarStyleEnum } from '../text/root/sidebar/style';
+import { MainPanelSelectionEnum } from '../text/root/main-panel/style';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ export class AppComponent implements OnInit, OnDestroy {
   rootLayoutPropertySub: Subscription = new Subscription();
 
   importedSidebarStyleEnum = SidebarStyleEnum;
+  importedMainPanelStyleEnum = MainPanelSelectionEnum;
 
   constructor(private rootLayoutProp: PropertyService) {}
 

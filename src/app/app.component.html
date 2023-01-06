@@ -50,5 +50,19 @@
     "
   >
     <router-outlet></router-outlet>
+    <div class="flex flex-col">
+      <app-as-table
+        *ngIf="
+          rootLayoutProperty?.MainPanelStyle ===
+          importedMainPanelStyleEnum.AsTable
+        "
+      ></app-as-table>
+      <app-as-details
+        *ngIf="
+          rootLayoutProperty?.MainPanelStyle ===
+          importedMainPanelStyleEnum.AsDetails
+        "
+      ></app-as-details>
+    </div>
   </div>
 </div>

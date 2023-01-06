@@ -14,6 +14,9 @@ import { TitleOnlyComponent } from '../app/sidebar/title-only/title-only.compone
 import { LoginComponent } from '../app/components/login/login.component';
 import { RegisterComponent } from '../app/components/register/register.component';
 
+import { AsTableComponent } from '../app/main-panel/as-table/as-table.component';
+import { AsDetailsComponent } from '../app/main-panel/as-details/as-details.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +26,9 @@ import { RegisterComponent } from '../app/components/register/register.component
 
     LoginComponent,
     RegisterComponent,
+
+    AsTableComponent,
+    AsDetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject, startWith } from 'rxjs';
 import { PropertyModel } from '../../../model/root/layout/property';
 import { SidebarStyleEnum } from '../../../text/root/sidebar/style';
+import { MainPanelSelectionEnum } from '../../../text/root/main-panel/style';
 
 @Injectable()
 export class PropertyService {
@@ -12,6 +13,7 @@ export class PropertyService {
         ToolbarTitle: 'Jadist Groceries',
         UseSidebar: true,
         SidebarStyle: SidebarStyleEnum.TitleOnly,
+        MainPanelStyle: MainPanelSelectionEnum.AsTable,
       })
     );
   }
