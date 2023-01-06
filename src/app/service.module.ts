@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 
-import { PropertyService } from '../services/root/layout/property.service';
+import { PropertyService as RootLayoutProperty } from '../services/root/layout/property.service';
 import { PropertyService as SidebarPropertyService } from '../services/root/sidebar/property.service';
 
 @NgModule({
-  providers: [PropertyService, SidebarPropertyService],
+  providers: [RootLayoutProperty, SidebarPropertyService],
 })
 export class ServiceModule {}

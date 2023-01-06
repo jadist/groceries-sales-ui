@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject, startWith } from 'rxjs';
+import { Subject, startWith, delay } from 'rxjs';
 import { PropertyModel as SidebarProperty } from '../../../model/root/sidebar/property';
 
 @Injectable()
@@ -23,7 +23,8 @@ export class PropertyService {
             urlParamValue: 'register',
           },
         ],
-      })
+      }),
+      delay(0) // This delay(0), see https://blog.angular-university.io/angular-debugging/
     );
   }
   setRootSidebarProperty(value: SidebarProperty) {

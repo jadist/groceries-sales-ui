@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject, startWith } from 'rxjs';
+import { Subject, startWith, delay } from 'rxjs';
 import { PropertyModel } from '../../../model/root/layout/property';
 import { SidebarStyleEnum } from '../../../text/root/sidebar/style';
 import { MainPanelSelectionEnum } from '../../../text/root/main-panel/style';
@@ -14,7 +14,8 @@ export class PropertyService {
         UseSidebar: true,
         SidebarStyle: SidebarStyleEnum.TitleOnly,
         MainPanelStyle: MainPanelSelectionEnum.AsTable,
-      })
+      }),
+      delay(0) // This delay(0), see https://blog.angular-university.io/angular-debugging/
     );
   }
   setRootLayoutProperty(value: PropertyModel) {
