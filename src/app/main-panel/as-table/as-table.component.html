@@ -23,7 +23,10 @@
         </div>
       </div>
       <div class="table-row-group">
-        <div class="table-row" *ngFor="let row of tableData?.row">
+        <div
+          class="table-row bg-slate-100 hover:bg-indigo-100 cursor-pointer"
+          *ngFor="let row of tableData?.row"
+        >
           <div
             class="table-cell box-border p-2 border-b border-gray-300"
             *ngFor="let cell of row"
