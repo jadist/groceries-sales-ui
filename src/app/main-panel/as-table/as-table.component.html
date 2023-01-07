@@ -1,7 +1,5 @@
-<div
-  class="flex flex-col h-[calc(100vh-65px)] w-full space-y-0 box-border p-4 border-4"
->
-  <div>
+<div class="flex flex-col h-[calc(100vh-65px)] w-full">
+  <div class="table w-full box-border pt-4 pr-4 pl-4 pb-0">
     <mat-form-field appearance="fill">
       <mat-label>Filter</mat-label>
       <input
@@ -12,10 +10,10 @@
       />
     </mat-form-field>
   </div>
-  <div class="h-full overflow-y-auto mat-elevation-z8">
+  <div class="overflow-y-auto">
     <div class="table w-full box-border p-4">
       <div class="table-header-group">
-        <div class="table-row">
+        <div class="table-row sticky top-0 bg-slate-200">
           <div
             class="table-cell text-left box-border p-3 border-b border-gray-300 font-bold"
             *ngFor="let column of tableData?.column"
@@ -35,5 +33,15 @@
         </div>
       </div>
     </div>
+  </div>
+  <div>
+    <mat-paginator
+      [length]="105"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page"
+      class="bg-slate-100"
+    >
+    </mat-paginator>
   </div>
 </div>
