@@ -1,14 +1,15 @@
 export interface MainPanelTableModel {
-  version?: {
+  Version?: {
     '1'?: any;
   };
-  column: {
-    name: string;
-    displayed: string;
+  Column: {
+    Name: string;
+    Displayed: string;
   }[];
-  rows?: {
-    id: string;
-    cols: string[];
+  Rows?: {
+    Id: string;
+    Cols: string[];
   }[];
-  urlParamName?: string;
+  SelectedId?: string[];
+  UrlParamName?: string;
 }

@@ -6,6 +6,8 @@ import { RegisterComponent } from '../app/components/register/register.component
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'urlParam/:id', component: LoginComponent },
+
   { path: 'register', component: RegisterComponent },
 ];
 

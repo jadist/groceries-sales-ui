@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { MainPanelTableModel } from '../../../model/root/main-panel/property';
-import { PropertyService } from '../../../services/main-panel/property.service';
+import { MainPanelDisplayService } from '../../../services/main-panel/main-panel-display.service';
 
 @Component({
   selector: 'app-as-table',
@@ -19,7 +19,7 @@ export class AsTableComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private tableService: PropertyService
+    private tableService: MainPanelDisplayService
   ) {}
 
   ngOnInit(): void {
@@ -50,7 +50,7 @@ export class AsTableComponent implements OnInit, OnDestroy {
     // console.log('this.route', this.router.url);
 
     this.router
-      .navigate([this.router.url, this.tableData?.urlParamName, selectedId])
+      .navigate([this.tableData?.UrlParamName, selectedId])
       .then((succeed) => {
         console.log('Go to next route');
       })

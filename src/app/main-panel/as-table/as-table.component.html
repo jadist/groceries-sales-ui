@@ -16,22 +16,22 @@
         <div class="table-row sticky top-0 bg-slate-200">
           <div
             class="table-cell text-left box-border p-3 border-b border-gray-300 font-bold"
-            *ngFor="let column of tableData?.column"
+            *ngFor="let column of tableData?.Column"
           >
-            {{ column.displayed }}
+            {{ column.Displayed }}
           </div>
         </div>
       </div>
       <div class="table-row-group">
         <div
           class="table-row bg-slate-100 hover:bg-indigo-100 cursor-pointer"
-          *ngFor="let row of tableData?.rows"
+          *ngFor="let row of tableData?.Rows"
           (click)="onRowClick($event)"
-          [id]="row.id"
+          [id]="row.Id"
         >
           <div
             class="table-cell box-border p-2 border-b border-gray-300"
-            *ngFor="let cell of row.cols"
+            *ngFor="let cell of row.Cols"
           >
             {{ cell }}
           </div>
