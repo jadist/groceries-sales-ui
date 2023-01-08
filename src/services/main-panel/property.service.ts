@@ -5,7 +5,7 @@ import { MainPanelTableModel } from '../../model/root/main-panel/property';
 @Injectable()
 export class PropertyService {
   private _mainPanelTable = new Subject<MainPanelTableModel>();
-  getRootSidebarProperty() {
+  getDataAsTable() {
     return this._mainPanelTable.asObservable().pipe(
       startWith({
         column: [
@@ -49,7 +49,7 @@ export class PropertyService {
       delay(0) // This delay(0), see https://blog.angular-university.io/angular-debugging/
     );
   }
-  setRootSidebarProperty(value: MainPanelTableModel) {
+  setNewDataInTable(value: MainPanelTableModel) {
     this._mainPanelTable.next(value);
   }
 }

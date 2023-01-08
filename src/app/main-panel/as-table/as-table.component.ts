@@ -24,12 +24,9 @@ export class AsTableComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.tableServiceSub = this.tableService
-      .getRootSidebarProperty()
+      .getDataAsTable()
       .subscribe((item: MainPanelTableModel) => {
         this.tableData = item;
-        // console.log('item:', item);
-
-        // console.log(this.router.url);
       });
   }
 
