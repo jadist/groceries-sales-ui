@@ -6,5 +6,9 @@ export interface MainPanelTableModel {
     name: string;
     displayed: string;
   }[];
-  row: string[][];
+  rows?: {
+    id: string;
+    cols: string[];
+  }[];
+  urlParamName?: string;
 }

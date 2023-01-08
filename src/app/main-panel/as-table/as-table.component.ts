@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Subscription } from 'rxjs';
 
@@ -15,7 +16,11 @@ export class AsTableComponent implements OnInit, OnDestroy {
 
   tableData: MainPanelTableModel | undefined;
 
-  constructor(private tableService: PropertyService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private tableService: PropertyService
+  ) {}
 
   ngOnInit(): void {
     this.tableServiceSub = this.tableService
@@ -23,6 +28,8 @@ export class AsTableComponent implements OnInit, OnDestroy {
       .subscribe((item: MainPanelTableModel) => {
         this.tableData = item;
         // console.log('item:', item);
+
+        // console.log(this.router.url);
       });
   }
 
@@ -34,5 +41,24 @@ export class AsTableComponent implements OnInit, OnDestroy {
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
+  }
+
+  onRowClick(event: Event) {
+    const selectedId: string = (
+      (event.target as HTMLDivElement).parentNode as HTMLDivElement
+    ).id;
+
+    // console.log('id: ', selectedId);
+
+    // console.log('this.route', this.router.url);
+
+    this.router
+      .navigate([this.router.url, this.tableData?.urlParamName, selectedId])
+      .then((succeed) => {
+        console.log('Go to next route');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }
