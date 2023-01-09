@@ -13,6 +13,7 @@ import { SidebarComponent } from './components/main/sidebar/sidebar.component';
 import { AsTableComponent } from './components/content/as-table/as-table.component';
 import { AsDetailComponent } from './components/content/as-detail/as-detail.component';
 import { ForgotPasswordComponent } from './routed-pages/forgot-password/forgot-password.component';
+import { FooterComponent } from './components/main/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ForgotPasswordComponent } from './routed-pages/forgot-password/forgot-p
     SidebarComponent,
     AsTableComponent,
     AsDetailComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
