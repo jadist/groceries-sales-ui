@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Subject, startWith, delay } from 'rxjs';
-import { MainPanelTableModel } from '../../model/root/main-panel/property';
+import {
+  MainPanelTableModel,
+  MainPanelSelectedId,
+  MainPanelTableGenericModel,
+} from '../../model/root/main-panel/property';
 
 @Injectable()
-export class MainPanelDisplayService {
+export class MainPanelDisplayService<T> {
   private _mainPanelTable = new Subject<MainPanelTableModel>();
   getDataAsTable() {
     return this._mainPanelTable.asObservable().pipe(
@@ -51,5 +55,25 @@ export class MainPanelDisplayService {
   }
   setNewDataInTable(value: MainPanelTableModel) {
     this._mainPanelTable.next(value);
+  }
+
+  private _selectedTableId = new Subject<MainPanelSelectedId>();
+  getSelectedTableId() {
+    return this._selectedTableId
+      .asObservable()
+      .pipe(startWith(['0']), delay(0));
+  }
+  setSelectedTableId(value: MainPanelSelectedId) {
+    return this._selectedTableId.next(value);
+  }
+
+  private _genericMainPanelTable = new Subject<MainPanelTableGenericModel<T>>();
+  getMainPanelData() {
+    return this._genericMainPanelTable
+      .asObservable()
+      .pipe(startWith({} as MainPanelTableGenericModel<T>, delay(0)));
+  }
+  setMainPaneldata(value: MainPanelTableGenericModel<T>) {
+    return this._genericMainPanelTable.next(value);
   }
 }

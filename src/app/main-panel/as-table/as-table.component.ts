@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { Subscription } from 'rxjs';
 
@@ -17,9 +17,8 @@ export class AsTableComponent implements OnInit, OnDestroy {
   tableData: MainPanelTableModel | undefined;
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
-    private tableService: MainPanelDisplayService
+    private tableService: MainPanelDisplayService<any>
   ) {}
 
   ngOnInit(): void {
@@ -44,10 +43,6 @@ export class AsTableComponent implements OnInit, OnDestroy {
     const selectedId: string = (
       (event.target as HTMLDivElement).parentNode as HTMLDivElement
     ).id;
-
-    // console.log('id: ', selectedId);
-
-    // console.log('this.route', this.router.url);
 
     this.router
       .navigate([this.tableData?.UrlParamName, selectedId])

@@ -10,6 +10,17 @@ export interface MainPanelTableModel {
     Id: string;
     Cols: string[];
   }[];
-  SelectedId?: string[];
   UrlParamName?: string;
+}
+
+export interface MainPanelSelectedId {
+  Id: string[];
+}
+
+export interface MainPanelTableGenericModel<T> {
+  Version?: {
+    '1'?: any;
+  };
+  UrlParamName?: string;
+  Records: T[];
 }
