@@ -8,6 +8,10 @@ import { RegisterComponent } from './routed-pages/register/register.component';
 import { QuotationComponent } from './routed-pages/sales/transaction/quotation/quotation.component';
 import { PurchaseOrderComponent } from './routed-pages/sales/transaction/purchase-order/purchase-order.component';
 import { ProductComponent } from './routed-pages/sales/master/product/product.component';
+import { TopbarComponent } from './components/main/topbar/topbar.component';
+import { SidebarComponent } from './components/main/sidebar/sidebar.component';
+import { AsTableComponent } from './components/content/as-table/as-table.component';
+import { AsDetailComponent } from './components/content/as-detail/as-detail.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { ProductComponent } from './routed-pages/sales/master/product/product.co
     RegisterComponent,
     QuotationComponent,
     PurchaseOrderComponent,
-    ProductComponent
+    ProductComponent,
+    TopbarComponent,
+    SidebarComponent,
+    AsTableComponent,
+    AsDetailComponent
   ],
   imports: [
     BrowserModule,
