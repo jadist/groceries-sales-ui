@@ -14,6 +14,7 @@ import { AsTableComponent } from './components/content/as-table/as-table.compone
 import { AsDetailComponent } from './components/content/as-detail/as-detail.component';
 import { ForgotPasswordComponent } from './routed-pages/forgot-password/forgot-password.component';
 import { FooterComponent } from './components/main/footer/footer.component';
+import { EntryComponent } from './components/main/entry/entry.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FooterComponent } from './components/main/footer/footer.component';
     AsTableComponent,
     AsDetailComponent,
     ForgotPasswordComponent,
-    FooterComponent
+    FooterComponent,
+    EntryComponent
   ],
   imports: [
     BrowserModule,
