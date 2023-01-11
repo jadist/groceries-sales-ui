@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 
-import { ComponentEntryInputModel } from '../../components/main/entry/entry.model';
+import {
+  ComponentEntryInputModel,
+  ButtonClickModel,
+} from '../../components/main/entry/entry.model';
+
+import { FirebaseAuthService } from '../../services/firebase-auth/firebase-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -20,4 +25,17 @@ export class LoginComponent {
       SignUp: true,
     },
   };
+
+  constructor(public authService: FirebaseAuthService) {}
+
+  onButtonClickLogin(value: ButtonClickModel) {
+    this.authService
+      .SignIn(value.Email!, value.Password)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 }

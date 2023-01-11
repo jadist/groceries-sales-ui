@@ -1,1 +1,4 @@
-<app-entry [ComponentConfig]="LoginComponentConfig"></app-entry>
+<app-entry
+  [ComponentConfig]="LoginComponentConfig"
+  (ButtonClick)="onButtonClickLogin($event)"
+></app-entry>

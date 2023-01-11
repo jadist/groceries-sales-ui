@@ -10,3 +10,8 @@ export interface ComponentEntryInputModel {
     SignIn: boolean;
   };
 }
+
+export interface ButtonClickModel {
+  Email: string | null;
+  Password: string;
+}

@@ -19,40 +19,49 @@
                 <h1 class="text-gray-600 text-2xl font-bold">
                   {{ ComponentConfig?.Title }}
                 </h1>
-                <h1 class="text-gray-600 text-sm">
+                <h3 class="text-gray-600 text-sm">
                   {{ ComponentConfig?.SubTitle }}
-                </h1>
+                </h3>
               </div>
             </div>
             <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
               <form>
-                <div class="relative w-full mb-3">
-                  <label
-                    class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                    for="grid-password"
-                    >Email</label
-                  ><input
+                <mat-form-field class="relative w-full mb-3">
+                  <mat-label>Email</mat-label>
+                  <input
+                    matInput
                     type="email"
-                    class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                    placeholder="Email"
-                    style="transition: all 0.15s ease 0s"
+                    matInput
+                    [formControl]="emailFormControl"
+                    [errorStateMatcher]="matcher"
+                    placeholder="Ex. sales@jadist.my.id"
                   />
-                </div>
-                <div
+                  <mat-error
+                    *ngIf="
+                      emailFormControl.hasError('email') &&
+                      !emailFormControl.hasError('required')
+                    "
+                  >
+                    Please enter a valid email address
+                  </mat-error>
+                  <mat-error *ngIf="emailFormControl.hasError('required')">
+                    Email is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field
                   class="relative w-full mb-3"
                   *ngIf="ComponentConfig?.UsePassword"
                 >
-                  <label
-                    class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                    for="grid-password"
-                    >Password</label
-                  ><input
+                  <mat-label>Password</mat-label>
+                  <input
+                    matInput
+                    id="passwordInput"
                     type="password"
-                    class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                    placeholder="Password"
-                    style="transition: all 0.15s ease 0s"
+                    [formControl]="passwordFormControl"
                   />
-                </div>
+                </mat-form-field>
+
                 <div *ngIf="ComponentConfig?.UseRememberMe">
                   <label class="inline-flex items-center cursor-pointer"
                     ><input
@@ -70,6 +79,7 @@
                     class="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
                     type="button"
                     style="transition: all 0.15s ease 0s"
+                    (click)="onButtonClick()"
                   >
                     {{ ComponentConfig?.ButtonText }}
                   </button>
@@ -78,7 +88,10 @@
             </div>
           </div>
           <div class="relative">
-            <div class="absolute inset-y-0 left-0" *ngIf="ComponentConfig?.Help?.ForgotPassword">
+            <div
+              class="absolute inset-y-0 left-0"
+              *ngIf="ComponentConfig?.Help?.ForgotPassword"
+            >
               <a [routerLink]="['/forgot-password']" class="text-gray-300"
                 ><small>Forgot password?</small></a
               >
@@ -88,7 +101,10 @@
                 ><small>Ready to Sign In?</small></a
               >
             </div>
-            <div class="absolute inset-y-0 right-0" *ngIf="ComponentConfig?.Help?.SignUp">
+            <div
+              class="absolute inset-y-0 right-0"
+              *ngIf="ComponentConfig?.Help?.SignUp"
+            >
               <a [routerLink]="['/register']" class="text-gray-300"
                 ><small>Create new account</small></a
               >

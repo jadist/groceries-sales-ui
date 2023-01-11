@@ -1,5 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { FirebaseAuthService } from './services/firebase-auth/firebase-auth.service';
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+
+import { MaterialModule } from './material.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,13 +38,18 @@ import { EntryComponent } from './components/main/entry/entry.component';
     AsDetailComponent,
     ForgotPasswordComponent,
     FooterComponent,
-    EntryComponent
+    EntryComponent,
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+
+    AppRoutingModule,
+    BrowserAnimationsModule,
     BrowserModule,
-    AppRoutingModule
+    MaterialModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
