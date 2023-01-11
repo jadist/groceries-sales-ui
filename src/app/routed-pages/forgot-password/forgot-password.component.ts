@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
-import { ComponentEntryInputModel } from '../../components/main/entry/entry.model';
+
+import {
+  ComponentEntryInputModel,
+  ButtonClickModel,
+} from '../../components/main/entry/entry.model';
+
+import { FirebaseAuthService } from '../../services/firebase-auth/firebase-auth.service';
 
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
-  styleUrls: ['./forgot-password.component.css']
+  styleUrls: ['./forgot-password.component.css'],
 })
 export class ForgotPasswordComponent {
   ForgotPasswordComponentConfig: ComponentEntryInputModel = {
@@ -19,4 +25,17 @@ export class ForgotPasswordComponent {
       SignUp: false,
     },
   };
+
+  constructor(public authService: FirebaseAuthService) {}
+
+  onButtonClickResetPassword(value: ButtonClickModel) {
+    this.authService
+      .ResetPassword(value.Email!)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 }
