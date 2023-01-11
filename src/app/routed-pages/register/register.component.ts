@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { ComponentEntryInputModel } from '../../components/main/entry/entry.model';
+
+import {
+  ComponentEntryInputModel,
+  ButtonClickModel,
+} from '../../components/main/entry/entry.model';
+
+import { FirebaseAuthService } from '../../services/firebase-auth/firebase-auth.service';
 
 @Component({
   selector: 'app-register',
@@ -19,4 +25,17 @@ export class RegisterComponent {
       SignUp: false,
     },
   };
+
+  constructor(public authService: FirebaseAuthService) {}
+
+  onButtonClickSignUp(value: ButtonClickModel) {
+    this.authService
+      .SignUp(value.Email!, value.Password)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 }

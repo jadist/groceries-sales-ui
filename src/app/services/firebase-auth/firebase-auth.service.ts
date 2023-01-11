@@ -11,15 +11,7 @@ export class FirebaseAuthService {
   ) {}
 
   SignUp(email: string, password: string) {
-    return this.afAuth
-      .createUserWithEmailAndPassword(email, password)
-      .then((result) => {
-        window.alert('You have been successfully registered!');
-        console.log(result.user);
-      })
-      .catch((error) => {
-        window.alert(error.message);
-      });
+    return this.afAuth.createUserWithEmailAndPassword(email, password);
   }
 
   // Sign in with email/password
