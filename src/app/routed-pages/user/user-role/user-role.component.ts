@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AsTableDataModel } from '../../../components/content/as-table/as-table.model';
-import { ToolbarInputModel } from '../../../components/main/topbar/topbar.model';
+import {
+  ToolbarInputModel,
+  HomeBackEnum,
+} from '../../../components/main/topbar/topbar.model';
 
 import { FirebaseFirestoreService } from '../../../services/firebase-firestore/firebase-firestore.service';
 
@@ -31,6 +34,21 @@ export class UserRoleComponent implements OnInit {
 
   ToolbarInputData: ToolbarInputModel = {
     ToolbarTitle: 'User Role Page',
+    HomeAction: {
+      HomeBack: HomeBackEnum.BACK,
+      Destination: ['/', 'login'],
+    },
+    Notification: {
+      Hidden: false,
+      Content: [
+        {
+          Name: 'Notification One',
+          Value: 'N1',
+          Description: 'Long description is here',
+          Icon: 'note',
+        },
+      ],
+    },
   };
 
   constructor(private userRoleService: FirebaseFirestoreService) {}
