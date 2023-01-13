@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { AsTableDataModel } from '../../../components/content/as-table/as-table.model';
+import { ToolbarInputModel } from '../../../components/main/topbar/topbar.model';
+
 import { FirebaseFirestoreService } from '../../../services/firebase-firestore/firebase-firestore.service';
 
 @Component({
@@ -20,19 +23,11 @@ export class UserRoleComponent implements OnInit {
     ],
   };
 
+  ToolbarInputData: ToolbarInputModel = {
+    ToolbarTitle: 'User Role Page',
+  };
+
   constructor(private userRoleService: FirebaseFirestoreService) {}
 
-  ngOnInit(): void {
-    this.userRoleService
-      .getAll()
-      .snapshotChanges()
-      .subscribe((result) => {
-        // console.log(result);
-
-        result.forEach((item) => {
-          console.log(item.payload.doc.id);
-          console.log(item.payload.doc.data());
-        });
-      });
-  }
+  ngOnInit(): void {}
 }
