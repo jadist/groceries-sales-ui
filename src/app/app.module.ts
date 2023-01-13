@@ -24,6 +24,7 @@ import { ForgotPasswordComponent } from './routed-pages/forgot-password/forgot-p
 import { FooterComponent } from './components/main/footer/footer.component';
 import { EntryComponent } from './components/main/entry/entry.component';
 import { UserRoleComponent } from './routed-pages/user/user-role/user-role.component';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { UserRoleComponent } from './routed-pages/user/user-role/user-role.compo
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    AngularFirestoreModule,
 
     AppRoutingModule,
     BrowserAnimationsModule,

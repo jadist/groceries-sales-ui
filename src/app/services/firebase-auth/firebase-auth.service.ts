@@ -20,7 +20,10 @@ export class FirebaseAuthService {
   }
 
   ResetPassword(email: string) {
-    const auth = getAuth();
-    return sendPasswordResetEmail(auth, email);
+    return sendPasswordResetEmail(getAuth(), email);
+  }
+
+  SignOut() {
+    return this.afAuth.signOut();
   }
 }

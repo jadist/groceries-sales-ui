@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import {
   ComponentEntryInputModel,
@@ -12,7 +13,7 @@ import { FirebaseAuthService } from '../../services/firebase-auth/firebase-auth.
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   LoginComponentConfig: ComponentEntryInputModel = {
     Title: 'Welcome to Jadist!',
     SubTitle: 'Log in to your account',
@@ -26,13 +27,23 @@ export class LoginComponent {
     },
   };
 
-  constructor(public authService: FirebaseAuthService) {}
+  constructor(
+    public authService: FirebaseAuthService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.authService.SignOut().then((result) => {
+      console.log('User Signed Out');
+    });
+  }
 
   onButtonClickLogin(value: ButtonClickModel) {
     this.authService
       .SignIn(value.Email!, value.Password)
       .then((result) => {
         console.log(result);
+        this.router.navigate(['user-role']);
       })
       .catch((err) => {
         console.log(err);
