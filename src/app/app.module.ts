@@ -23,6 +23,7 @@ import { AsDetailComponent } from './components/content/as-detail/as-detail.comp
 import { ForgotPasswordComponent } from './routed-pages/forgot-password/forgot-password.component';
 import { FooterComponent } from './components/main/footer/footer.component';
 import { EntryComponent } from './components/main/entry/entry.component';
+import { UserRoleComponent } from './routed-pages/user/user-role/user-role.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { EntryComponent } from './components/main/entry/entry.component';
     ForgotPasswordComponent,
     FooterComponent,
     EntryComponent,
+    UserRoleComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

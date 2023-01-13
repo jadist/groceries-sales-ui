@@ -5,6 +5,8 @@ import { LoginComponent } from '../app/routed-pages/login/login.component';
 import { RegisterComponent } from '../app/routed-pages/register/register.component';
 import { ForgotPasswordComponent } from '../app/routed-pages/forgot-password/forgot-password.component';
 
+import { UserRoleComponent } from '../app/routed-pages/user/user-role/user-role.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -22,6 +24,11 @@ const routes: Routes = [
   {
     path: 'forgot-password',
     component: ForgotPasswordComponent,
+  },
+
+  {
+    path: 'user-role',
+    component: UserRoleComponent,
   },
 ];
 
