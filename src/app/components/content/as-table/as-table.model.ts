@@ -7,5 +7,9 @@ export interface AsTableDataModel {
     Name: string[];
     Hidden: boolean[];
   };
-  Rows: string[][];
+  Rows?: {
+    Id: string;
+    Cols: string[];
+  }[];
+  UrlParamName?: string;
 }
