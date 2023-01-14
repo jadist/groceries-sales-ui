@@ -1,1 +1,55 @@
-<p>sidebar works!</p>
+<div class="flex flex-col h-[calc(100vh)] border-r-2 border-stone-200">
+  <div class="flex-none basis-1/12">
+    <mat-list>
+      <mat-list-item>
+        <div matListItemAvatar>
+          <img src="../../../../assets/favicon/android-chrome-192x192.png" />
+        </div>
+        <div matListItemTitle>Jadist Home Page</div>
+        <div matListItemLine>Jadist Description</div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+  <div class="grow basis-10/12">
+    <mat-toolbar *ngIf="false">
+      <button
+        mat-icon-button
+        aria-label="Example icon-button with menu icon"
+        *ngIf="true"
+      >
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+
+      <span class="example-spacer"></span>
+
+      <button
+        mat-icon-button
+        aria-label="Example icon-button with menu icon"
+        *ngIf="true"
+      >
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <mat-selection-list #SidebarMenu [multiple]="false">
+      <mat-list-option
+        *ngFor="let sidebarMenu of mainSidebarMenu"
+        [value]="sidebarMenu"
+      >
+        <mat-icon matListItemIcon>note</mat-icon>
+        <div matListItemTitle>{{ sidebarMenu }}</div>
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <div class="flex-none basis-1/12 border-t-2 border-stone-200">
+    <mat-list>
+      <mat-list-item>
+        <div matListItemAvatar>
+          <img src="../../../../assets/favicon/android-chrome-192x192.png" class="rounded-full" />
+        </div>
+        <div matListItemTitle>Eldest Pasirula</div>
+        <div matListItemLine>View Profile</div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>
