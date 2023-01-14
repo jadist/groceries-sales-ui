@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { SidebarModel } from './sidebar.model';
+import { MenuItem, SidebarModel } from './sidebar.model';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,20 +8,22 @@ import { SidebarModel } from './sidebar.model';
   styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent {
-  selectedMenuItem: SidebarModel | null = null;
+  selectedMenuItem: MenuItem | null = null;
 
-  sidebarMenu: SidebarModel[] = [
-    {
-      MenuItem: {
+  sidebarMenu: SidebarModel = {
+    Header: {
+      Title: 'Jadist Home Page',
+      Description: 'Jadist Description.. What the hail',
+    },
+    MenuItem: [
+      {
         Icon: 'home',
         Name: 'Home',
         Value: 'home',
         Description: '',
         UrlSlug: ['/'],
       },
-    },
-    {
-      MenuItem: {
+      {
         Icon: 'person',
         Name: 'Users',
         Value: 'users',
@@ -44,16 +46,16 @@ export class SidebarComponent {
           },
         ],
       },
-    },
-  ];
+    ],
+  };
 
   selectSidebarItem(value: string) {
-    const selectedItem = this.sidebarMenu.filter(
-      (item) => item.MenuItem.Value === value
+    const selectedItem = this.sidebarMenu.MenuItem.filter(
+      (item) => item.Value === value
     );
 
     if (selectedItem.length > 0) {
-      if (selectedItem[0].MenuItem.Child) {
+      if (selectedItem[0].Child) {
         this.selectedMenuItem = selectedItem[0];
       }
     }

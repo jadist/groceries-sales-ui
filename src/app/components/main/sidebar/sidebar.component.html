@@ -8,47 +8,25 @@
         <div matListItemAvatar>
           <img src="../../../../assets/favicon/android-chrome-192x192.png" />
         </div>
-        <div matListItemTitle>Jadist Home Page</div>
-        <div matListItemLine>Jadist Description</div>
+        <div matListItemTitle>{{ sidebarMenu.Header.Title }}</div>
+        <div matListItemLine>{{ sidebarMenu.Header.Description }}</div>
       </mat-list-item>
     </mat-list>
   </div>
   <div class="grow basis-10/12">
-    <mat-toolbar *ngIf="false">
-      <button
-        mat-icon-button
-        aria-label="Example icon-button with menu icon"
-        *ngIf="true"
-      >
-        <mat-icon>arrow_back</mat-icon>
-      </button>
-
-      <span class="example-spacer"></span>
-
-      <button
-        mat-icon-button
-        aria-label="Example icon-button with menu icon"
-        *ngIf="true"
-      >
-        <mat-icon>arrow_forward</mat-icon>
-      </button>
-    </mat-toolbar>
-
     <mat-selection-list #SidebarMenu [multiple]="false">
       <mat-list-option
-        *ngFor="let menu of sidebarMenu"
+        *ngFor="let menu of sidebarMenu?.MenuItem"
         [value]="menu"
-        (click)="selectSidebarItem(menu.MenuItem.Value)"
+        (click)="selectSidebarItem(menu.Value)"
       >
-        <mat-icon matListItemIcon>{{ menu?.MenuItem?.Icon }}</mat-icon>
+        <mat-icon matListItemIcon>{{ menu?.Icon }}</mat-icon>
         <div matListItemTitle>
-          {{ menu?.MenuItem?.Name }}
-          <mat-icon *ngIf="menu?.MenuItem?.Child" inline="true"
-            >arrow_forward</mat-icon
-          >
+          {{ menu?.Name }}
+          <mat-icon *ngIf="menu?.Child" inline="true">list</mat-icon>
         </div>
-        <div matListItemLine *ngIf="menu?.MenuItem?.Description">
-          {{ menu?.MenuItem?.Description }}
+        <div matListItemLine *ngIf="menu?.Description">
+          {{ menu?.Description }}
         </div>
       </mat-list-option>
     </mat-selection-list>
@@ -108,7 +86,7 @@
 
     <mat-selection-list #SidebarMenu [multiple]="false">
       <mat-list-option
-        *ngFor="let menu of selectedMenuItem?.MenuItem?.Child"
+        *ngFor="let menu of selectedMenuItem?.Child"
         [value]="menu"
       >
         <mat-icon matListItemIcon>{{ menu?.Icon }}</mat-icon>
