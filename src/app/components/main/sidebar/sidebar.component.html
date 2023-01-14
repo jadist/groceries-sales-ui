@@ -32,12 +32,15 @@
     </mat-toolbar>
 
     <mat-selection-list #SidebarMenu [multiple]="false">
-      <mat-list-option
-        *ngFor="let sidebarMenu of mainSidebarMenu"
-        [value]="sidebarMenu"
-      >
-        <mat-icon matListItemIcon>note</mat-icon>
-        <div matListItemTitle>{{ sidebarMenu }}</div>
+      <mat-list-option *ngFor="let menu of sidebarMenu" [value]="menu">
+        <mat-icon matListItemIcon>{{ menu?.MenuItem?.Icon }}</mat-icon>
+        <div matListItemTitle>
+          {{ menu?.MenuItem?.Name }}
+        </div>
+        
+        <div matListItemLine *ngIf="menu?.MenuItem?.Description">
+          {{ menu?.MenuItem?.Description }}
+        </div>
       </mat-list-option>
     </mat-selection-list>
   </div>
@@ -45,7 +48,10 @@
     <mat-list>
       <mat-list-item>
         <div matListItemAvatar>
-          <img src="../../../../assets/favicon/android-chrome-192x192.png" class="rounded-full" />
+          <img
+            src="../../../../assets/favicon/android-chrome-192x192.png"
+            class="rounded-full"
+          />
         </div>
         <div matListItemTitle>Eldest Pasirula</div>
         <div matListItemLine>View Profile</div>
