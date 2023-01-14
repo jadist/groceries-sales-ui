@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ToolbarInputModel, HomeBackEnum } from './topbar.model';
+import { RoutingEnum } from '../../../models/routing.enum';
 
 @Component({
   selector: 'app-topbar',
@@ -18,11 +19,5 @@ export class TopbarComponent {
     },
   };
 
-  typesOfShoes: string[] = [
-    'Boots',
-    'Clogs',
-    'Loafers',
-    'Moccasins',
-    'Sneakers',
-  ];
+  loginPage = RoutingEnum.Login;
 }

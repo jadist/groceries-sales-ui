@@ -8,28 +8,29 @@ import { RegisterComponent } from '../app/routed-pages/register/register.compone
 import { ForgotPasswordComponent } from '../app/routed-pages/forgot-password/forgot-password.component';
 
 import { UserRoleComponent } from '../app/routed-pages/user/user-role/user-role.component';
+import { RoutingEnum } from '../app/models/routing.enum';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: RoutingEnum.Login,
     pathMatch: 'full',
   },
   {
-    path: 'login',
+    path: RoutingEnum.Login,
     component: LoginComponent,
   },
   {
-    path: 'register',
+    path: RoutingEnum.Register,
     component: RegisterComponent,
   },
   {
-    path: 'forgot-password',
+    path: RoutingEnum.ForgotPassword,
     component: ForgotPasswordComponent,
   },
 
   {
-    path: 'user-role',
+    path: RoutingEnum.UserRole,
     component: UserRoleComponent,
     canActivate: [AuthGuard],
   },

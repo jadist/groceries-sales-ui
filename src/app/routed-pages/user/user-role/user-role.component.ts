@@ -5,6 +5,7 @@ import {
   ToolbarInputModel,
   HomeBackEnum,
 } from '../../../components/main/topbar/topbar.model';
+import { RoutingEnum } from '../../../models/routing.enum';
 
 import { FirebaseFirestoreService } from '../../../services/firebase-firestore/firebase-firestore.service';
 
@@ -36,7 +37,7 @@ export class UserRoleComponent implements OnInit {
     ToolbarTitle: 'User Role Page',
     HomeAction: {
       HomeBack: HomeBackEnum.BACK,
-      Destination: ['/', 'login'],
+      Destination: ['/', RoutingEnum.Login],
     },
     Notification: {
       Hidden: false,
