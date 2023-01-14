@@ -1,4 +1,7 @@
-<div class="flex flex-col h-[calc(100vh)] border-r-2 border-stone-200">
+<div
+  class="flex flex-col h-[calc(100vh)] border-r-2 border-stone-200"
+  *ngIf="!selectedMenuItem"
+>
   <div class="flex-none basis-1/12">
     <mat-list>
       <mat-list-item>
@@ -32,12 +35,18 @@
     </mat-toolbar>
 
     <mat-selection-list #SidebarMenu [multiple]="false">
-      <mat-list-option *ngFor="let menu of sidebarMenu" [value]="menu">
+      <mat-list-option
+        *ngFor="let menu of sidebarMenu"
+        [value]="menu"
+        (click)="selectSidebarItem(menu.MenuItem.Value)"
+      >
         <mat-icon matListItemIcon>{{ menu?.MenuItem?.Icon }}</mat-icon>
         <div matListItemTitle>
           {{ menu?.MenuItem?.Name }}
+          <mat-icon *ngIf="menu?.MenuItem?.Child" inline="true"
+            >arrow_forward</mat-icon
+          >
         </div>
-        
         <div matListItemLine *ngIf="menu?.MenuItem?.Description">
           {{ menu?.MenuItem?.Description }}
         </div>
@@ -57,5 +66,59 @@
         <div matListItemLine>View Profile</div>
       </mat-list-item>
     </mat-list>
+  </div>
+</div>
+
+<div
+  class="flex flex-col h-[calc(100vh)] border-r-2 border-stone-200"
+  *ngIf="selectedMenuItem"
+>
+  <div class="flex-none basis-1/12">
+    <mat-toolbar>
+      <button
+        mat-icon-button
+        class="example-icon"
+        aria-label="Example icon-button with menu icon"
+        (click)="backToParentSidebar()"
+      >
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    </mat-toolbar>
+  </div>
+  <div class="grow basis-10/12">
+    <mat-toolbar *ngIf="false">
+      <button
+        mat-icon-button
+        aria-label="Example icon-button with menu icon"
+        *ngIf="true"
+      >
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+
+      <span class="example-spacer"></span>
+
+      <button
+        mat-icon-button
+        aria-label="Example icon-button with menu icon"
+        *ngIf="true"
+      >
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <mat-selection-list #SidebarMenu [multiple]="false">
+      <mat-list-option
+        *ngFor="let menu of selectedMenuItem?.MenuItem?.Child"
+        [value]="menu"
+      >
+        <mat-icon matListItemIcon>{{ menu?.Icon }}</mat-icon>
+        <div matListItemTitle>
+          {{ menu?.Name }}
+        </div>
+        <div matListItemLine *ngIf="menu?.Description">
+          {{ menu?.Description }}
+        </div>
+      </mat-list-option>
+    </mat-selection-list>
   </div>
 </div>
