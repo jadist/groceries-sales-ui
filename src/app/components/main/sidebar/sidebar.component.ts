@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { MenuItem, SidebarModel } from './sidebar.model';
 import { DefaultSidebarMenu } from './sidebar.default.data';
@@ -13,7 +13,7 @@ export class SidebarComponent {
 
   defaultSidebarMenu: SidebarModel = DefaultSidebarMenu;
 
-  customSidebarMenu: SidebarModel = {} as SidebarModel;
+  @Input() customSidebarMenu: SidebarModel = {} as SidebarModel;
 
   selectSidebarItem(value: string) {
     const selectedItem = this.defaultSidebarMenu.MenuItem.filter(

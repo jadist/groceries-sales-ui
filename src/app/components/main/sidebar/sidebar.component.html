@@ -52,13 +52,31 @@
   </div>
   <div class="basis-1/12 border-t-2 border-stone-200">
     <mat-selection-list [multiple]="false">
-      <mat-list-option>
+      <mat-list-option [matMenuTriggerFor]="menu">
         <div matListItemAvatar>
-          <img src="../../../../assets/empty_icon/android-chrome-192x192.png" class="rounded-full" style="background-color: #673ab7" />
+          <img
+            src="../../../../assets/empty_icon/android-chrome-192x192.png"
+            class="rounded-full"
+            style="background-color: #673ab7"
+          />
         </div>
         <div matListItemTitle>Eldest Pasirula</div>
       </mat-list-option>
     </mat-selection-list>
+
+    <mat-menu #menu="matMenu" xPosition="before">
+      <button mat-menu-item>
+        <mat-icon>person</mat-icon>
+        <span>View Profile</span>
+      </button>
+
+      <mat-divider></mat-divider>
+      
+      <button mat-menu-item>
+        <mat-icon>logout</mat-icon>
+        <span>Sign out</span>
+      </button>
+    </mat-menu>
   </div>
 </div>
 

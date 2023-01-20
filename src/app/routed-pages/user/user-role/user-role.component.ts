@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SidebarModel } from 'src/app/components/main/sidebar/sidebar.model';
 
 import { AsTableDataModel } from '../../../components/content/as-table/as-table.model';
 import {
@@ -51,6 +52,8 @@ export class UserRoleComponent implements OnInit {
       ],
     },
   };
+
+  sidebarMenu: SidebarModel = {} as SidebarModel;
 
   constructor(private userRoleService: FirebaseFirestoreService) {}
 
