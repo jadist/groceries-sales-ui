@@ -2,48 +2,63 @@
   class="flex flex-col h-[calc(100vh)] border-r-2 border-stone-200"
   *ngIf="!selectedMenuItem"
 >
-  <div class="flex-none basis-1/12">
+  <div class="basis-1/12">
     <mat-list>
       <mat-list-item>
         <div matListItemAvatar>
           <img src="../../../../assets/favicon/android-chrome-192x192.png" />
         </div>
-        <div matListItemTitle>{{ sidebarMenu.Header.Title }}</div>
-        <div matListItemLine>{{ sidebarMenu.Header.Description }}</div>
+        <div matListItemTitle>{{ defaultSidebarMenu.Header.Title }}</div>
+        <div matListItemLine>{{ defaultSidebarMenu.Header.Description }}</div>
       </mat-list-item>
     </mat-list>
   </div>
-  <div class="grow basis-10/12">
-    <mat-selection-list #SidebarMenu [multiple]="false">
+  <div class="basis-3/12 overflow-auto">
+    <mat-selection-list #DefaultSidebarMenu [multiple]="false">
+      <div mat-subheader>Main Menu</div>
+
       <mat-list-option
-        *ngFor="let menu of sidebarMenu?.MenuItem"
+        *ngFor="let menu of defaultSidebarMenu?.MenuItem"
         [value]="menu"
         (click)="selectSidebarItem(menu.Value)"
       >
         <mat-icon matListItemIcon>{{ menu?.Icon }}</mat-icon>
-        <div matListItemTitle>
+        <div matListItemTitle [matTooltip]="menu.Description">
           {{ menu?.Name }}
           <mat-icon *ngIf="menu?.Child" inline="true">list</mat-icon>
-        </div>
-        <div matListItemLine *ngIf="menu?.Description">
-          {{ menu?.Description }}
         </div>
       </mat-list-option>
     </mat-selection-list>
   </div>
-  <div class="flex-none basis-1/12 border-t-2 border-stone-200">
-    <mat-list>
-      <mat-list-item>
+
+  <mat-divider mat-subheader *ngIf="customSidebarMenu?.MenuItem"></mat-divider>
+
+  <div class="basis-7/12 overflow-auto">
+    <mat-selection-list #CustomSidebarMenu [multiple]="false">
+      <div mat-subheader *ngIf="customSidebarMenu?.MenuItem">Custom Menu</div>
+
+      <mat-list-option
+        *ngFor="let menu of customSidebarMenu?.MenuItem"
+        [value]="menu"
+      >
+        <div matListItemTitle [matTooltip]="menu.Description">
+          {{ menu?.Name }}
+        </div>
+        <div matListItemLine>
+          {{ menu.Description }}
+        </div>
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <div class="basis-1/12 border-t-2 border-stone-200">
+    <mat-selection-list [multiple]="false">
+      <mat-list-option>
         <div matListItemAvatar>
-          <img
-            src="../../../../assets/favicon/android-chrome-192x192.png"
-            class="rounded-full"
-          />
+          <img src="../../../../assets/empty_icon/android-chrome-192x192.png" class="rounded-full" style="background-color: #673ab7" />
         </div>
         <div matListItemTitle>Eldest Pasirula</div>
-        <div matListItemLine>View Profile</div>
-      </mat-list-item>
-    </mat-list>
+      </mat-list-option>
+    </mat-selection-list>
   </div>
 </div>
 
@@ -51,7 +66,7 @@
   class="flex flex-col h-[calc(100vh)] border-r-2 border-stone-200"
   *ngIf="selectedMenuItem"
 >
-  <div class="flex-none basis-1/12">
+  <div class="basis-1/12">
     <mat-toolbar>
       <button
         mat-icon-button
@@ -63,7 +78,7 @@
       </button>
     </mat-toolbar>
   </div>
-  <div class="grow basis-10/12">
+  <div class="basis-11/12 overflow-auto">
     <mat-toolbar *ngIf="false">
       <button
         mat-icon-button
@@ -90,11 +105,8 @@
         [value]="menu"
       >
         <mat-icon matListItemIcon>{{ menu?.Icon }}</mat-icon>
-        <div matListItemTitle>
+        <div matListItemTitle [matTooltip]="menu.Description">
           {{ menu?.Name }}
-        </div>
-        <div matListItemLine *ngIf="menu?.Description">
-          {{ menu?.Description }}
         </div>
       </mat-list-option>
     </mat-selection-list>

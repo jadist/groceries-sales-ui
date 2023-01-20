@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { MenuItem, SidebarModel } from './sidebar.model';
+import { DefaultSidebarMenu } from './sidebar.default.data';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,47 +11,12 @@ import { MenuItem, SidebarModel } from './sidebar.model';
 export class SidebarComponent {
   selectedMenuItem: MenuItem | null = null;
 
-  sidebarMenu: SidebarModel = {
-    Header: {
-      Title: 'Jadist Home Page',
-      Description: 'Jadist Description.. What the hail',
-    },
-    MenuItem: [
-      {
-        Icon: 'home',
-        Name: 'Home',
-        Value: 'home',
-        Description: '',
-        UrlSlug: ['/'],
-      },
-      {
-        Icon: 'person',
-        Name: 'Users',
-        Value: 'users',
-        Description: 'User List & Role',
-        UrlSlug: [''],
-        Child: [
-          {
-            Icon: 'policy',
-            Name: 'User Role',
-            Value: 'user-role',
-            Description: '',
-            UrlSlug: ['/', 'user-role'],
-          },
-          {
-            Icon: 'person',
-            Name: 'User List',
-            Value: 'user-list',
-            Description: '',
-            UrlSlug: ['/', 'user-list'],
-          },
-        ],
-      },
-    ],
-  };
+  defaultSidebarMenu: SidebarModel = DefaultSidebarMenu;
+
+  customSidebarMenu: SidebarModel = {} as SidebarModel;
 
   selectSidebarItem(value: string) {
-    const selectedItem = this.sidebarMenu.MenuItem.filter(
+    const selectedItem = this.defaultSidebarMenu.MenuItem.filter(
       (item) => item.Value === value
     );
 
