@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ToolbarInputModel, HomeBackEnum } from './topbar.model';
+import { ToolbarInputModel } from './topbar.model';
 import { RoutingEnum } from '../../../models/routing.enum';
 
 @Component({
@@ -10,13 +10,6 @@ import { RoutingEnum } from '../../../models/routing.enum';
 export class TopbarComponent {
   @Input() ToolbarInputData: ToolbarInputModel = {
     ToolbarTitle: 'DEFAULT_TITLE',
-    HomeAction: {
-      HomeBack: HomeBackEnum.HOME,
-      Destination: ['/'],
-    },
-    Notification: {
-      Hidden: false,
-    },
   };
 
   loginPage = RoutingEnum.Login;
