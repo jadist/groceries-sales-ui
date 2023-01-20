@@ -1,38 +1,25 @@
-<div class="table w-full box-border pt-4 pr-4 pl-4 pb-0" *ngIf="false">
-  <!-- <mat-form-field appearance="fill">
-    <mat-label>Filter</mat-label>
-    <input
-      matInput
-      (keyup)="applyFilter($event)"
-      placeholder="Ex. ium"
-      #input
-    />
-  </mat-form-field> -->
-</div>
-<div class="overflow-y-auto h-screen">
-  <div class="table w-full box-border p-4">
-    <div class="table-header-group">
-      <div class="table-row sticky top-0 bg-slate-200">
-        <div
-          class="table-cell text-left box-border p-3 border-b border-gray-300 font-bold"
-          *ngFor="let column of TableData?.Column?.Value"
-        >
-          {{ column }}
-        </div>
+<div class="table w-full box-border p-4">
+  <div class="table-header-group">
+    <div class="table-row sticky top-0 bg-slate-200">
+      <div
+        class="table-cell text-left box-border p-3 border-b border-gray-300 font-bold"
+        *ngFor="let column of TableData?.Column?.Value"
+      >
+        {{ column }}
       </div>
     </div>
-    <div class="table-row-group">
+  </div>
+  <div class="table-row-group">
+    <div
+      class="table-row bg-slate-100 hover:bg-indigo-100 cursor-pointer"
+      *ngFor="let row of TableData?.Rows"
+      [id]="row.Id"
+    >
       <div
-        class="table-row bg-slate-100 hover:bg-indigo-100 cursor-pointer"
-        *ngFor="let row of TableData?.Rows"
-        [id]="row.Id"
+        class="table-cell box-border p-2 border-b border-gray-300"
+        *ngFor="let cell of row.Cols"
       >
-        <div
-          class="table-cell box-border p-2 border-b border-gray-300"
-          *ngFor="let cell of row.Cols"
-        >
-          {{ cell }}
-        </div>
+        {{ cell }}
       </div>
     </div>
   </div>
