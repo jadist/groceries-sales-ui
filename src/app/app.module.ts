@@ -21,6 +21,7 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { RegisterComponent } from './pages/register/register.component';
 import { ProductComponent } from './pages/sales/master/product/product.component';
 import { PurchaseOrderComponent } from './pages/sales/transaction/purchase-order/purchase-order.component';
+import { QuotationComponent } from './pages/sales/transaction/quotation/quotation.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { PurchaseOrderComponent } from './pages/sales/transaction/purchase-order
     RegisterComponent,
     ProductComponent,
     PurchaseOrderComponent,
+    QuotationComponent,
   ],
   imports: [
     BrowserModule,
