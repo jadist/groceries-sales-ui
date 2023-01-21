@@ -1,15 +1,7 @@
-export interface AsTableDataModel {
-  Version?: {
-    '1': never;
-  };
-  Column: {
-    Value: string[];
-    Name: string[];
-    Hidden: boolean[];
-  };
-  Rows?: {
-    Id: string;
-    Cols: string[];
-  }[];
-  UrlParamName?: string;
+export interface Column {
+  columnDef: string;
+  header: string;
+  cell: Function;
+  isLink?: boolean;
+  url?: string;
 }

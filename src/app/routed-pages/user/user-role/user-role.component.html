@@ -4,6 +4,9 @@
   </div>
   <div class="basis-5/6 h-screen overflow-auto">
     <app-topbar [ToolbarInputData]="ToolbarInputData"></app-topbar>
-    <app-as-table [TableData]="TableDataSource"></app-as-table>
+    <app-as-table
+      [tableColumns]="tableColumns"
+      [tableData]="tableData"
+    ></app-as-table>
   </div>
 </div>
