@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { ButtonClickModel, ComponentEntryInputModel } from 'src/app/components/main/entry/entry.model';
+import {
+  ButtonClickModel,
+  ComponentEntryInputModel,
+} from 'src/app/components/main/entry/entry.model';
+import { FirebaseAuthService } from '../../services/firebase-auth/firebase-auth.service';
 
 @Component({
   selector: 'app-register',
@@ -20,14 +24,16 @@ export class RegisterComponent {
     },
   };
 
+  constructor(private authService: FirebaseAuthService) {}
+
   onButtonClickSignUp(value: ButtonClickModel) {
-    // this.authService
-    //   .SignUp(value.Email!, value.Password)
-    //   .then((result) => {
-    //     console.log(result);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    this.authService
+      .SignUp(value.Email!, value.Password)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }
