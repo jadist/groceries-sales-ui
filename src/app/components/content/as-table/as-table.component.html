@@ -9,20 +9,16 @@
       </th>
 
       <td mat-cell *matCellDef="let element">
-        <span *ngIf="!disCol.isLink; else link">
-          {{ disCol.cell(element) }}
-        </span>
-
-        <ng-template #link>
-          <a [routerLink]="[disCol.url]">
-            {{ disCol.cell(element) }}
-          </a>
-        </ng-template>
+        {{ disCol.cell(element) }}
       </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      class="cursor-pointer hover:bg-stone-100"
+    ></tr>
   </table>
 </div>

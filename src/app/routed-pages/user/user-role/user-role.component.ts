@@ -26,7 +26,6 @@ export class UserRoleComponent implements OnInit {
       columnDef: 'name',
       header: 'Name',
       cell: (element: Record<string, any>) => `${element['name']}`,
-      isLink: true,
       url: 'abc',
     },
     {
