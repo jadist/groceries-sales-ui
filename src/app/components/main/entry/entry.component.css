@@ -1,0 +1,33 @@
+.center-card {
+  margin-top: 5%;
+  margin-left: calc((100% - 30rem) / 2);
+
+  width: 30rem;
+
+  padding: 3rem;
+}
+
+.font-center {
+  text-align: center;
+
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.font-header {
+  font-size: x-large;
+  font-weight: 500;
+}
+
+.font-subheader {
+  font-size: medium;
+  font-weight: 100;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}

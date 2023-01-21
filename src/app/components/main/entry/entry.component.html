@@ -1,0 +1,88 @@
+<mat-card class="center-card">
+  <mat-card-content>
+    <div class="font-header font-center">
+      {{ ComponentConfig?.Title }}
+    </div>
+    <div class="font-subheader font-center">
+      {{ ComponentConfig?.SubTitle }}
+    </div>
+  </mat-card-content>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-content>
+    <br />
+  </mat-card-content>
+
+  <mat-card-content>
+    <form>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="email"
+          matInput
+          [formControl]="emailFormControl"
+          placeholder="Ex. sales@jadist.my.id"
+        />
+      </mat-form-field>
+
+      <mat-form-field
+        *ngIf="ComponentConfig?.UsePassword"
+        appearance="outline"
+        class="full-width"
+      >
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          id="passwordInput"
+          type="password"
+          [formControl]="passwordFormControl"
+        />
+      </mat-form-field>
+    </form>
+    <label *ngIf="ComponentConfig?.UseRememberMe">
+      <input
+        id="customCheckLogin"
+        type="checkbox"
+        class="form-checkbox border-0 rounded text-gray-800 ml-1 w-5 h-5"
+        style="transition: all 0.15s ease 0s"
+      />
+      <span class="ml-2 text-sm font-semibold text-gray-700">
+        Remember me
+      </span>
+    </label>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button
+      mat-flat-button
+      color="primary"
+      class="full-width"
+      (click)="onButtonClick()"
+    >
+      {{ ComponentConfig?.ButtonText }}
+    </button>
+  </mat-card-actions>
+
+  <mat-card-actions>
+    <a
+      [routerLink]="['/forgot-password']"
+      *ngIf="ComponentConfig?.Help?.ForgotPassword"
+    >
+      <small>Forgot password?</small>
+    </a>
+
+    <div class="example-spacer"></div>
+
+    <a [routerLink]="['/login']" *ngIf="ComponentConfig?.Help?.SignIn">
+      <small>Ready to Sign In?</small>
+    </a>
+
+    <div class="example-spacer"></div>
+
+    <a [routerLink]="['/register']" *ngIf="ComponentConfig?.Help?.SignUp">
+      <small>Create new account</small>
+    </a>
+  </mat-card-actions>
+</mat-card>
