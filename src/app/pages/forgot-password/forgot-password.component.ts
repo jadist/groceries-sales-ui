@@ -3,6 +3,7 @@ import {
   ButtonClickModel,
   ComponentEntryInputModel,
 } from 'src/app/components/main/entry/entry.model';
+import { FirebaseAuthService } from '../../services/firebase-auth/firebase-auth.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -23,14 +24,16 @@ export class ForgotPasswordComponent {
     },
   };
 
+  constructor(private authService: FirebaseAuthService) {}
+
   onButtonClickResetPassword(value: ButtonClickModel) {
-    // this.authService
-    //   .ResetPassword(value.Email!)
-    //   .then((result) => {
-    //     console.log(result);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    this.authService
+      .ResetPassword(value.Email!)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 }
