@@ -36,7 +36,7 @@ export class LoginComponent {
       .SignIn(value.Email!, value.Password)
       .then((result) => {
         console.log(result);
-        this.router.navigate(['user-role']);
+        // this.router.navigate(['user-role']);
       })
       .catch((err) => {
         console.log(err);

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   ButtonClickModel,
   ComponentEntryInputModel,
@@ -24,13 +25,17 @@ export class ForgotPasswordComponent {
     },
   };
 
-  constructor(private authService: FirebaseAuthService) {}
+  constructor(
+    private authService: FirebaseAuthService,
+    private router: Router
+  ) {}
 
   onButtonClickResetPassword(value: ButtonClickModel) {
     this.authService
       .ResetPassword(value.Email!)
       .then((result) => {
         console.log(result);
+        this.router.navigate(['/']);
       })
       .catch((error) => {
         console.log(error);
