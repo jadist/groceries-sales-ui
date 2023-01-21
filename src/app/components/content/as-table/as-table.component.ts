@@ -23,4 +23,9 @@ export class AsTableComponent<T> implements OnInit {
     this.displayedColumns = this.tableColumns.map((c) => c.columnDef);
     this.dataSource = new MatTableDataSource(this.tableData);
   }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }

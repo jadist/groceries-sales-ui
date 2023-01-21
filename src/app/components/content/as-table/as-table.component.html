@@ -1,4 +1,14 @@
 <div class="w-full p-5">
+  <mat-form-field class="w-full">
+    <mat-label>Filter</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Ex. ium"
+      #input
+    />
+  </mat-form-field>
+
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container
       *ngFor="let disCol of tableColumns; let colIndex = index"
@@ -21,4 +31,13 @@
       class="cursor-pointer hover:bg-stone-100"
     ></tr>
   </table>
+
+  <mat-paginator
+    class="mt-4"
+    [length]="100"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page"
+  >
+  </mat-paginator>
 </div>
