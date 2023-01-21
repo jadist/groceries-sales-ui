@@ -24,6 +24,7 @@ import { PurchaseOrderComponent } from './pages/sales/transaction/purchase-order
 import { QuotationComponent } from './pages/sales/transaction/quotation/quotation.component';
 import { TopbarComponent } from './components/main/topbar/topbar.component';
 import { SidebarComponent } from './components/main/sidebar/sidebar.component';
+import { AsTableComponent } from './components/content/as-table/as-table.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { SidebarComponent } from './components/main/sidebar/sidebar.component';
     QuotationComponent,
     TopbarComponent,
     SidebarComponent,
+    AsTableComponent,
   ],
   imports: [
     BrowserModule,
