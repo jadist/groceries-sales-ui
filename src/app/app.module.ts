@@ -19,6 +19,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { EntryComponent } from './components/main/entry/entry.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { ProductComponent } from './pages/sales/master/product/product.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { RegisterComponent } from './pages/register/register.component';
     LoginComponent,
     ForgotPasswordComponent,
     RegisterComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,
