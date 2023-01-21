@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RoutingEnum } from '../../app/models/routing.enum';
 
 import { LoginComponent } from '../../app/pages/login/login.component';
+import { RegisterComponent } from '../../app/pages/register/register.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: RoutingEnum.Login,
     component: LoginComponent,
+  },
+  {
+    path: RoutingEnum.Register,
+    component: RegisterComponent,
   },
 ];
 
