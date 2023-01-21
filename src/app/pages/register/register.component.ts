@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   ButtonClickModel,
   ComponentEntryInputModel,
@@ -24,13 +25,17 @@ export class RegisterComponent {
     },
   };
 
-  constructor(private authService: FirebaseAuthService) {}
+  constructor(
+    private authService: FirebaseAuthService,
+    private router: Router
+  ) {}
 
   onButtonClickSignUp(value: ButtonClickModel) {
     this.authService
       .SignUp(value.Email!, value.Password)
       .then((result) => {
         console.log(result);
+        this.router.navigate(['/']);
       })
       .catch((err) => {
         console.log(err);
