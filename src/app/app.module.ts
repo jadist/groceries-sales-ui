@@ -23,6 +23,7 @@ import { ProductComponent } from './pages/sales/master/product/product.component
 import { PurchaseOrderComponent } from './pages/sales/transaction/purchase-order/purchase-order.component';
 import { QuotationComponent } from './pages/sales/transaction/quotation/quotation.component';
 import { TopbarComponent } from './components/main/topbar/topbar.component';
+import { SidebarComponent } from './components/main/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { TopbarComponent } from './components/main/topbar/topbar.component';
     PurchaseOrderComponent,
     QuotationComponent,
     TopbarComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
