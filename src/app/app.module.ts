@@ -20,6 +20,7 @@ import { EntryComponent } from './components/main/entry/entry.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ProductComponent } from './pages/sales/master/product/product.component';
+import { PurchaseOrderComponent } from './pages/sales/transaction/purchase-order/purchase-order.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ProductComponent } from './pages/sales/master/product/product.component
     ForgotPasswordComponent,
     RegisterComponent,
     ProductComponent,
+    PurchaseOrderComponent,
   ],
   imports: [
     BrowserModule,
