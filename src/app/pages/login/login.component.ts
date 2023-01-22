@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { RoutingEnum } from '../../models/routing.enum';
+
 import {
   ButtonClickModel,
   ComponentEntryInputModel,
@@ -36,7 +38,7 @@ export class LoginComponent {
       .SignIn(value.Email!, value.Password)
       .then((result) => {
         console.log(result);
-        // this.router.navigate(['user-role']);
+        this.router.navigate([RoutingEnum.Home]);
       })
       .catch((err) => {
         console.log(err);

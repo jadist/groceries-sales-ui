@@ -6,9 +6,7 @@
   right: 0;
 }
 
-.example-radio-group {
-  display: block;
-  border: 1px solid #555;
-  margin: 20px;
-  padding: 10px;
+.left-sidebar {
+  min-width: 270px;
+  width: 15%;
 }

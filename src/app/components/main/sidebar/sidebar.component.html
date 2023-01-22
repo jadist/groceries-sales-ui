@@ -1,1 +1,94 @@
-<p>sidebar works!</p>
+<!-- Main Menubar -->
+<div *ngIf="!selectedMenuItem">
+  <mat-list>
+    <mat-list-item>
+      <div matListItemAvatar>
+        <img
+          src="../../../../assets/favicon/android-chrome-192x192.png"
+          width="40px"
+          height="40px"
+        />
+      </div>
+      <div matListItemTitle>{{ defaultSidebarMenu.Header.Title }}</div>
+      <div matListItemLine>{{ defaultSidebarMenu.Header.Description }}</div>
+    </mat-list-item>
+  </mat-list>
+
+  <mat-selection-list #DefaultSidebarMenu [multiple]="false">
+    <div mat-subheader>Main Menu</div>
+
+    <mat-list-option
+      *ngFor="let menu of defaultSidebarMenu?.MenuItem"
+      [value]="menu"
+      (click)="selectSidebarItem(menu.Value)"
+    >
+      <mat-icon matListItemIcon>{{ menu?.Icon }}</mat-icon>
+      <div matListItemTitle [matTooltip]="menu.Description">
+        {{ menu?.Name }}
+        <mat-icon *ngIf="menu?.Child" inline="true">list</mat-icon>
+      </div>
+    </mat-list-option>
+  </mat-selection-list>
+
+  <mat-list class="bottom">
+    <mat-divider></mat-divider>
+
+    <mat-list-item [matMenuTriggerFor]="menu" class="bottom-menu">
+      <div
+        matListItemIcon
+        matBadge="1"
+        matBadgeSize="medium"
+        matBadgeColor="warn"
+      >
+        <mat-icon>notifications</mat-icon>
+      </div>
+      <div matListItemTitle>Eldest Pasirula</div>
+      <div matListItemLine>View Details</div>
+    </mat-list-item>
+  </mat-list>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>person</mat-icon>
+      <span>View Profile</span>
+    </button>
+
+    <button mat-menu-item>
+      <mat-icon>notifications</mat-icon>
+      <span>View Notifications</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-menu-item [routerLink]="['/']">
+      <mat-icon>logout</mat-icon>
+      <span>Sign out</span>
+    </button>
+  </mat-menu>
+</div>
+
+<!-- Custom Menubar -->
+<div *ngIf="selectedMenuItem">
+  <mat-toolbar>
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+      (click)="backToParentSidebar()"
+    >
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-selection-list #SidebarMenu [multiple]="false">
+    <mat-list-option
+      *ngFor="let menu of selectedMenuItem?.Child"
+      [value]="menu"
+    >
+      <mat-icon matListItemIcon>{{ menu?.Icon }}</mat-icon>
+      <div matListItemTitle [matTooltip]="menu.Description">
+        {{ menu?.Name }}
+      </div>
+    </mat-list-option>
+  </mat-selection-list>
+</div>
