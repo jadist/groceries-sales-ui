@@ -9,6 +9,8 @@ import {
 } from 'src/app/components/main/entry/entry.model';
 import { FirebaseAuthService } from 'src/app/services/firebase-auth/firebase-auth.service';
 
+import { SidebarService } from 'src/app/services/layout/sidebar/sidebar.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -30,14 +32,20 @@ export class LoginComponent {
 
   constructor(
     private authService: FirebaseAuthService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private sidebar: SidebarService
+  ) {
+    this.sidebar.setHideSidebarLayout(true);
+  }
 
   onButtonClickLogin(value: ButtonClickModel) {
     this.authService
       .SignIn(value.Email!, value.Password)
       .then((result) => {
         console.log(result);
+
+        this.sidebar.setHideSidebarLayout(false);
+
         this.router.navigate([RoutingEnum.Home]);
       })
       .catch((err) => {
