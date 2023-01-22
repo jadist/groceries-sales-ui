@@ -27,6 +27,7 @@ import { SidebarComponent } from './components/main/sidebar/sidebar.component';
 import { AsTableComponent } from './components/content/as-table/as-table.component';
 import { AsDetailComponent } from './components/content/as-detail/as-detail.component';
 import { HomeComponent } from './pages/home/home.component';
+import { DummyDetailComponent } from './pages/dummy/dummy-detail/dummy-detail.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { HomeComponent } from './pages/home/home.component';
     AsTableComponent,
     AsDetailComponent,
     HomeComponent,
+    DummyDetailComponent,
   ],
   imports: [
     BrowserModule,

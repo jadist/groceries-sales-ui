@@ -3,4 +3,6 @@ export interface Column {
   header: string;
   cell: Function;
   url?: string;
+  richTextString?: boolean;
+  hidden?: boolean;
 }
