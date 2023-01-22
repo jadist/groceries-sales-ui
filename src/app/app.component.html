@@ -1,1 +1,13 @@
-<router-outlet></router-outlet>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #leftSidenav opened mode="side" style="width: 15%">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav #sidenav position="end" mode="over" style="width: 480px">
+    Right
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <!-- <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p> -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
