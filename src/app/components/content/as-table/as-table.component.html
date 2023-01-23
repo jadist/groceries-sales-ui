@@ -12,7 +12,7 @@
 
       <span class="example-spacer"></span>
 
-      <button mat-icon-button (click)="detailSidenav.toggle()">
+      <button mat-icon-button (click)="detailSidenav.toggle()" matTooltip="Click to close detail window">
         <mat-icon>close</mat-icon>
       </button>
     </mat-toolbar>
@@ -55,6 +55,7 @@
         *matRowDef="let row; columns: displayedColumns"
         (click)="detailSidenav.toggle(); rowClick(row)"
         class="row"
+        [class.demo-row-is-clicked]="!row"
       ></tr>
     </table>
 
