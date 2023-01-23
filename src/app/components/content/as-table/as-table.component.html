@@ -5,14 +5,28 @@
     mode="over"
     over
     fixedInViewport="true"
-    style="width: 480px"
+    [ngClass]="fullSidenav ? 'full-mat-sidenav' : 'partial-mat-sidenav'"
   >
     <mat-toolbar color="primary">
       <span>Details</span>
 
       <span class="example-spacer"></span>
 
-      <button mat-icon-button (click)="detailSidenav.toggle()" matTooltip="Click to close detail window">
+      <button
+        mat-icon-button
+        [matTooltip]="
+          fullSidenav ? 'Click to resize window' : 'Click to maximize window'
+        "
+        (click)="fullSidenav = !fullSidenav"
+      >
+        <mat-icon>{{ fullSidenav ? "expand_more" : "expand_less" }}</mat-icon>
+      </button>
+
+      <button
+        mat-icon-button
+        (click)="detailSidenav.toggle()"
+        matTooltip="Click to close detail window"
+      >
         <mat-icon>close</mat-icon>
       </button>
     </mat-toolbar>

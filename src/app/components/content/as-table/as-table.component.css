@@ -6,6 +6,13 @@ mat-sidenav-container {
   padding: 1rem;
 }
 
+.partial-mat-sidenav {
+  width: 480px;
+}
+.full-mat-sidenav {
+  width: calc(100% - 18rem);
+}
+
 .example-spacer {
   flex: 1 1 auto;
 }

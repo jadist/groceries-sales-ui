@@ -21,9 +21,9 @@ export class AsTableComponent<T> {
   displayedColumns: Array<string> = [];
   dataSource: MatTableDataSource<T> = new MatTableDataSource();
 
-  selectedRowIndex = -1;
-
   selectedRowData: T = {} as T;
+
+  fullSidenav: boolean = false;
 
   constructor(private sidebar: SidebarService) {}
 
