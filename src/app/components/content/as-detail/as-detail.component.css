@@ -1,3 +1,11 @@
+mat-card {
+  position: fixed;
+  width: 480px;
+  top: 8rem;
+  bottom: 0;
+  overflow: auto;
+}
+
 .example-form {
   min-width: 150px;
   width: 100%;

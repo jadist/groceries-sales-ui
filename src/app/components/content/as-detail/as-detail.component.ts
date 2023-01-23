@@ -26,6 +26,8 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
     Value: string;
   }[] = [];
 
+  edit: boolean = false;
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
@@ -39,5 +41,9 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
       Column: this.tableColumns.filter((col) => col.columnDef === read[0])[0],
       Value: read[1] as string,
     }));
+  }
+
+  saveEdit() {
+    this.edit = false;
   }
 }
