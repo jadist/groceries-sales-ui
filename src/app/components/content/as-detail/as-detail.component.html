@@ -1,11 +1,14 @@
 <mat-toolbar>
-  <button mat-icon-button *ngIf="!edit" (click)="edit = true">
+  <button mat-icon-button *ngIf="!edit" (click)="edit = true" matTooltip="Click to edit">
     <mat-icon>mode_edit</mat-icon>
+  </button>
+  <button mat-icon-button *ngIf="edit" (click)="edit = false" matTooltip="Click to cancel edit">
+    <mat-icon>close</mat-icon>
   </button>
 
   <span class="example-spacer"></span>
 
-  <button mat-icon-button *ngIf="edit" (click)="saveEdit()">
+  <button mat-icon-button *ngIf="edit" (click)="saveEdit()" matTooltip="Click to submit changes">
     <mat-icon>check</mat-icon>
   </button>
 </mat-toolbar>
@@ -21,16 +24,25 @@
         <ng-template #aString>
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>{{ col.Column.header }}</mat-label>
-            <input matInput placeholder="Ex. Pizza" [value]="col.Value" />
+            <input
+              matInput
+              placeholder="Ex. Pizza"
+              [readonly]="!edit"
+              [value]="col.Value"
+            />
           </mat-form-field>
         </ng-template>
 
         <ng-template #richTextString>
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>{{ col.Column.header }}</mat-label>
-            <textarea matInput placeholder="Ex. It makes me feel..." rows="5">{{
-              col.Value
-            }}</textarea>
+            <textarea
+              matInput
+              placeholder="Ex. It makes me feel..."
+              rows="5"
+              [readonly]="!edit"
+              >{{ col.Value }}</textarea
+            >
           </mat-form-field>
         </ng-template>
       </div>

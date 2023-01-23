@@ -33,6 +33,8 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.edit = false;
+
     const currValue: [string, T][] = Object.entries<T>(
       changes['rowData'].currentValue
     );
