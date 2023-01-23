@@ -1,4 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { Column } from '../as-table/as-table.model';
 import { AsDetailModel } from './as-detail.model';
@@ -8,30 +14,30 @@ import { AsDetailModel } from './as-detail.model';
   templateUrl: './as-detail.component.html',
   styleUrls: ['./as-detail.component.css'],
 })
-export class AsDetailComponent<T> implements OnInit {
+export class AsDetailComponent<T> implements OnInit, OnChanges {
   @Input() detailInput: AsDetailModel = {} as AsDetailModel;
 
-  @Input()
-  tableColumns: Array<Column> = [];
+  @Input() tableColumns: Array<Column> = [];
 
-  @Input()
-  rowData: T = {} as T;
+  @Input() rowData: T = {} as T;
 
-  readData: string[] = [];
+  unifiedReadData: {
+    Column: Column;
+    Value: string;
+  }[] = [];
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    console.log(typeof this.rowData);
+  ngOnInit(): void {}
 
-    this.readData = this.tableColumns.map((col) => {
-      return this.rowData[col.columnDef.toString() as keyof T];
-    }) as string[];
+  ngOnChanges(changes: SimpleChanges): void {
+    const currValue: [string, T][] = Object.entries<T>(
+      changes['rowData'].currentValue
+    );
 
-    console.log(this.detailInput.BackUrl);
-  }
-
-  backClick() {
-    this.router.navigate(this.detailInput.BackUrl);
+    this.unifiedReadData = currValue.map((read) => ({
+      Column: this.tableColumns.filter((col) => col.columnDef === read[0])[0],
+      Value: read[1] as string,
+    }));
   }
 }

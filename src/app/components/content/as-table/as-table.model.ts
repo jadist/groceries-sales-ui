@@ -5,4 +5,5 @@ export interface Column {
   url?: string;
   richTextString?: boolean;
   hidden?: boolean;
+  id?: boolean;
 }

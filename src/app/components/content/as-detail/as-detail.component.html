@@ -1,35 +1,24 @@
-<mat-toolbar>
-  <button mat-icon-button (click)="backClick()">
-    <mat-icon>arrow_back</mat-icon>
-  </button>
-  <span class="example-spacer"></span>
-</mat-toolbar>
-
 <mat-card>
   <mat-card-content>
-    <form class="example-form" *ngFor="let col of tableColumns; let i = index">
-      <div *ngIf="!col.hidden">
+    <form class="example-form" *ngFor="let col of unifiedReadData">
+      <div *ngIf="!col.Column.hidden">
         <div
-          *ngIf="col.richTextString; then richTextString; else aString"
+          *ngIf="col.Column.richTextString; then richTextString; else aString"
         ></div>
 
         <ng-template #aString>
           <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>{{ col.header }}</mat-label>
-            <input
-              matInput
-              placeholder="Ex. Pizza"
-              [value]="readData[i] ? readData[i] : ''"
-            />
+            <mat-label>{{ col.Column.header }}</mat-label>
+            <input matInput placeholder="Ex. Pizza" [value]="col.Value" />
           </mat-form-field>
         </ng-template>
 
         <ng-template #richTextString>
           <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>{{ col.header }}</mat-label>
-            <textarea matInput placeholder="Ex. It makes me feel..."
-              >{{ readData[i] ? readData[i] : "" }}
-            </textarea>
+            <mat-label>{{ col.Column.header }}</mat-label>
+            <textarea matInput placeholder="Ex. It makes me feel..." rows="5">{{
+              col.Value
+            }}</textarea>
           </mat-form-field>
         </ng-template>
       </div>

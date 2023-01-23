@@ -10,6 +10,8 @@ import { SidebarService } from './services/layout/sidebar/sidebar.service';
 export class AppComponent implements OnInit {
   hideSidebar = true;
 
+  detailSidebar = false;
+
   constructor(private sidebar: SidebarService) {}
 
   ngOnInit(): void {

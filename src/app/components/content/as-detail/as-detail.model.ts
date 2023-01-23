@@ -1,3 +1,1 @@
-export interface AsDetailModel {
-  BackUrl: string[];
-}
+export interface AsDetailModel {}

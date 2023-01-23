@@ -1,6 +1,9 @@
 import { Component, Input } from '@angular/core';
 
 import { MatTableDataSource } from '@angular/material/table';
+
+import { SidebarService } from '../../../services/layout/sidebar/sidebar.service';
+
 import { Column } from './as-table.model';
 
 @Component({
@@ -18,7 +21,11 @@ export class AsTableComponent<T> {
   displayedColumns: Array<string> = [];
   dataSource: MatTableDataSource<T> = new MatTableDataSource();
 
-  constructor() {}
+  selectedRowIndex = -1;
+
+  selectedRowData: T = {} as T;
+
+  constructor(private sidebar: SidebarService) {}
 
   ngOnInit(): void {
     this.displayedColumns = this.tableColumns.map((c) => c.columnDef);
@@ -28,5 +35,9 @@ export class AsTableComponent<T> {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  rowClick(row: Event) {
+    this.selectedRowData = row as T;
   }
 }
