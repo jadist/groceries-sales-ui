@@ -25,8 +25,6 @@ export class FirebaseAuthService {
 
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-    console.log('user', user);
-    console.log('user.emailVerified', user?.emailVerified);
     return user !== null;
   }
 

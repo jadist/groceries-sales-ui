@@ -1,5 +1,5 @@
 <app-topbar [ToolbarInputData]="toolbarInputData"></app-topbar>
 <app-as-table
-  [tableColumns]="tableColumns"
-  [tableData]="tableData"
+  #myChild
+  (onPaginatorClick)="refreshTableData($event)"
 ></app-as-table>

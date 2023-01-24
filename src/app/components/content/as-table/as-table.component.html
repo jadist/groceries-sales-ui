@@ -62,7 +62,7 @@
         </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
 
       <tr
         mat-row
@@ -74,11 +74,14 @@
     </table>
 
     <mat-paginator
+      #tablePaginator
       style="margin-top: 1rem"
-      [length]="100"
-      [pageSize]="10"
-      [pageSizeOptions]="[5, 10, 25, 100]"
+      [length]="rowCount"
+      [pageSize]="rowPerPage"
+      [pageSizeOptions]="rowPerPageoptions"
       aria-label="Select page"
+      showFirstLastButtons
+      (page)="paginatorClicked($event)"
     >
     </mat-paginator>
   </mat-sidenav-content>

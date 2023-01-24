@@ -33,16 +33,18 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.edit = false;
+    try {
+      this.edit = false;
 
-    const currValue: [string, T][] = Object.entries<T>(
-      changes['rowData'].currentValue
-    );
+      const currValue: [string, T][] = Object.entries<T>(
+        changes['rowData'].currentValue
+      );
 
-    this.unifiedReadData = currValue.map((read) => ({
-      Column: this.tableColumns.filter((col) => col.columnDef === read[0])[0],
-      Value: read[1] as string,
-    }));
+      this.unifiedReadData = currValue.map((read) => ({
+        Column: this.tableColumns.filter((col) => col.columnDef === read[0])[0],
+        Value: read[1] as string,
+      }));
+    } catch {}
   }
 
   saveEdit() {
