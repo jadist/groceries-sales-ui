@@ -76,88 +76,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   getDataFromServer(value: PaginatorModel): [Array<Element>, number] {
-    const tmp: Array<Element> = [
-      {
-        position: 1,
-        name: 'Hydrogen',
-        weight: 1.0079,
-        symbol: 'H',
-        description:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      },
-      {
-        position: 2,
-        name: 'Helium',
-        weight: 4.0026,
-        symbol: 'He',
-        description:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      },
-      {
-        position: 3,
-        name: 'Lithium',
-        weight: 6.941,
-        symbol: 'Li',
-        description:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      },
-      {
-        position: 4,
-        name: 'Beryllium',
-        weight: 9.0122,
-        symbol: 'Be',
-        description:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      },
-      {
-        position: 5,
-        name: 'Boron',
-        weight: 10.811,
-        symbol: 'B',
-        description:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      },
-      {
-        position: 6,
-        name: 'Carbon',
-        weight: 12.0107,
-        symbol: 'C',
-        description:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      },
-      {
-        position: 7,
-        name: 'Nitrogen',
-        weight: 14.0067,
-        symbol: 'N',
-        description:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      },
-      {
-        position: 8,
-        name: 'Oxygen',
-        weight: 15.9994,
-        symbol: 'O',
-        description:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      },
-      {
-        position: 9,
-        name: 'Fluorine',
-        weight: 18.9984,
-        symbol: 'F',
-        description:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      },
-      {
-        position: 10,
-        name: 'Neon',
-        weight: 20.1797,
-        symbol: 'Ne',
-        description:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      },
-    ];
+    const tmp: Array<Element> = [...DUMMY_DATA];
 
     const rowCount = tmp.length;
 
@@ -177,3 +96,146 @@ export interface Element {
   symbol: string;
   description?: string;
 }
+
+const DUMMY_DATA: Array<Element> = [
+  {
+    position: 1,
+    name: 'Hydrogen',
+    weight: 1.0079,
+    symbol: 'H',
+    description: 'Lorem Ipsum sir amot bla bla bla',
+  },
+  {
+    position: 2,
+    name: 'Helium',
+    weight: 4.0026,
+    symbol: 'He',
+    description: 'Lorem Ipsum sir amot bla bla bla',
+  },
+  {
+    position: 3,
+    name: 'Lithium',
+    weight: 6.941,
+    symbol: 'Li',
+    description: 'Lorem Ipsum sir amot bla bla bla',
+  },
+  {
+    position: 4,
+    name: 'Beryllium',
+    weight: 9.0122,
+    symbol: 'Be',
+    description: 'Lorem Ipsum sir amot bla bla bla',
+  },
+  {
+    position: 5,
+    name: 'Boron',
+    weight: 10.811,
+    symbol: 'B',
+    description: 'Lorem Ipsum sir amot bla bla bla',
+  },
+  {
+    position: 6,
+    name: 'Carbon',
+    weight: 12.0107,
+    symbol: 'C',
+    description: 'Lorem Ipsum sir amot bla bla bla',
+  },
+  {
+    position: 7,
+    name: 'Nitrogen',
+    weight: 14.0067,
+    symbol: 'N',
+    description: 'Lorem Ipsum sir amot bla bla bla',
+  },
+  {
+    position: 8,
+    name: 'Oxygen',
+    weight: 15.9994,
+    symbol: 'O',
+    description: 'Lorem Ipsum sir amot bla bla bla',
+  },
+  {
+    position: 9,
+    name: 'Fluorine',
+    weight: 18.9984,
+    symbol: 'F',
+    description: 'Lorem Ipsum sir amot bla bla bla',
+  },
+  {
+    position: 10,
+    name: 'Neon',
+    weight: 20.1797,
+    symbol: 'Ne',
+    description: 'Lorem Ipsum sir amot bla bla bla',
+  },
+  {
+    position: 11,
+    name: 'Hydrogen',
+    weight: 1.0079,
+    symbol: 'H',
+    description: 'Lorem Ipsum sir amot bla bla bla',
+  },
+  {
+    position: 12,
+    name: 'Helium',
+    weight: 4.0026,
+    symbol: 'He',
+    description: 'Lorem Ipsum sir amot bla bla bla',
+  },
+  {
+    position: 13,
+    name: 'Lithium',
+    weight: 6.941,
+    symbol: 'Li',
+    description: 'Lorem Ipsum sir amot bla bla bla',
+  },
+  {
+    position: 14,
+    name: 'Beryllium',
+    weight: 9.0122,
+    symbol: 'Be',
+    description: 'Lorem Ipsum sir amot bla bla bla',
+  },
+  {
+    position: 15,
+    name: 'Boron',
+    weight: 10.811,
+    symbol: 'B',
+    description: 'Lorem Ipsum sir amot bla bla bla',
+  },
+  {
+    position: 16,
+    name: 'Carbon',
+    weight: 12.0107,
+    symbol: 'C',
+    description: 'Lorem Ipsum sir amot bla bla bla',
+  },
+  {
+    position: 17,
+    name: 'Nitrogen',
+    weight: 14.0067,
+    symbol: 'N',
+    description: 'Lorem Ipsum sir amot bla bla bla',
+  },
+  {
+    position: 18,
+    name: 'Oxygen',
+    weight: 15.9994,
+    symbol: 'O',
+    description: 'Lorem Ipsum sir amot bla bla bla',
+  },
+  {
+    position: 19,
+    name: 'Fluorine',
+    weight: 18.9984,
+    symbol: 'F',
+    description: 'Lorem Ipsum sir amot bla bla bla',
+  },
+  {
+    position: 20,
+    name: 'Neon',
+    weight: 20.1797,
+    symbol: 'Ne',
+    description: 'Lorem Ipsum sir amot bla bla bla',
+  },
+];
