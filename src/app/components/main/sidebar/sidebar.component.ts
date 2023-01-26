@@ -39,7 +39,7 @@ export class SidebarComponent {
     this.router
       .navigate(url)
       .then((_) => {
-        this.selectedMenuItem = null;
+        // this.selectedMenuItem = null;
       })
       .catch((error) => {
         console.log(error);
