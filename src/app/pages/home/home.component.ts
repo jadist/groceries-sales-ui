@@ -30,7 +30,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
       columnDef: 'name',
       header: 'Name',
       cell: (element: Record<string, any>) => `${element['name']}`,
-      url: 'abc',
     },
     {
       columnDef: 'weight',

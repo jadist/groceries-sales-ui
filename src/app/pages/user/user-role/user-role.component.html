@@ -1,1 +1,5 @@
-<p>user-role works!</p>
+<app-topbar [ToolbarInputData]="toolbarInputData"></app-topbar>
+<app-as-table
+  #myChild
+  (onPaginatorClick)="refreshTableData($event)"
+></app-as-table>

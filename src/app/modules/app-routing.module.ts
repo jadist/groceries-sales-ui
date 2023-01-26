@@ -40,6 +40,7 @@ const routes: Routes = [
   {
     path: RoutingEnum.UserRole,
     component: UserRoleComponent,
+    canActivate: [AuthGuard],
   },
 ];
 
