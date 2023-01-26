@@ -53,10 +53,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ngOnInit() {}
 
   ngAfterViewInit(): void {
-    // Get default value
-    const defaultPaginator = this.child.getPaginatorValue();
+    setTimeout(() => {
+      // Get default value
+      const defaultPaginator = this.child.getPaginatorValue();
 
-    this.refreshTableData(defaultPaginator);
+      this.refreshTableData(defaultPaginator);
+    });
   }
 
   refreshTableData(value: PaginatorModel) {
