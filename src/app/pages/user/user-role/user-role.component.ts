@@ -6,8 +6,6 @@ import {
   ViewChild,
 } from '@angular/core';
 
-import { Subscription } from 'rxjs';
-
 import { AsTableComponent } from 'src/app/components/content/as-table/as-table.component';
 
 import {
@@ -26,8 +24,6 @@ import { UserRoleService } from 'src/app/services/firebase/firestore/user/user-r
 })
 export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('myChild') child!: AsTableComponent<UserRoleDocumentModel>;
-
-  private firestoreTable: Subscription | undefined;
 
   toolbarInputData: ToolbarInputModel = {
     ToolbarTitle: 'User Role',
@@ -50,37 +46,15 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
-    if (this.firestoreTable) {
-      this.firestoreTable.unsubscribe;
-    }
-  }
+  ngOnDestroy(): void {}
 
   async refreshTableData(value: PaginatorModel) {
-    const totalRowCount = (await this.userRoleFs.getAll().ref.get()).size;
+    const [result, rowCount] = await this.userRoleFs.getPart(
+      value.CurrentPageIndex,
+      value.RowPerPage
+    );
 
-    const startIndex = value.CurrentPageIndex;
-    const rowPerPage = value.RowPerPage;
-
-    const skippedRow = startIndex * rowPerPage;
-
-    // This query already ordered by id
-    const first =
-      startIndex === 0
-        ? undefined
-        : await this.userRoleFs.getAll().ref.limit(skippedRow).get();
-
-    const lastDoc =
-      startIndex === 0 ? undefined : first?.docs[first.docs.length - 1];
-
-    const nextDoc =
-      startIndex === 0
-        ? this.userRoleFs.getAll().ref.limit(rowPerPage)
-        : this.userRoleFs.getAll().ref.startAfter(lastDoc).limit(rowPerPage);
-
-    const items = (await nextDoc.get()).docs;
-
-    const rows: Array<UserRoleDocumentModel> = items.map((item) => ({
+    const rows: Array<UserRoleDocumentModel> = result.map((item) => ({
       Id: item.id,
       DocVersion: item.data().DocVersion,
       RoleDescription: item.data().RoleDescription,
@@ -96,7 +70,7 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
     // Update Paginator
     this.child.setPaginatorValue({
       CurrentPageIndex: value.CurrentPageIndex,
-      RowCount: totalRowCount,
+      RowCount: rowCount,
       RowPerPage: value.RowPerPage,
     });
   }
