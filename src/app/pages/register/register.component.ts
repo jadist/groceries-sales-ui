@@ -4,7 +4,7 @@ import {
   ButtonClickModel,
   ComponentEntryInputModel,
 } from 'src/app/components/main/entry/entry.model';
-import { FirebaseAuthService } from '../../services/firebase-auth/firebase-auth.service';
+import { FirebaseAuthService } from '../../services/firebase/auth/firebase-auth.service';
 
 @Component({
   selector: 'app-register',

@@ -7,7 +7,7 @@ import {
   ButtonClickModel,
   ComponentEntryInputModel,
 } from 'src/app/components/main/entry/entry.model';
-import { FirebaseAuthService } from 'src/app/services/firebase-auth/firebase-auth.service';
+import { FirebaseAuthService } from 'src/app/services/firebase/auth/firebase-auth.service';
 
 import { SidebarService } from 'src/app/services/layout/sidebar/sidebar.service';
 

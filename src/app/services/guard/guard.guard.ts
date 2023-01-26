@@ -8,7 +8,7 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { FirebaseAuthService } from '../firebase-auth/firebase-auth.service';
+import { FirebaseAuthService } from '../firebase/auth/firebase-auth.service';
 
 @Injectable({
   providedIn: 'root',

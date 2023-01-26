@@ -39,13 +39,13 @@
 
   <mat-sidenav-content>
     <mat-form-field appearance="outline">
-      <mat-label>Filter</mat-label>
       <input
         matInput
         (keyup)="applyFilter($event)"
-        placeholder="Ex. ium"
+        placeholder="Search here..."
         #input
       />
+      <mat-icon matPrefix>search</mat-icon>
     </mat-form-field>
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
