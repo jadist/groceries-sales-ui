@@ -10,6 +10,8 @@ import { RegisterComponent } from '../../app/pages/register/register.component';
 import { ForgotPasswordComponent } from '../../app/pages/forgot-password/forgot-password.component';
 import { HomeComponent } from '../pages/home/home.component';
 
+import { UserRoleComponent } from '../pages/user/user-role/user-role.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -23,12 +25,6 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: `${RoutingEnum.Home}/:homeId`,
-    component: HomeComponent,
-    canActivate: [AuthGuard],
-  },
-
-  {
     path: RoutingEnum.Login,
     component: LoginComponent,
   },
@@ -39,6 +35,11 @@ const routes: Routes = [
   {
     path: RoutingEnum.ForgotPassword,
     component: ForgotPasswordComponent,
+  },
+
+  {
+    path: RoutingEnum.UserRole,
+    component: UserRoleComponent,
   },
 ];
 

@@ -11,7 +11,7 @@ export const DefaultSidebarMenu: SidebarModel = {
       Name: 'Home',
       Value: 'home',
       Description: '',
-      UrlSlug: ['/'],
+      UrlSlug: ['/', 'home'],
     },
     {
       Icon: 'person',

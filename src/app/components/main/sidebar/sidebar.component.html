@@ -84,6 +84,7 @@
     <mat-list-option
       *ngFor="let menu of selectedMenuItem?.Child"
       [value]="menu"
+      (click)="navigateToPage(menu.UrlSlug)"
     >
       <mat-icon matListItemIcon>{{ menu?.Icon }}</mat-icon>
       <div matListItemTitle [matTooltip]="menu.Description">
