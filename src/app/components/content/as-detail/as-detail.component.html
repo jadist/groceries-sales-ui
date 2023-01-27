@@ -16,6 +16,15 @@
     <mat-icon>close</mat-icon>
   </button>
 
+  <button
+    mat-icon-button
+    *ngIf="!edit"
+    (click)="deleteItem()"
+    matTooltip="Click to delete"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
+
   <span *ngIf="edit">Edit Mode</span>
 
   <span *ngIf="false">Create New</span>
@@ -29,15 +38,6 @@
     matTooltip="Click to submit changes"
   >
     <mat-icon>check</mat-icon>
-  </button>
-
-  <button
-    mat-icon-button
-    *ngIf="!edit"
-    (click)="deleteItem()"
-    matTooltip="Click to submit changes"
-  >
-    <mat-icon>delete</mat-icon>
   </button>
 </mat-toolbar>
 

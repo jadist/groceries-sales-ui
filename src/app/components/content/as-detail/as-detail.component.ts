@@ -7,6 +7,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
+import { UserRoleDocumentModel } from 'src/app/models/firebase/firestore/user/user-role.model';
 import { Column } from '../as-table/as-table.model';
 import { AsDetailModel } from './as-detail.model';
 
@@ -23,6 +24,7 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
   @Input() rowData: T = {} as T;
 
   @Output() deleteEvent = new EventEmitter<string>();
+  @Output() updateEvent = new EventEmitter<UserRoleDocumentModel>();
 
   unifiedReadData: {
     Column: Column;
@@ -52,11 +54,16 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
 
   saveEdit() {
     this.edit = false;
+
+    // const data: UserRoleDocumentModel = {
+    //   DocVersion: this.unifiedReadData
+    // }
+    console.log(this.unifiedReadData);
   }
 
   deleteItem() {
     const Id = this.unifiedReadData.filter((item) => item.Column.id)[0].Value;
 
-    this.deleteEvent.emit(Id);
+    // this.deleteEvent.emit(Id);
   }
 }
