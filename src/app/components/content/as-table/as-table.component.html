@@ -48,7 +48,12 @@
       <mat-icon matPrefix>search</mat-icon>
     </mat-form-field>
 
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <mat-progress-bar
+      mode="indeterminate"
+      *ngIf="showLoadingBar"
+    ></mat-progress-bar>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" [hidden]="showLoadingBar">
       <ng-container
         *ngFor="let disCol of tableColumns; let colIndex = index"
         matColumnDef="{{ disCol.columnDef }}"

@@ -2,7 +2,6 @@ import {
   AfterViewInit,
   Component,
   EventEmitter,
-  Input,
   OnInit,
   Output,
 } from '@angular/core';
@@ -21,11 +20,9 @@ import { Column, PaginatorModel } from './as-table.model';
 })
 export class AsTableComponent<T> implements OnInit, AfterViewInit {
   //#region Parent-Child Communications
-  // @Input()
   tableColumns: Array<Column> = [];
-
-  // @Input()
   tableData: Array<T> = [];
+  showLoadingBar: boolean = false;
 
   @Output() onPaginatorClick = new EventEmitter<PaginatorModel>();
 
@@ -51,14 +48,9 @@ export class AsTableComponent<T> implements OnInit, AfterViewInit {
 
   constructor(private sidebar: SidebarService) {}
 
-  ngOnInit(): void {
-    // this.displayedColumns = this.tableColumns.map((c) => c.columnDef);
-    // this.dataSource = new MatTableDataSource(this.tableData);
-  }
+  ngOnInit(): void {}
 
-  ngAfterViewInit() {
-    // this.dataSource.paginator = this.paginator;
-  }
+  ngAfterViewInit() {}
 
   protected applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

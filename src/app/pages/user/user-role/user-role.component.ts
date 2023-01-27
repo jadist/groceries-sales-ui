@@ -49,6 +49,9 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy(): void {}
 
   async refreshTableData(value: PaginatorModel) {
+    // Show loading bar
+    this.child.showLoadingBar = true;
+
     const [result, rowCount] = await this.userRoleFs.getPart(
       value.CurrentPageIndex,
       value.RowPerPage
@@ -73,6 +76,9 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
       RowCount: rowCount,
       RowPerPage: value.RowPerPage,
     });
+
+    // hide loading bar
+    this.child.showLoadingBar = false;
   }
 
   renderColumn() {
