@@ -1,14 +1,33 @@
 <mat-toolbar>
-  <button mat-icon-button *ngIf="!edit" (click)="edit = true" matTooltip="Click to edit">
+  <button
+    mat-icon-button
+    *ngIf="!edit"
+    (click)="edit = true"
+    matTooltip="Click to edit"
+  >
     <mat-icon>mode_edit</mat-icon>
   </button>
-  <button mat-icon-button *ngIf="edit" (click)="edit = false" matTooltip="Click to cancel edit">
+  <button
+    mat-icon-button
+    *ngIf="edit"
+    (click)="edit = false"
+    matTooltip="Click to cancel edit"
+  >
     <mat-icon>close</mat-icon>
   </button>
 
+  <span *ngIf="edit">Edit Mode</span>
+
+  <span *ngIf="false">Create New</span>
+
   <span class="example-spacer"></span>
 
-  <button mat-icon-button *ngIf="edit" (click)="saveEdit()" matTooltip="Click to submit changes">
+  <button
+    mat-icon-button
+    *ngIf="edit"
+    (click)="saveEdit()"
+    matTooltip="Click to submit changes"
+  >
     <mat-icon>check</mat-icon>
   </button>
 </mat-toolbar>
@@ -27,7 +46,8 @@
             <input
               matInput
               placeholder="Ex. Pizza"
-              [readonly]="!edit"
+              [readonly]="!edit || col.Column.readonly"
+              [disabled]="edit && col.Column.readonly"
               [value]="col.Value"
             />
           </mat-form-field>
@@ -40,7 +60,8 @@
               matInput
               placeholder="Ex. It makes me feel..."
               rows="5"
-              [readonly]="!edit"
+              [readonly]="!edit || col.Column.readonly"
+              [disabled]="edit && col.Column.readonly"
               >{{ col.Value }}</textarea
             >
           </mat-form-field>

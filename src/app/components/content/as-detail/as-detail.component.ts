@@ -5,7 +5,6 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { Router } from '@angular/router';
 import { Column } from '../as-table/as-table.model';
 import { AsDetailModel } from './as-detail.model';
 
@@ -28,7 +27,7 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
 
   edit: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor() {}
 
   ngOnInit(): void {}
 

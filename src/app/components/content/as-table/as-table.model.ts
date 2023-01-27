@@ -5,6 +5,7 @@ export interface Column {
   richTextString?: boolean;
   hidden?: boolean;
   id?: boolean;
+  readonly?: boolean;
 }
 
 export interface PaginatorModel {

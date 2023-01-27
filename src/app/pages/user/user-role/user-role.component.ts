@@ -82,6 +82,7 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
         header: 'Id',
         cell: (element: Record<string, any>) => `${element['Id']}`,
         id: true,
+        readonly: true,
       },
       {
         columnDef: 'UniqueCode',
@@ -99,12 +100,12 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
         cell: (element: Record<string, any>) => `${element['RoleDescription']}`,
         richTextString: true,
       },
-      // {
-      //   columnDef: 'DocVersion',
-      //   header: 'Doc Version',
-      //   cell: (element: Record<string, any>) => `${element['DocVersion']}`,
-      //   hidden: true,
-      // },
+      {
+        columnDef: 'DocVersion',
+        header: 'Doc Version',
+        cell: (element: Record<string, any>) => `${element['DocVersion']}`,
+        hidden: true,
+      },
     ];
   }
 }
