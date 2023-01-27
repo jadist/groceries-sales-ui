@@ -118,8 +118,6 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
   //#region Client Output Event
   clientDeleteEvent(Id: string) {
     // Pass the value to This Component's Parent
-    console.log('Retrieve Id to be used to delete record => ', Id);
-
     this.userRoleFs
       .delete(Id)
       .then((result) => {

@@ -34,7 +34,7 @@
     <app-as-detail
       [tableColumns]="tableColumns"
       [rowData]="selectedRowData"
-      (deleteEvent)="clientDeleteEvent($event)"
+      (deleteEvent)="clientDeleteEvent($event); detailSidenav.toggle()"
     ></app-as-detail>
   </mat-sidenav>
 
