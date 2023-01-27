@@ -30,6 +30,15 @@
   >
     <mat-icon>check</mat-icon>
   </button>
+
+  <button
+    mat-icon-button
+    *ngIf="!edit"
+    (click)="deleteItem()"
+    matTooltip="Click to submit changes"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
 </mat-toolbar>
 
 <mat-card>

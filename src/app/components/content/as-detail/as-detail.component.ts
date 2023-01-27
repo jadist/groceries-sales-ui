@@ -1,8 +1,10 @@
 import {
   Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges,
 } from '@angular/core';
 import { Column } from '../as-table/as-table.model';
@@ -19,6 +21,8 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
   @Input() tableColumns: Array<Column> = [];
 
   @Input() rowData: T = {} as T;
+
+  @Output() deleteEvent = new EventEmitter<string>();
 
   unifiedReadData: {
     Column: Column;
@@ -48,5 +52,11 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
 
   saveEdit() {
     this.edit = false;
+  }
+
+  deleteItem() {
+    const Id = this.unifiedReadData.filter((item) => item.Column.id)[0].Value;
+
+    this.deleteEvent.emit(Id);
   }
 }

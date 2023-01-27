@@ -34,6 +34,7 @@
     <app-as-detail
       [tableColumns]="tableColumns"
       [rowData]="selectedRowData"
+      (deleteEvent)="clientDeleteEvent($event)"
     ></app-as-detail>
   </mat-sidenav>
 
@@ -53,7 +54,12 @@
       *ngIf="showLoadingBar"
     ></mat-progress-bar>
 
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" [hidden]="showLoadingBar">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      class="mat-elevation-z8"
+      [hidden]="showLoadingBar"
+    >
       <ng-container
         *ngFor="let disCol of tableColumns; let colIndex = index"
         matColumnDef="{{ disCol.columnDef }}"

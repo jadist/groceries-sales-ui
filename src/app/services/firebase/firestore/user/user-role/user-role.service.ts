@@ -49,4 +49,18 @@ export class UserRoleService {
 
     return [(await nextDoc.get()).docs, totalRowCount];
   }
+
+  create(userRoleData: UserRoleDocumentModel) {
+    this._userRoleRef.add({
+      ...userRoleData,
+    });
+  }
+
+  update(id: string, data: any): Promise<void> {
+    return this._userRoleRef.doc(id).update(data);
+  }
+
+  delete(id: string): Promise<void> {
+    return this._userRoleRef.doc(id).delete();
+  }
 }

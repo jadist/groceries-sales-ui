@@ -26,6 +26,8 @@ export class AsTableComponent<T> implements OnInit, AfterViewInit {
 
   @Output() onPaginatorClick = new EventEmitter<PaginatorModel>();
 
+  @Output() deleteEvent = new EventEmitter<string>();
+
   //#endregion
 
   //#region Table Display
@@ -88,5 +90,12 @@ export class AsTableComponent<T> implements OnInit, AfterViewInit {
     });
   }
 
+  //#endregion
+
+  //#region Client output
+  clientDeleteEvent(Id: string) {
+    // Pass the value to This Component's Parent
+    this.deleteEvent.emit(Id);
+  }
   //#endregion
 }
