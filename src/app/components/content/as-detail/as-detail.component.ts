@@ -7,7 +7,9 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { UserRoleDocumentModel } from 'src/app/models/firebase/firestore/user/user-role.model';
+import { YesNoDialogComponent } from '../../dialog/yes-no-dialog/yes-no-dialog.component';
 import { Column } from '../as-table/as-table.model';
 import { AsDetailModel } from './as-detail.model';
 
@@ -33,7 +35,7 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
 
   edit: boolean = false;
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
@@ -65,5 +67,13 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
     const Id = this.unifiedReadData.filter((item) => item.Column.id)[0].Value;
 
     // this.deleteEvent.emit(Id);
+
+    const dialogRef = this.dialog.open(YesNoDialogComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        console.log('Deleting record with Id: ', Id);
+      }
+    });
   }
 }

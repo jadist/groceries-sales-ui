@@ -28,6 +28,7 @@ import { AsTableComponent } from './components/content/as-table/as-table.compone
 import { AsDetailComponent } from './components/content/as-detail/as-detail.component';
 import { HomeComponent } from './pages/home/home.component';
 import { UserRoleComponent } from './pages/user/user-role/user-role.component';
+import { YesNoDialogComponent } from './components/dialog/yes-no-dialog/yes-no-dialog.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { UserRoleComponent } from './pages/user/user-role/user-role.component';
     AsDetailComponent,
     HomeComponent,
     UserRoleComponent,
+    YesNoDialogComponent,
   ],
   imports: [
     BrowserModule,
