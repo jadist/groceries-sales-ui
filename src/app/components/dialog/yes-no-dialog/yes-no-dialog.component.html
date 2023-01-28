@@ -1,8 +1,23 @@
-<h2 mat-dialog-title>Delete Confirmation</h2>
+<h2 mat-dialog-title>{{ data.Title }}</h2>
 <mat-dialog-content class="mat-typography">
-  <p>Are you sure to delete this record?</p>
+  <p>{{ data.Message }}</p>
+  <p><em>{{ data.SecondMessage }}</em></p>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-flat-button mat-dialog-close cdkFocusInitial>Cancel</button>
-  <button mat-flat-button color="warn" [mat-dialog-close]="true">Delete</button>
+  <button
+    mat-flat-button
+    mat-dialog-close
+    cdkFocusInitial
+    [hidden]="data.Button.No.Hidden"
+    [mat-dialog-close]="data.Button.No.Value"
+  >
+    {{ data.Button.No.Name }}
+  </button>
+  <button
+    mat-flat-button
+    [color]="data.Button.Yes.Color"
+    [mat-dialog-close]="data.Button.Yes.Value"
+  >
+    {{ data.Button.Yes.Name }}
+  </button>
 </mat-dialog-actions>

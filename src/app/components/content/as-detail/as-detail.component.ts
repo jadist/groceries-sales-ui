@@ -10,6 +10,10 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { UserRoleDocumentModel } from 'src/app/models/firebase/firestore/user/user-role.model';
 import { YesNoDialogComponent } from '../../dialog/yes-no-dialog/yes-no-dialog.component';
+import {
+  YesNoDialogEnum,
+  YesNoDialogModel,
+} from '../../dialog/yes-no-dialog/yes-no-dialog.model';
 import { Column } from '../as-table/as-table.model';
 import { AsDetailModel } from './as-detail.model';
 
@@ -64,15 +68,34 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
   }
 
   deleteItem() {
-    const Id = this.unifiedReadData.filter((item) => item.Column.id)[0].Value;
+    const selectedRecord = this.unifiedReadData.filter(
+      (item) => item.Column.id
+    )[0];
+    const Id = selectedRecord.Value;
 
-    // this.deleteEvent.emit(Id);
+    const data: YesNoDialogModel = {
+      Title: 'Deletion Confirmation',
+      Message: `Are you sure you want to delete this record?`,
+      SecondMessage: `Selected Id: ${Id}`,
+      Button: {
+        No: {
+          Hidden: false,
+          Name: 'Cancel',
+          Value: YesNoDialogEnum.NO,
+        },
+        Yes: {
+          Color: 'warn',
+          Name: 'Delete',
+          Value: YesNoDialogEnum.YES,
+        },
+      },
+    };
 
-    const dialogRef = this.dialog.open(YesNoDialogComponent);
+    const dialogRef = this.dialog.open(YesNoDialogComponent, { data });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        console.log('Deleting record with Id: ', Id);
+    dialogRef.afterClosed().subscribe((result: YesNoDialogEnum) => {
+      if (result === YesNoDialogEnum.YES) {
+        this.deleteEvent.emit(Id);
       }
     });
   }
