@@ -35,6 +35,7 @@
       [tableColumns]="tableColumns"
       [rowData]="selectedRowData"
       (deleteEvent)="clientDeleteEvent($event); detailSidenav.toggle()"
+      (updateEvent)="clientUpdateEvent($event); detailSidenav.toggle()"
     ></app-as-detail>
   </mat-sidenav>
 

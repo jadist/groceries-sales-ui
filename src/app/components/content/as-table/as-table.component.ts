@@ -28,6 +28,8 @@ export class AsTableComponent<T> implements OnInit, AfterViewInit {
 
   @Output() tableRefreshRequest = new EventEmitter<void>();
 
+  @Output() updateEvent = new EventEmitter<T>();
+
   //#endregion
 
   //#region Table Display
@@ -117,8 +119,13 @@ export class AsTableComponent<T> implements OnInit, AfterViewInit {
 
   //#region Client output
   clientDeleteEvent(Id: string) {
-    // Pass the value to This Component's Parent
+    // Retrieve the value from this Child, then pass to this Parent
     this.deleteEvent.emit(Id);
+  }
+
+  clientUpdateEvent(data: T) {
+    // Retrieve the value from this Child, then pass to this Parent
+    this.updateEvent.emit(data);
   }
   //#endregion
 }

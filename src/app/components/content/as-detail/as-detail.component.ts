@@ -8,7 +8,6 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { UserRoleDocumentModel } from 'src/app/models/firebase/firestore/user/user-role.model';
 import { YesNoDialogComponent } from '../../dialog/yes-no-dialog/yes-no-dialog.component';
 import {
   YesNoDialogEnum,
@@ -30,7 +29,7 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
   @Input() rowData: T = {} as T;
 
   @Output() deleteEvent = new EventEmitter<string>();
-  @Output() updateEvent = new EventEmitter<UserRoleDocumentModel>();
+  @Output() updateEvent = new EventEmitter<T>();
 
   unifiedReadData: {
     Column: Column;
@@ -58,13 +57,26 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
     } catch {}
   }
 
-  saveEdit() {
+  saveItem() {
     this.edit = false;
 
-    // const data: UserRoleDocumentModel = {
-    //   DocVersion: this.unifiedReadData
-    // }
-    console.log(this.unifiedReadData);
+    // Convert this Data (Array type) into accepted Data (T type)
+    const cleanDataArr = this.unifiedReadData.map((item) => {
+      if (!item.Column.hidden) {
+        const key = item.Column.columnDef;
+        const val = (
+          document.getElementById(key.toString()) as HTMLInputElement
+        ).value;
+
+        return [key, val];
+      } else {
+        return [item.Column.columnDef, item.Value];
+      }
+    });
+
+    const tObj: T = Object.fromEntries(cleanDataArr);
+
+    this.updateEvent.emit(tObj);
   }
 
   deleteItem() {

@@ -34,7 +34,7 @@
   <button
     mat-icon-button
     *ngIf="edit"
-    (click)="saveEdit()"
+    (click)="saveItem()"
     matTooltip="Click to submit changes"
   >
     <mat-icon>check</mat-icon>
@@ -58,6 +58,7 @@
               [readonly]="!edit || col.Column.readonly"
               [disabled]="edit && col.Column.readonly"
               [value]="col.Value"
+              [id]="col.Column.columnDef"
             />
           </mat-form-field>
         </ng-template>
@@ -67,10 +68,13 @@
             <mat-label>{{ col.Column.header }}</mat-label>
             <textarea
               matInput
-              [placeholder]="'Ex. Description of the '.concat(col.Column.header)"
+              [placeholder]="
+                'Ex. Description of the '.concat(col.Column.header)
+              "
               rows="5"
               [readonly]="!edit || col.Column.readonly"
               [disabled]="edit && col.Column.readonly"
+              [id]="col.Column.columnDef"
               >{{ col.Value }}</textarea
             >
           </mat-form-field>

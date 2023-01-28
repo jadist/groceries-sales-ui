@@ -137,5 +137,17 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.refreshTableData(defaultPaginator);
   }
+
+  clientUpdateEvent(data: UserRoleDocumentModel) {
+    this.userRoleFs
+      .update(data)
+      .then(() => {
+        // Refresh
+        this.clientRefreshRequestEvent();
+      })
+      .catch((err) => {
+        console.log('err');
+      });
+  }
   //#endregion
 }
