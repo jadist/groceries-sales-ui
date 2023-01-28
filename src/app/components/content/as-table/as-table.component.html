@@ -39,15 +39,21 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <mat-form-field appearance="outline">
-      <input
-        matInput
-        (keyup)="applyFilter($event)"
-        placeholder="Search here..."
-        #input
-      />
-      <mat-icon matPrefix>search</mat-icon>
-    </mat-form-field>
+    <mat-toolbar>
+      <button mat-icon-button>
+        <mat-icon>search</mat-icon>
+      </button>
+
+      <span class="example-spacer"></span>
+
+      <button mat-icon-button (click)="refreshTable()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+
+      <button mat-icon-button>
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-toolbar>
 
     <mat-progress-bar
       mode="indeterminate"

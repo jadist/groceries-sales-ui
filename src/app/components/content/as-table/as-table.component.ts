@@ -9,8 +9,6 @@ import { PageEvent } from '@angular/material/paginator';
 
 import { MatTableDataSource } from '@angular/material/table';
 
-import { SidebarService } from '../../../services/layout/sidebar/sidebar.service';
-
 import { Column, PaginatorModel } from './as-table.model';
 
 @Component({
@@ -27,6 +25,8 @@ export class AsTableComponent<T> implements OnInit, AfterViewInit {
   @Output() onPaginatorClick = new EventEmitter<PaginatorModel>();
 
   @Output() deleteEvent = new EventEmitter<string>();
+
+  @Output() tableRefreshRequest = new EventEmitter<void>();
 
   //#endregion
 
@@ -48,7 +48,7 @@ export class AsTableComponent<T> implements OnInit, AfterViewInit {
   protected currentPageIndex: number = 0;
   //#endregion
 
-  constructor(private sidebar: SidebarService) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
@@ -90,6 +90,12 @@ export class AsTableComponent<T> implements OnInit, AfterViewInit {
     });
   }
 
+  //#endregion
+
+  //#region TO Parent Output
+  refreshTable() {
+    this.tableRefreshRequest.emit();
+  }
   //#endregion
 
   //#region Client output

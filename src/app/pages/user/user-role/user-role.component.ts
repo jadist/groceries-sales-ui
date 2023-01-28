@@ -130,5 +130,12 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
         console.log(err);
       });
   }
+
+  clientRefreshRequestEvent() {
+    // Get default value
+    const defaultPaginator = this.child.getPaginatorValue();
+
+    this.refreshTableData(defaultPaginator);
+  }
   //#endregion
 }
