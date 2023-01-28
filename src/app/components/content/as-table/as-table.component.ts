@@ -17,7 +17,7 @@ import { Column, PaginatorModel } from './as-table.model';
   styleUrls: ['./as-table.component.css'],
 })
 export class AsTableComponent<T> implements OnInit, AfterViewInit {
-  //#region Parent-Child Communications
+  //#region To Parent Communications
   tableColumns: Array<Column> = [];
   tableData: Array<T> = [];
   showLoadingBar: boolean = false;
@@ -34,7 +34,10 @@ export class AsTableComponent<T> implements OnInit, AfterViewInit {
   protected displayedColumns: Array<string> = [];
   protected dataSource: MatTableDataSource<T> = new MatTableDataSource();
 
+  //#region To Client Communications
   protected selectedRowData: T = {} as T;
+  //#endregion
+
   //#endregion
 
   //#region Details
@@ -61,6 +64,20 @@ export class AsTableComponent<T> implements OnInit, AfterViewInit {
 
   rowClick(row: Event) {
     this.selectedRowData = row as T;
+  }
+
+  addNew() {
+    /**
+     * Should send the object of row as T
+     * But use the stucture of tableColumns instead
+     * Because we cannot define what T is construct of, therefore we use assumption
+     * With assumptions that the Column Array are equal with the Row Object
+     */
+    const asT = this.tableColumns.map((col) => col.columnDef);
+
+    const asTObj = asT.reduce((o, key) => ({ ...o, [key]: '' }), {});
+
+    this.selectedRowData = asTObj as T;
   }
 
   //#region Paginator Method

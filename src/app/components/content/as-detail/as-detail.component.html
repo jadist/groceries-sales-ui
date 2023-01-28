@@ -54,7 +54,7 @@
             <mat-label>{{ col.Column.header }}</mat-label>
             <input
               matInput
-              placeholder="Ex. Pizza"
+              [placeholder]="'Ex. '.concat(col.Column.header)"
               [readonly]="!edit || col.Column.readonly"
               [disabled]="edit && col.Column.readonly"
               [value]="col.Value"
@@ -67,7 +67,7 @@
             <mat-label>{{ col.Column.header }}</mat-label>
             <textarea
               matInput
-              placeholder="Ex. It makes me feel..."
+              [placeholder]="'Ex. Description of the '.concat(col.Column.header)"
               rows="5"
               [readonly]="!edit || col.Column.readonly"
               [disabled]="edit && col.Column.readonly"
