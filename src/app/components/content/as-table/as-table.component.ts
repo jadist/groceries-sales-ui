@@ -117,7 +117,7 @@ export class AsTableComponent<T> implements OnInit, AfterViewInit {
   }
   //#endregion
 
-  //#region Client output
+  //#region From Client Output
   clientDeleteEvent(Id: string) {
     // Retrieve the value from this Child, then pass to this Parent
     this.deleteEvent.emit(Id);
