@@ -47,8 +47,6 @@ export class UserRoleService {
         ? this._userRoleRef.ref.limit(rowPerPage)
         : this._userRoleRef.ref.startAfter(lastDoc).limit(rowPerPage);
 
-    // console.log('nextDoc.get()', (await nextDoc.get()).docs);
-
     return [(await nextDoc.get()).docs, totalRowCount];
   }
 
