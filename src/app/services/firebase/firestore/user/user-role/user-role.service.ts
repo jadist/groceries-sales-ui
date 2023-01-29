@@ -7,28 +7,26 @@ import {
 
 import { QueryDocumentSnapshot } from '@angular/fire/compat/firestore';
 
-import { UserRoleDocumentModel } from 'src/app/models/firebase/firestore/user/user-role.model';
-
 @Injectable({
   providedIn: 'root',
 })
 export class UserRoleService {
   private dbPath = '/USER-ROLE';
 
-  private _userRoleRef: AngularFirestoreCollection<UserRoleDocumentModel>;
+  private _userRoleRef: AngularFirestoreCollection<any>;
 
   constructor(private db: AngularFirestore) {
     this._userRoleRef = db.collection(this.dbPath);
   }
 
-  getAll(): AngularFirestoreCollection<UserRoleDocumentModel> {
+  getAll(): AngularFirestoreCollection<any> {
     return this._userRoleRef!;
   }
 
   async getPart(
     startIndex: number,
     rowPerPage: number
-  ): Promise<[QueryDocumentSnapshot<UserRoleDocumentModel>[], number]> {
+  ): Promise<[QueryDocumentSnapshot<any>[], number]> {
     const totalRowCount = (await this._userRoleRef.ref.get()).size;
 
     const skippedRow = startIndex * rowPerPage;
@@ -56,7 +54,7 @@ export class UserRoleService {
     });
   }
 
-  update(data: UserRoleDocumentModel): Promise<void> {
+  update(data: any): Promise<void> {
     return this._userRoleRef.doc(data.Id).update({
       DocVersion: data.DocVersion,
       RoleDescription: data.RoleDescription,
