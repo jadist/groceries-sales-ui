@@ -57,8 +57,6 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
       value.RowPerPage
     );
 
-    console.log(result[0].data());
-
     const rows: Array<UserRoleDocumentModel> = result.map((item) => ({
       Id: item.id,
       Data: {
@@ -142,7 +140,7 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
     this.refreshTableData(defaultPaginator);
   }
 
-  clientUpdateEvent(data: UserRoleDocumentModel) {
+  clientUpdateEvent(data: any) {
     this.userRoleFs
       .update(data)
       .then(() => {

@@ -15,7 +15,7 @@ import { UserRoleDocumentModel } from 'src/app/models/firebase/firestore/user/us
 export class UserRoleService {
   private dbPath = '/USER-ROLE';
 
-  private _userRoleRef: AngularFirestoreCollection<UserRoleDocumentModel>;
+  private _userRoleRef: AngularFirestoreCollection<any>;
 
   constructor(private db: AngularFirestore) {
     this._userRoleRef = db.collection(this.dbPath);
@@ -58,14 +58,12 @@ export class UserRoleService {
     });
   }
 
-  update(data: UserRoleDocumentModel): Promise<void> {
-    return this._userRoleRef.doc(data.Id).update({
-      Data: {
-        DocVersion: data.Data.DocVersion,
-        RoleDescription: data.Data.RoleDescription,
-        RoleName: data.Data.RoleName,
-        UniqueCode: data.Data.UniqueCode,
-      },
+  update(data: any): Promise<void> {
+    return this._userRoleRef.doc(data?.Id).update({
+      DocVersion: data?.DocVersion,
+      RoleDescription: data?.RoleDescription,
+      RoleName: data?.RoleName,
+      UniqueCode: data?.UniqueCode,
     });
   }
 
