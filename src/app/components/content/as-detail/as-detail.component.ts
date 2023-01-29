@@ -44,8 +44,6 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     try {
-      this.edit = false;
-
       const currValue: [string, T][] = Object.entries<T>(
         changes['rowData'].currentValue
       );
@@ -54,6 +52,15 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
         Column: this.tableColumns.filter((col) => col.ColumnDef === read[0])[0],
         Value: read[1] as string,
       }));
+
+      // If no ID exist, set this.edit to always TRUE
+      const colId = this.unifiedReadData.filter((item) => item.Column.id);
+
+      if (colId.length > 0 && colId[0].Value.length > 0) {
+        this.edit = false;
+      } else {
+        this.edit = true;
+      }
     } catch {}
   }
 
