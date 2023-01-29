@@ -50,7 +50,7 @@ export class UserRoleService {
     return [(await nextDoc.get()).docs, totalRowCount];
   }
 
-  create(userRoleData: UserRoleDocumentModel) {
+  create(userRoleData: any) {
     return this._userRoleRef.add({
       ...userRoleData,
     });
