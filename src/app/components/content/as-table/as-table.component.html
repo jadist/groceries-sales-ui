@@ -45,6 +45,15 @@
         <mat-icon>search</mat-icon>
       </button>
 
+      <mat-chip-listbox aria-label="Fish selection">
+        <mat-chip-option selectable="false"
+          >One fish
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-option>
+      </mat-chip-listbox>
+
       <span class="example-spacer"></span>
 
       <button mat-icon-button (click)="refreshTable()">
