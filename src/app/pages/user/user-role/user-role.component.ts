@@ -84,33 +84,33 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
   renderColumn() {
     this.tableColumns = [
       {
-        columnDef: 'Id',
-        header: 'Id',
-        cell: (element: Record<string, any>) => `${element['Id']}`,
+        ColumnDef: 'Id',
+        Header: 'Id',
+        Cell: (element: Record<string, any>) => `${element['Id']}`,
         id: true,
-        readonly: true,
+        Readonly: true,
       },
       {
-        columnDef: 'UniqueCode',
-        header: 'Unique Code',
-        cell: (element: Record<string, any>) => `${element['UniqueCode']}`,
+        ColumnDef: 'UniqueCode',
+        Header: 'Unique Code',
+        Cell: (element: Record<string, any>) => `${element['UniqueCode']}`,
       },
       {
-        columnDef: 'RoleName',
-        header: 'Role Name',
-        cell: (element: Record<string, any>) => `${element['RoleName']}`,
+        ColumnDef: 'RoleName',
+        Header: 'Role Name',
+        Cell: (element: Record<string, any>) => `${element['RoleName']}`,
       },
       {
-        columnDef: 'RoleDescription',
-        header: 'Role Description',
-        cell: (element: Record<string, any>) => `${element['RoleDescription']}`,
-        richTextString: true,
+        ColumnDef: 'RoleDescription',
+        Header: 'Role Description',
+        Cell: (element: Record<string, any>) => `${element['RoleDescription']}`,
+        RichTextString: true,
       },
       {
-        columnDef: 'DocVersion',
-        header: 'Doc Version',
-        cell: (element: Record<string, any>) => `${element['DocVersion']}`,
-        hidden: true,
+        ColumnDef: 'DocVersion',
+        Header: 'Doc Version',
+        Cell: (element: Record<string, any>) => `${element['DocVersion']}`,
+        Hidden: true,
       },
     ];
   }

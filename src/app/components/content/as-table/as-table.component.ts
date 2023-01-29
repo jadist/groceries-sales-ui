@@ -75,7 +75,7 @@ export class AsTableComponent<T> implements OnInit, AfterViewInit {
      * Because we cannot define what T is construct of, therefore we use assumption
      * With assumptions that the Column Array are equal with the Row Object
      */
-    const asT = this.tableColumns.map((col) => col.columnDef);
+    const asT = this.tableColumns.map((col) => col.ColumnDef);
 
     const asTObj = asT.reduce((o, key) => ({ ...o, [key]: '' }), {});
 
@@ -84,7 +84,7 @@ export class AsTableComponent<T> implements OnInit, AfterViewInit {
 
   //#region Paginator Method
   setTableValue() {
-    this.displayedColumns = this.tableColumns.map((c) => c.columnDef);
+    this.displayedColumns = this.tableColumns.map((c) => c.ColumnDef);
     this.dataSource = new MatTableDataSource(this.tableData);
   }
 

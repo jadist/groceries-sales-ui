@@ -51,7 +51,7 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
       );
 
       this.unifiedReadData = currValue.map((read) => ({
-        Column: this.tableColumns.filter((col) => col.columnDef === read[0])[0],
+        Column: this.tableColumns.filter((col) => col.ColumnDef === read[0])[0],
         Value: read[1] as string,
       }));
     } catch {}
@@ -62,15 +62,15 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
 
     // Convert this Data (Array type) into accepted Data (T type)
     const cleanDataArr = this.unifiedReadData.map((item) => {
-      if (!item.Column.hidden) {
-        const key = item.Column.columnDef;
+      if (!item.Column.Hidden) {
+        const key = item.Column.ColumnDef;
         const val = (
           document.getElementById(key.toString()) as HTMLInputElement
         ).value;
 
         return [key, val];
       } else {
-        return [item.Column.columnDef, item.Value];
+        return [item.Column.ColumnDef, item.Value];
       }
     });
 

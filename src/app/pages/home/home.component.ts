@@ -21,31 +21,31 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   tableColumns: Array<Column> = [
     {
-      columnDef: 'position',
-      header: 'Position',
-      cell: (element: Record<string, any>) => `${element['position']}`,
+      ColumnDef: 'position',
+      Header: 'Position',
+      Cell: (element: Record<string, any>) => `${element['position']}`,
       id: true,
     },
     {
-      columnDef: 'name',
-      header: 'Name',
-      cell: (element: Record<string, any>) => `${element['name']}`,
+      ColumnDef: 'name',
+      Header: 'Name',
+      Cell: (element: Record<string, any>) => `${element['name']}`,
     },
     {
-      columnDef: 'weight',
-      header: 'Weight',
-      cell: (element: Record<string, any>) => `${element['weight']}`,
+      ColumnDef: 'weight',
+      Header: 'Weight',
+      Cell: (element: Record<string, any>) => `${element['weight']}`,
     },
     {
-      columnDef: 'symbol',
-      header: 'Symbol',
-      cell: (element: Record<string, any>) => `${element['symbol']}`,
+      ColumnDef: 'symbol',
+      Header: 'Symbol',
+      Cell: (element: Record<string, any>) => `${element['symbol']}`,
     },
     {
-      columnDef: 'description',
-      header: 'Description',
-      cell: (element: Record<string, any>) => `${element['description']}`,
-      richTextString: true,
+      ColumnDef: 'description',
+      Header: 'Description',
+      Cell: (element: Record<string, any>) => `${element['description']}`,
+      RichTextString: true,
     },
   ];
 

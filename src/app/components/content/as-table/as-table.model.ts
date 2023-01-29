@@ -1,11 +1,11 @@
 export interface Column {
-  columnDef: string;
-  header: string;
-  cell: Function;
-  richTextString?: boolean;
-  hidden?: boolean;
+  ColumnDef: string;
+  Header: string;
+  Cell: Function;
+  RichTextString?: boolean;
+  Hidden?: boolean;
   id?: boolean;
-  readonly?: boolean;
+  Readonly?: boolean;
 }
 
 export interface PaginatorModel {

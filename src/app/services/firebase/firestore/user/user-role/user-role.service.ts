@@ -51,7 +51,7 @@ export class UserRoleService {
   }
 
   create(userRoleData: UserRoleDocumentModel) {
-    this._userRoleRef.add({
+    return this._userRoleRef.add({
       ...userRoleData,
     });
   }

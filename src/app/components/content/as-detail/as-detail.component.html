@@ -44,37 +44,37 @@
 <mat-card>
   <mat-card-content>
     <form class="example-form" *ngFor="let col of unifiedReadData">
-      <div *ngIf="!col.Column.hidden">
+      <div *ngIf="!col.Column.Hidden">
         <div
-          *ngIf="col.Column.richTextString; then richTextString; else aString"
+          *ngIf="col.Column.RichTextString; then richTextString; else aString"
         ></div>
 
         <ng-template #aString>
           <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>{{ col.Column.header }}</mat-label>
+            <mat-label>{{ col.Column.Header }}</mat-label>
             <input
               matInput
-              [placeholder]="'Ex. '.concat(col.Column.header)"
-              [readonly]="!edit || col.Column.readonly"
-              [disabled]="edit && col.Column.readonly"
+              [placeholder]="'Ex. '.concat(col.Column.Header)"
+              [readonly]="!edit || col.Column.Readonly"
+              [disabled]="edit && col.Column.Readonly"
               [value]="col.Value"
-              [id]="col.Column.columnDef"
+              [id]="col.Column.ColumnDef"
             />
           </mat-form-field>
         </ng-template>
 
         <ng-template #richTextString>
           <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>{{ col.Column.header }}</mat-label>
+            <mat-label>{{ col.Column.Header }}</mat-label>
             <textarea
               matInput
               [placeholder]="
-                'Ex. Description of the '.concat(col.Column.header)
+                'Ex. Description of the '.concat(col.Column.Header)
               "
               rows="5"
-              [readonly]="!edit || col.Column.readonly"
-              [disabled]="edit && col.Column.readonly"
-              [id]="col.Column.columnDef"
+              [readonly]="!edit || col.Column.Readonly"
+              [disabled]="edit && col.Column.Readonly"
+              [id]="col.Column.ColumnDef"
               >{{ col.Value }}</textarea
             >
           </mat-form-field>
