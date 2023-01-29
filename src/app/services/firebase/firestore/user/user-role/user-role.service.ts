@@ -7,8 +7,6 @@ import {
 
 import { QueryDocumentSnapshot } from '@angular/fire/compat/firestore';
 
-import { UserRoleDocumentModel } from 'src/app/models/firebase/firestore/user/user-role.model';
-
 @Injectable({
   providedIn: 'root',
 })
@@ -19,10 +17,6 @@ export class UserRoleService {
 
   constructor(private db: AngularFirestore) {
     this._userRoleRef = db.collection(this.dbPath);
-  }
-
-  getAll(): AngularFirestoreCollection<UserRoleDocumentModel> {
-    return this._userRoleRef!;
   }
 
   async getPart(
@@ -50,7 +44,7 @@ export class UserRoleService {
     return [(await nextDoc.get()).docs, totalRowCount];
   }
 
-  create(userRoleData: UserRoleDocumentModel) {
+  create(userRoleData: any) {
     return this._userRoleRef.add({
       ...userRoleData,
     });
