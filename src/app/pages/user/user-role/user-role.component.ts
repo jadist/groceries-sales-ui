@@ -57,12 +57,16 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
       value.RowPerPage
     );
 
+    console.log(result[0].data());
+
     const rows: Array<UserRoleDocumentModel> = result.map((item) => ({
       Id: item.id,
-      DocVersion: item.data().DocVersion,
-      RoleDescription: item.data().RoleDescription,
-      RoleName: item.data().RoleName,
-      UniqueCode: item.data().UniqueCode,
+      Data: {
+        DocVersion: item.data().DocVersion,
+        RoleDescription: item.data().RoleDescription,
+        RoleName: item.data().RoleName,
+        UniqueCode: item.data().UniqueCode,
+      },
     }));
 
     // Update Child Table

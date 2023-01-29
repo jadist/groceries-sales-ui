@@ -28,7 +28,7 @@ export class UserRoleService {
   async getPart(
     startIndex: number,
     rowPerPage: number
-  ): Promise<[QueryDocumentSnapshot<UserRoleDocumentModel>[], number]> {
+  ): Promise<[QueryDocumentSnapshot<any>[], number]> {
     const totalRowCount = (await this._userRoleRef.ref.get()).size;
 
     const skippedRow = startIndex * rowPerPage;
@@ -47,6 +47,8 @@ export class UserRoleService {
         ? this._userRoleRef.ref.limit(rowPerPage)
         : this._userRoleRef.ref.startAfter(lastDoc).limit(rowPerPage);
 
+    // console.log('nextDoc.get()', (await nextDoc.get()).docs);
+
     return [(await nextDoc.get()).docs, totalRowCount];
   }
 
@@ -58,10 +60,12 @@ export class UserRoleService {
 
   update(data: UserRoleDocumentModel): Promise<void> {
     return this._userRoleRef.doc(data.Id).update({
-      DocVersion: data.DocVersion,
-      RoleDescription: data.RoleDescription,
-      RoleName: data.RoleName,
-      UniqueCode: data.UniqueCode,
+      Data: {
+        DocVersion: data.Data.DocVersion,
+        RoleDescription: data.Data.RoleDescription,
+        RoleName: data.Data.RoleName,
+        UniqueCode: data.Data.UniqueCode,
+      },
     });
   }
 

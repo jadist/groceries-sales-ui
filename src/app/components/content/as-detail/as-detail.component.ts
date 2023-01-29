@@ -46,9 +46,14 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
     try {
       this.edit = false;
 
-      const currValue: [string, T][] = Object.entries<T>(
-        changes['rowData'].currentValue
+      const tmpChanges = changes['rowData'].currentValue;
+
+      const currId: [string, T][] = Object.entries<T>(tmpChanges).filter(
+        (item) => item[0] === 'Id'
       );
+      const currData: [string, T][] = Object.entries<T>(tmpChanges.Data);
+
+      const currValue: [string, T][] = [...currId, ...currData];
 
       this.unifiedReadData = currValue.map((read) => ({
         Column: this.tableColumns.filter((col) => col.ColumnDef === read[0])[0],
