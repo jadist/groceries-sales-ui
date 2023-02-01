@@ -40,19 +40,15 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <mat-toolbar>
-      <button mat-icon-button>
-        <mat-icon>search</mat-icon>
-      </button>
-
-      <mat-chip-listbox aria-label="Fish selection">
-        <mat-chip-option selectable="false"
-          >One fish
-          <button matChipRemove>
-            <mat-icon>cancel</mat-icon>
+    <mat-toolbar style="height: fit-content">
+      <form style="margin-top: 1rem">
+        <mat-form-field style="width: 480px">
+          <input matInput placeholder="Ex. Pizza" />
+          <button matSuffix mat-icon-button>
+            <mat-icon>search</mat-icon>
           </button>
-        </mat-chip-option>
-      </mat-chip-listbox>
+        </mat-form-field>
+      </form>
 
       <span class="example-spacer"></span>
 
