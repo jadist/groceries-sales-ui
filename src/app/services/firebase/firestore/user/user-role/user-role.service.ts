@@ -54,13 +54,8 @@ export class UserRoleService {
     });
   }
 
-  update(data: any): Promise<void> {
-    return this._userRoleRef.doc(data.Id).update({
-      DocVersion: data.DocVersion,
-      RoleDescription: data.RoleDescription,
-      RoleName: data.RoleName,
-      UniqueCode: data.UniqueCode,
-    });
+  update(id: string, data: any): Promise<void> {
+    return this._userRoleRef.doc(id).update(data);
   }
 
   delete(id: string): Promise<void> {

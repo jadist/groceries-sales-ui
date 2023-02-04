@@ -154,8 +154,16 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
           console.log(err);
         });
     } else {
+      const dataId = data.Id;
+      const dataBody = {
+        DocVersion: data.DocVersion,
+        RoleDescription: data.RoleDescription,
+        RoleName: data.RoleName,
+        UniqueCode: data.UniqueCode,
+      };
+      
       this.userRoleFs
-        .update(data)
+        .update(dataId, dataBody)
         .then(() => {
           // Refresh
           this.clientRefreshRequestEvent();
