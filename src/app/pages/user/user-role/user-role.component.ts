@@ -48,7 +48,7 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {}
 
-  async refreshTableData(value: PaginatorModel) {
+  async refreshTableData(value: PaginatorModel, searchKeyword: string = '') {
     // Show loading bar
     this.child.showLoadingBar = true;
 
@@ -131,11 +131,11 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
       });
   }
 
-  clientRefreshRequestEvent() {
+  clientRefreshRequestEvent(filterString: string = '') {
     // Get default value
     const defaultPaginator = this.child.getPaginatorValue();
 
-    this.refreshTableData(defaultPaginator);
+    this.refreshTableData(defaultPaginator, filterString);
   }
 
   clientUpdateEvent(data: UserRoleDocumentModel) {

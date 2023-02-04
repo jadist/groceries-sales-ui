@@ -26,7 +26,7 @@ export class AsTableComponent<T> implements OnInit, AfterViewInit {
 
   @Output() deleteEvent = new EventEmitter<string>();
 
-  @Output() tableRefreshRequest = new EventEmitter<void>();
+  @Output() tableRefreshRequest = new EventEmitter<string>();
 
   @Output() updateEvent = new EventEmitter<T>();
 
@@ -59,9 +59,8 @@ export class AsTableComponent<T> implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {}
 
-  protected applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  protected applyFilter(value: string) {
+    this.refreshTable(value);
   }
 
   rowClick(row: Event) {
@@ -112,8 +111,8 @@ export class AsTableComponent<T> implements OnInit, AfterViewInit {
   //#endregion
 
   //#region TO Parent Output
-  refreshTable() {
-    this.tableRefreshRequest.emit();
+  refreshTable(filterString: string = '') {
+    this.tableRefreshRequest.emit(filterString);
   }
   //#endregion
 
