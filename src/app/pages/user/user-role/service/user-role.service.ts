@@ -7,11 +7,13 @@ import {
 
 import { QueryDocumentSnapshot } from '@angular/fire/compat/firestore';
 
+import { FirestoreCollections } from 'src/app/models/firebase/firestore/firestore-collections';
+
 @Injectable({
   providedIn: 'root',
 })
 export class UserRoleService {
-  private dbPath = '/USER-ROLE';
+  private dbPath = FirestoreCollections.UserRole;
 
   private _dbRef: AngularFirestoreCollection<any>;
 
