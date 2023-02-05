@@ -15,7 +15,7 @@ import {
 import { ToolbarInputModel } from 'src/app/components/main/topbar/topbar.model';
 import { UserRoleDocumentModel } from 'src/app/models/firebase/firestore/user/user-role.model';
 
-import { UserRoleService } from './user-role.service';
+import { UserRoleService } from './service/user-role.service';
 
 @Component({
   selector: 'app-user-role',
@@ -161,7 +161,7 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
         RoleName: data.RoleName,
         UniqueCode: data.UniqueCode,
       };
-      
+
       this.userRoleFs
         .update(dataId, dataBody)
         .then(() => {
