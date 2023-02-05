@@ -15,7 +15,7 @@ import {
 import { ToolbarInputModel } from 'src/app/components/main/topbar/topbar.model';
 import { UserRoleDocumentModel } from 'src/app/models/firebase/firestore/user/user-role.model';
 
-import { UserRoleService } from 'src/app/services/firebase/firestore/user/user-role/user-role.service';
+import { UserRoleService } from './user-role.service';
 
 @Component({
   selector: 'app-user-role',
