@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import {
@@ -6,8 +7,10 @@ import {
 } from '@angular/fire/compat/firestore';
 
 import { QueryDocumentSnapshot } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
 
 import { FirestoreCollections } from 'src/app/models/firebase/firestore/firestore-collections';
+import { environment } from '../../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +20,7 @@ export class UserRoleService {
 
   private _dbRef: AngularFirestoreCollection<any>;
 
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore, private http: HttpClient) {
     this._dbRef = db.collection(this.dbPath);
   }
 
@@ -48,6 +51,20 @@ export class UserRoleService {
         : this._dbRef.ref.startAfter(lastDoc).limit(rowPerPage);
 
     return [(await nextDoc.get()).docs, totalRowCount];
+  }
+
+  getPartSearch(searchKeyword: string): Observable<any> {
+    const user = JSON.parse(localStorage.getItem('user')!);
+    const token = user.stsTokenManager.accessToken;
+
+    return this.http.get(
+      `${environment.functions.url}/jktUserRoleSearchView?search=${searchKeyword}`,
+      {
+        headers: {
+          Authorization: 'Bearer ' + token,
+        },
+      }
+    );
   }
 
   create(userRoleData: any) {

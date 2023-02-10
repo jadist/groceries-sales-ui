@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { HttpClientModule } from '@angular/common/http';
+
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -52,6 +54,8 @@ import { YesNoDialogComponent } from './components/dialog/yes-no-dialog/yes-no-d
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+
+    HttpClientModule,
 
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,

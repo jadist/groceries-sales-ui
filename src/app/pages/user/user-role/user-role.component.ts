@@ -52,33 +52,65 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
     // Show loading bar
     this.child.showLoadingBar = true;
 
-    const [result, rowCount] = await this.userRoleFs.getPart(
-      value.CurrentPageIndex,
-      value.RowPerPage
-    );
+    if (searchKeyword === '') {
+      const [result, rowCount] = await this.userRoleFs.getPart(
+        value.CurrentPageIndex,
+        value.RowPerPage
+      );
 
-    const rows: Array<UserRoleDocumentModel> = result.map((item) => ({
-      Id: item.id,
-      DocVersion: item.data().DocVersion,
-      RoleDescription: item.data().RoleDescription,
-      RoleName: item.data().RoleName,
-      UniqueCode: item.data().UniqueCode,
-    }));
+      const rows: Array<UserRoleDocumentModel> = result.map((item) => ({
+        Id: item.id,
+        DocVersion: item.data().DocVersion,
+        RoleDescription: item.data().RoleDescription,
+        RoleName: item.data().RoleName,
+        UniqueCode: item.data().UniqueCode,
+      }));
 
-    // Update Child Table
-    this.child.tableColumns = this.tableColumns;
-    this.child.tableData = rows;
-    this.child.setTableValue();
+      // Update Child Table
+      this.child.tableColumns = this.tableColumns;
+      this.child.tableData = rows;
+      this.child.setTableValue();
 
-    // Update Paginator
-    this.child.setPaginatorValue({
-      CurrentPageIndex: value.CurrentPageIndex,
-      RowCount: rowCount,
-      RowPerPage: value.RowPerPage,
-    });
+      // Update Paginator
+      this.child.setPaginatorValue({
+        CurrentPageIndex: value.CurrentPageIndex,
+        RowCount: rowCount,
+        RowPerPage: value.RowPerPage,
+      });
 
-    // hide loading bar
-    this.child.showLoadingBar = false;
+      // hide loading bar
+      this.child.showLoadingBar = false;
+    } else {
+      this.userRoleFs
+        .getPartSearch(searchKeyword)
+        .subscribe((result: any[]) => {
+          const newObj = result.map((item) => {
+            return {
+              Id: item.Id,
+              ...item.Data,
+            };
+          });
+
+          // const [result, rowCount] = [undefined, 0];
+
+          const rows: Array<UserRoleDocumentModel> = newObj;
+
+          // Update Child Table
+          this.child.tableColumns = this.tableColumns;
+          this.child.tableData = rows;
+          this.child.setTableValue();
+
+          // Update Paginator
+          this.child.setPaginatorValue({
+            CurrentPageIndex: value.CurrentPageIndex,
+            RowCount: 0,
+            RowPerPage: value.RowPerPage,
+          });
+
+          // hide loading bar
+          this.child.showLoadingBar = false;
+        });
+    }
   }
 
   renderColumn() {
