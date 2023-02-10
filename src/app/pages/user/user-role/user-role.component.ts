@@ -13,7 +13,7 @@ import {
   PaginatorModel,
 } from 'src/app/components/content/as-table/as-table.model';
 import { ToolbarInputModel } from 'src/app/components/main/topbar/topbar.model';
-import { UserRoleDocumentModel } from 'src/app/models/firebase/firestore/user/user-role.model';
+import { UserRoleDocumentModel } from 'src/app/pages/user/user-role/model/user-role.model';
 
 import { UserRoleService } from './service/user-role.service';
 
@@ -90,8 +90,6 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
               ...item.Data,
             };
           });
-
-          // const [result, rowCount] = [undefined, 0];
 
           const rows: Array<UserRoleDocumentModel> = newObj;
 
