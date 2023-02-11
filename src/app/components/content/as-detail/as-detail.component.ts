@@ -53,6 +53,16 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
         Value: read[1] as string,
       }));
 
+      this.unifiedReadData.sort((a, b) => {
+        if (a.Column.OrderIndex > b.Column.OrderIndex) {
+          return 1;
+        } else if (a.Column.OrderIndex < b.Column.OrderIndex) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+
       // If no ID exist, set this.edit to always TRUE
       const colId = this.unifiedReadData.filter((item) => item.Column.id);
 

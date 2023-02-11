@@ -8,28 +8,33 @@ export const ColumnModel: Column[] = [
     Cell: (element: Record<string, any>) => `${element['Id']}`,
     id: true,
     Readonly: true,
+    OrderIndex: 1,
   },
   {
     ColumnDef: 'UniqueCode',
     Header: 'Unique Code',
     Cell: (element: Record<string, any>) => `${element['UniqueCode']}`,
+    OrderIndex: 2,
   },
   {
     ColumnDef: 'RoleName',
     Header: 'Role Name',
     Cell: (element: Record<string, any>) => `${element['RoleName']}`,
+    OrderIndex: 3,
   },
   {
     ColumnDef: 'RoleDescription',
     Header: 'Role Description',
     Cell: (element: Record<string, any>) => `${element['RoleDescription']}`,
     RichTextString: true,
+    OrderIndex: 4,
   },
   {
     ColumnDef: 'DocVersion',
     Header: 'Doc Version',
     Cell: (element: Record<string, any>) => `${element['DocVersion']}`,
     Hidden: true,
+    OrderIndex: 5,
   },
 ];
 

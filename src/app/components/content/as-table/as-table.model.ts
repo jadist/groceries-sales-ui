@@ -6,6 +6,7 @@ export interface Column {
   Hidden?: boolean;
   id?: boolean;
   Readonly?: boolean;
+  OrderIndex: number;
 }
 
 export interface PaginatorModel {

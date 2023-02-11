@@ -25,27 +25,32 @@ export class HomeComponent implements OnInit, AfterViewInit {
       Header: 'Position',
       Cell: (element: Record<string, any>) => `${element['position']}`,
       id: true,
+      OrderIndex: 1,
     },
     {
       ColumnDef: 'name',
       Header: 'Name',
       Cell: (element: Record<string, any>) => `${element['name']}`,
+      OrderIndex: 2,
     },
     {
       ColumnDef: 'weight',
       Header: 'Weight',
       Cell: (element: Record<string, any>) => `${element['weight']}`,
+      OrderIndex: 3,
     },
     {
       ColumnDef: 'symbol',
       Header: 'Symbol',
       Cell: (element: Record<string, any>) => `${element['symbol']}`,
+      OrderIndex: 4,
     },
     {
       ColumnDef: 'description',
       Header: 'Description',
       Cell: (element: Record<string, any>) => `${element['description']}`,
       RichTextString: true,
+      OrderIndex: 5,
     },
   ];
 
