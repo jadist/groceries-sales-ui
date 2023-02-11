@@ -190,17 +190,10 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
           console.log(err);
         });
     } else {
-      const dataId = data.Id;
-      const dataBody = {
-        DocVersion: data.DocVersion,
-        EmailAddress: data.EmailAddress,
-        FullName: data.FullName,
-        PhoneNo: data.PhoneNo,
-        Username: data.Username,
-      };
+      const { Id, ...newData } = data;
 
       this.firestoreService
-        .update(dataId, dataBody)
+        .update(Id, newData)
         .then(() => {
           // Refresh
           this.clientRefreshRequestEvent();
