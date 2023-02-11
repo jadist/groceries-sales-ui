@@ -25,7 +25,7 @@ export class UserRoleComponent implements AfterViewInit {
   @ViewChild('myChild') child!: AsTableComponent<any>;
 
   toolbarInputData: ToolbarInputModel = {
-    ToolbarTitle: IdentityValue.ToolbarTitle,
+    ToolbarTitle: IdentityValue.Component.ToolbarTitle,
   };
 
   tableColumns: Array<Column> = [];

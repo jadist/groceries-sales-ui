@@ -1,7 +1,7 @@
-/**
- * On defining Column Model, please refer to "src/app/components/content/as-table/as-table.model.ts"
- */
-export const ColumnModel: any = [
+import { Column } from 'src/app/components/content/as-table/as-table.model';
+import { PagesIdentityModel } from 'src/app/pages/models/pages.model';
+
+export const ColumnModel: Column[] = [
   {
     ColumnDef: 'Id',
     Header: 'Id',
@@ -42,12 +42,16 @@ export const ColumnModel: any = [
   },
 ];
 
-export const IdentityValue: any = {
-  ToolbarTitle: 'User List',
-  Functions: {
-    SearchModuleName: 'jktUserListSearchView',
+export const IdentityValue: PagesIdentityModel = {
+  Component: {
+    ToolbarTitle: 'User List',
   },
-  Firestore: {
-    RootCollectionName: 'USER-LIST',
+  Firebase: {
+    Functions: {
+      SearchModuleName: 'jktUserListSearchView',
+    },
+    Firestore: {
+      RootCollectionName: 'USER-LIST',
+    },
   },
 };

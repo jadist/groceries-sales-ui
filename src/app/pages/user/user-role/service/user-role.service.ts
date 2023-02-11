@@ -17,7 +17,7 @@ import { IdentityValue } from '../model/user-role.model';
   providedIn: 'root',
 })
 export class UserRoleService {
-  private dbPath = IdentityValue.Firestore.RootCollectionName;
+  private dbPath = IdentityValue.Firebase.Firestore.RootCollectionName;
 
   private _dbRef: AngularFirestoreCollection<any>;
 
@@ -55,7 +55,7 @@ export class UserRoleService {
     const token = user.stsTokenManager.accessToken;
 
     return this.http.get(
-      `${environment.functions.url}/${IdentityValue.Functions.SearchModuleName}?search=${searchKeyword}`,
+      `${environment.functions.url}/${IdentityValue.Firebase.Functions.SearchModuleName}?search=${searchKeyword}`,
       {
         headers: {
           Authorization: 'Bearer ' + token,
