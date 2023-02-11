@@ -33,6 +33,7 @@ import { UserRoleComponent } from './pages/user/user-role/user-role.component';
 import { YesNoDialogComponent } from './components/dialog/yes-no-dialog/yes-no-dialog.component';
 import { UserListComponent } from './pages/user/user-list/user-list.component';
 import { AccessObjectComponent } from './pages/user/access-object/access-object.component';
+import { RoleAccessMapComponent } from './pages/user/role-access-map/role-access-map.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { AccessObjectComponent } from './pages/user/access-object/access-object.
     YesNoDialogComponent,
     UserListComponent,
     AccessObjectComponent,
+    RoleAccessMapComponent,
   ],
   imports: [
     BrowserModule,

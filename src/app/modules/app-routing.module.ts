@@ -13,6 +13,7 @@ import { HomeComponent } from '../pages/home/home.component';
 import { UserRoleComponent } from '../pages/user/user-role/user-role.component';
 import { UserListComponent } from '../pages/user/user-list/user-list.component';
 import { AccessObjectComponent } from '../pages/user/access-object/access-object.component';
+import { RoleAccessMapComponent } from '../pages/user/role-access-map/role-access-map.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,11 @@ const routes: Routes = [
   {
     path: RoutingEnum.AccessObject,
     component: AccessObjectComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: RoutingEnum.RoleAccessMap,
+    component: RoleAccessMapComponent,
     canActivate: [AuthGuard],
   },
 ];
