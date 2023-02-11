@@ -32,6 +32,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { UserRoleComponent } from './pages/user/user-role/user-role.component';
 import { YesNoDialogComponent } from './components/dialog/yes-no-dialog/yes-no-dialog.component';
 import { UserListComponent } from './pages/user/user-list/user-list.component';
+import { AccessObjectComponent } from './pages/user/access-object/access-object.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { UserListComponent } from './pages/user/user-list/user-list.component';
     UserRoleComponent,
     YesNoDialogComponent,
     UserListComponent,
+    AccessObjectComponent,
   ],
   imports: [
     BrowserModule,

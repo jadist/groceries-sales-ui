@@ -12,6 +12,7 @@ import { HomeComponent } from '../pages/home/home.component';
 
 import { UserRoleComponent } from '../pages/user/user-role/user-role.component';
 import { UserListComponent } from '../pages/user/user-list/user-list.component';
+import { AccessObjectComponent } from '../pages/user/access-object/access-object.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,11 @@ const routes: Routes = [
   {
     path: RoutingEnum.UserList,
     component: UserListComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: RoutingEnum.AccessObject,
+    component: AccessObjectComponent,
     canActivate: [AuthGuard],
   },
 ];
