@@ -12,6 +12,8 @@ import { Observable } from 'rxjs';
 import { FirestoreCollections } from 'src/app/models/firebase/firestore/firestore-collections';
 import { environment } from '../../../../../environments/environment';
 
+import { IdentityValue } from '../model/user-list.model';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -54,7 +56,7 @@ export class UserListService {
     const token = user.stsTokenManager.accessToken;
 
     return this.http.get(
-      `${environment.functions.url}/jktUserListSearchView?search=${searchKeyword}`,
+      `${environment.functions.url}/${IdentityValue.Functions.SearchModuleName}?search=${searchKeyword}`,
       {
         headers: {
           Authorization: 'Bearer ' + token,
@@ -63,10 +65,8 @@ export class UserListService {
     );
   }
 
-  create(userRoleData: any) {
-    return this._dbRef.add({
-      ...userRoleData,
-    });
+  create(newData: any) {
+    return this._dbRef.add({ ...newData });
   }
 
   update(id: string, data: any): Promise<void> {

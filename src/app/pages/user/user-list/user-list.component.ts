@@ -1,10 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 
 import { AsTableComponent } from 'src/app/components/content/as-table/as-table.component';
 
@@ -13,8 +7,8 @@ import {
   PaginatorModel,
 } from 'src/app/components/content/as-table/as-table.model';
 import { ToolbarInputModel } from 'src/app/components/main/topbar/topbar.model';
-import { UserListDocumentModel } from 'src/app/pages/user/user-list/model/user-list.model';
 
+import { ColumnModel, IdentityValue } from './model/user-list.model';
 import { UserListService } from './service/user-list.service';
 
 @Component({
@@ -22,22 +16,21 @@ import { UserListService } from './service/user-list.service';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css'],
 })
-export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('myChild') child!: AsTableComponent<UserListDocumentModel>;
+export class UserListComponent implements AfterViewInit {
+  constructor(private firestoreService: UserListService) {}
+
+  @ViewChild('myChild') child!: AsTableComponent<any>;
 
   toolbarInputData: ToolbarInputModel = {
-    ToolbarTitle: 'User List',
+    ToolbarTitle: IdentityValue.ToolbarTitle,
   };
 
   tableColumns: Array<Column> = [];
 
-  constructor(private firestoreService: UserListService) {}
-
-  ngOnInit(): void {}
-
   ngAfterViewInit(): void {
     setTimeout(() => {
-      this.renderColumn();
+      // Column Rendering
+      this.tableColumns = ColumnModel;
 
       // Get default value
       const defaultPaginator = this.child.getPaginatorValue();
@@ -45,8 +38,6 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
       this.refreshTableData(defaultPaginator);
     });
   }
-
-  ngOnDestroy(): void {}
 
   async refreshTableData(value: PaginatorModel, searchKeyword: string = '') {
     // Show loading bar
@@ -58,7 +49,7 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
         value.RowPerPage
       );
 
-      const rows: Array<UserListDocumentModel> = result.map((item) => ({
+      const rows: Array<any> = result.map((item) => ({
         Id: item.id,
         ...item.data(),
       }));
@@ -88,7 +79,7 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
             };
           });
 
-          const rows: Array<UserListDocumentModel> = newObj;
+          const rows: Array<any> = newObj;
 
           // Update Child Table
           this.child.tableColumns = this.tableColumns;
@@ -108,55 +99,12 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  renderColumn() {
-    this.tableColumns = [
-      {
-        ColumnDef: 'Id',
-        Header: 'Id',
-        Cell: (element: Record<string, any>) => `${element['Id']}`,
-        id: true,
-        Readonly: true,
-      },
-      {
-        ColumnDef: 'Username',
-        Header: 'Username',
-        Cell: (element: Record<string, any>) => `${element['Username']}`,
-      },
-      {
-        ColumnDef: 'EmailAddress',
-        Header: 'Email Address',
-        Cell: (element: Record<string, any>) => `${element['EmailAddress']}`,
-      },
-      {
-        ColumnDef: 'FullName',
-        Header: 'Full Name',
-        Cell: (element: Record<string, any>) => `${element['FullName']}`,
-      },
-      {
-        ColumnDef: 'PhoneNo',
-        Header: 'Phone No',
-        Cell: (element: Record<string, any>) => `${element['PhoneNo']}`,
-      },
-      {
-        ColumnDef: 'UserRoleReference',
-        Header: 'User Role Reference',
-        Cell: (element: Record<string, any>) => `${element['UserRoleReference']}`,
-      },
-      {
-        ColumnDef: 'DocVersion',
-        Header: 'Doc Version',
-        Cell: (element: Record<string, any>) => `${element['DocVersion']}`,
-        Hidden: true,
-      },
-    ];
-  }
-
   //#region Client Output Event
   clientDeleteEvent(Id: string) {
     // Pass the value to This Component's Parent
     this.firestoreService
       .delete(Id)
-      .then((result) => {
+      .then(() => {
         // Get default value
         const defaultPaginator = this.child.getPaginatorValue();
 
@@ -174,7 +122,7 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
     this.refreshTableData(defaultPaginator, filterString);
   }
 
-  clientUpdateEvent(data: UserListDocumentModel) {
+  clientUpdateEvent(data: any) {
     if (data.Id.length === 0) {
       const { Id: _, ...newData } = data;
 
