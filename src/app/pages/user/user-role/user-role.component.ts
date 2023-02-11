@@ -60,10 +60,7 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
 
       const rows: Array<UserRoleDocumentModel> = result.map((item) => ({
         Id: item.id,
-        DocVersion: item.data().DocVersion,
-        RoleDescription: item.data().RoleDescription,
-        RoleName: item.data().RoleName,
-        UniqueCode: item.data().UniqueCode,
+        ...item.data(),
       }));
 
       // Update Child Table
