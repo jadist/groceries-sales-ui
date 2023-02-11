@@ -147,7 +147,7 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
     // Pass the value to This Component's Parent
     this.userRoleFs
       .delete(Id)
-      .then((result) => {
+      .then(() => {
         // Get default value
         const defaultPaginator = this.child.getPaginatorValue();
 
@@ -181,22 +181,16 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
           console.log(err);
         });
     } else {
-      const dataId = data.Id;
-      const dataBody = {
-        DocVersion: data.DocVersion,
-        RoleDescription: data.RoleDescription,
-        RoleName: data.RoleName,
-        UniqueCode: data.UniqueCode,
-      };
+      const { Id, ...newData } = data;
 
       this.userRoleFs
-        .update(dataId, dataBody)
+        .update(Id, newData)
         .then(() => {
           // Refresh
           this.clientRefreshRequestEvent();
         })
         .catch((err) => {
-          console.log('err');
+          console.log('err', err);
         });
     }
   }
