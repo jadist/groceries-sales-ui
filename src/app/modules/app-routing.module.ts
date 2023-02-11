@@ -11,6 +11,7 @@ import { ForgotPasswordComponent } from '../../app/pages/forgot-password/forgot-
 import { HomeComponent } from '../pages/home/home.component';
 
 import { UserRoleComponent } from '../pages/user/user-role/user-role.component';
+import { UserListComponent } from '../pages/user/user-list/user-list.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,11 @@ const routes: Routes = [
   {
     path: RoutingEnum.UserRole,
     component: UserRoleComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: RoutingEnum.UserList,
+    component: UserListComponent,
     canActivate: [AuthGuard],
   },
 ];

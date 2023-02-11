@@ -4,5 +4,6 @@ export const enum RoutingEnum {
   Login = 'login',
   Register = 'register',
   UserRole = 'user-role',
+  UserList = 'user-list',
   DummyDetail = 'dummy-detail',
 }

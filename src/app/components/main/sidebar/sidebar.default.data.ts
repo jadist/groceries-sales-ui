@@ -21,17 +21,31 @@ export const DefaultSidebarMenu: SidebarModel = {
       UrlSlug: [''],
       Child: [
         {
+          Icon: 'wysiwyg',
+          Name: 'Access Object',
+          Value: 'access-object',
+          Description: 'Contains the list of Accessible Object by User',
+          UrlSlug: ['/', 'access-object'],
+        },
+        {
+          Icon: 'lock_person',
+          Name: 'Role Access Map',
+          Value: 'role-access-map',
+          Description: 'Creating a map between User Role and the Access Object',
+          UrlSlug: ['/', 'role-access-map'],
+        },
+        {
           Icon: 'policy',
           Name: 'User Role',
           Value: 'user-role',
-          Description: '',
+          Description: 'Contains the list of Applicable Role to Users',
           UrlSlug: ['/', 'user-role'],
         },
         {
           Icon: 'person',
           Name: 'User List',
           Value: 'user-list',
-          Description: '',
+          Description: 'Contains the list of User registered in system',
           UrlSlug: ['/', 'user-list'],
         },
       ],
