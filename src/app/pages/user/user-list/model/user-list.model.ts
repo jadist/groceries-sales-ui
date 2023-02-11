@@ -47,4 +47,7 @@ export const IdentityValue: any = {
   Functions: {
     SearchModuleName: 'jktUserListSearchView',
   },
+  Firestore: {
+    RootCollectionName: 'USER-ROLE',
+  },
 };

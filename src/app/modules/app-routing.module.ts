@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from '../services/guard/guard.guard';
 
-import { RoutingEnum } from '../../app/models/routing.enum';
+import { RoutingEnum } from './models/routing.enum';
 
 import { LoginComponent } from '../../app/pages/login/login.component';
 import { RegisterComponent } from '../../app/pages/register/register.component';

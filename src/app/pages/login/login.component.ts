@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { RoutingEnum } from '../../models/routing.enum';
+import { RoutingEnum } from '../../modules/models/routing.enum';
 
 import {
   ButtonClickModel,
@@ -41,9 +41,7 @@ export class LoginComponent {
   onButtonClickLogin(value: ButtonClickModel) {
     this.authService
       .SignIn(value.Email!, value.Password)
-      .then((result) => {
-        console.log(result);
-
+      .then(() => {
         this.sidebar.setHideSidebarLayout(false);
 
         this.router.navigate([RoutingEnum.Home]);

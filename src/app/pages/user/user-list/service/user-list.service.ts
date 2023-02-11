@@ -9,7 +9,6 @@ import {
 import { QueryDocumentSnapshot } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 
-import { FirestoreCollections } from 'src/app/models/firebase/firestore/firestore-collections';
 import { environment } from '../../../../../environments/environment';
 
 import { IdentityValue } from '../model/user-list.model';
@@ -18,7 +17,7 @@ import { IdentityValue } from '../model/user-list.model';
   providedIn: 'root',
 })
 export class UserListService {
-  private dbPath = FirestoreCollections.UserList;
+  private dbPath = IdentityValue.Firestore.RootCollectionName;
 
   private _dbRef: AngularFirestoreCollection<any>;
 
