@@ -48,6 +48,6 @@ export const IdentityValue: any = {
     SearchModuleName: 'jktUserListSearchView',
   },
   Firestore: {
-    RootCollectionName: 'USER-ROLE',
+    RootCollectionName: 'USER-LIST',
   },
 };
