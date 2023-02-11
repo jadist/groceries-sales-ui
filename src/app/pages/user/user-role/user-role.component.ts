@@ -1,10 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 
 import { AsTableComponent } from 'src/app/components/content/as-table/as-table.component';
 
@@ -13,8 +7,11 @@ import {
   PaginatorModel,
 } from 'src/app/components/content/as-table/as-table.model';
 import { ToolbarInputModel } from 'src/app/components/main/topbar/topbar.model';
-import { UserRoleDocumentModel } from 'src/app/pages/user/user-role/model/user-role.model';
 
+import {
+  ColumnModel,
+  IdentityValue,
+} from 'src/app/pages/user/user-role/model/user-role.model';
 import { UserRoleService } from './service/user-role.service';
 
 @Component({
@@ -22,22 +19,21 @@ import { UserRoleService } from './service/user-role.service';
   templateUrl: './user-role.component.html',
   styleUrls: ['./user-role.component.css'],
 })
-export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('myChild') child!: AsTableComponent<UserRoleDocumentModel>;
+export class UserRoleComponent implements AfterViewInit {
+  constructor(private userRoleFs: UserRoleService) {}
+
+  @ViewChild('myChild') child!: AsTableComponent<any>;
 
   toolbarInputData: ToolbarInputModel = {
-    ToolbarTitle: 'User Role',
+    ToolbarTitle: IdentityValue.ToolbarTitle,
   };
 
   tableColumns: Array<Column> = [];
 
-  constructor(private userRoleFs: UserRoleService) {}
-
-  ngOnInit(): void {}
-
   ngAfterViewInit(): void {
     setTimeout(() => {
-      this.renderColumn();
+      // Column Rendering
+      this.tableColumns = ColumnModel;
 
       // Get default value
       const defaultPaginator = this.child.getPaginatorValue();
@@ -45,8 +41,6 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
       this.refreshTableData(defaultPaginator);
     });
   }
-
-  ngOnDestroy(): void {}
 
   async refreshTableData(value: PaginatorModel, searchKeyword: string = '') {
     // Show loading bar
@@ -58,7 +52,7 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
         value.RowPerPage
       );
 
-      const rows: Array<UserRoleDocumentModel> = result.map((item) => ({
+      const rows: Array<any> = result.map((item) => ({
         Id: item.id,
         ...item.data(),
       }));
@@ -88,7 +82,7 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
             };
           });
 
-          const rows: Array<UserRoleDocumentModel> = newObj;
+          const rows: Array<any> = newObj;
 
           // Update Child Table
           this.child.tableColumns = this.tableColumns;
@@ -106,40 +100,6 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
           this.child.showLoadingBar = false;
         });
     }
-  }
-
-  renderColumn() {
-    this.tableColumns = [
-      {
-        ColumnDef: 'Id',
-        Header: 'Id',
-        Cell: (element: Record<string, any>) => `${element['Id']}`,
-        id: true,
-        Readonly: true,
-      },
-      {
-        ColumnDef: 'UniqueCode',
-        Header: 'Unique Code',
-        Cell: (element: Record<string, any>) => `${element['UniqueCode']}`,
-      },
-      {
-        ColumnDef: 'RoleName',
-        Header: 'Role Name',
-        Cell: (element: Record<string, any>) => `${element['RoleName']}`,
-      },
-      {
-        ColumnDef: 'RoleDescription',
-        Header: 'Role Description',
-        Cell: (element: Record<string, any>) => `${element['RoleDescription']}`,
-        RichTextString: true,
-      },
-      {
-        ColumnDef: 'DocVersion',
-        Header: 'Doc Version',
-        Cell: (element: Record<string, any>) => `${element['DocVersion']}`,
-        Hidden: true,
-      },
-    ];
   }
 
   //#region Client Output Event
@@ -165,7 +125,7 @@ export class UserRoleComponent implements OnInit, AfterViewInit, OnDestroy {
     this.refreshTableData(defaultPaginator, filterString);
   }
 
-  clientUpdateEvent(data: UserRoleDocumentModel) {
+  clientUpdateEvent(data: any) {
     if (data.Id.length === 0) {
       const { Id: _, ...newData } = data;
 

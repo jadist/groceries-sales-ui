@@ -9,23 +9,20 @@ import {
 import { QueryDocumentSnapshot } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 
-import { FirestoreCollections } from 'src/app/models/firebase/firestore/firestore-collections';
 import { environment } from '../../../../../environments/environment';
+
+import { IdentityValue } from '../model/user-role.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserRoleService {
-  private dbPath = FirestoreCollections.UserRole;
+  private dbPath = IdentityValue.Firestore.RootCollectionName;
 
   private _dbRef: AngularFirestoreCollection<any>;
 
   constructor(private db: AngularFirestore, private http: HttpClient) {
     this._dbRef = db.collection(this.dbPath);
-  }
-
-  getAll(): AngularFirestoreCollection<any> {
-    return this._dbRef!;
   }
 
   async getPart(
@@ -58,7 +55,7 @@ export class UserRoleService {
     const token = user.stsTokenManager.accessToken;
 
     return this.http.get(
-      `${environment.functions.url}/jktUserRoleSearchView?search=${searchKeyword}`,
+      `${environment.functions.url}/${IdentityValue.Functions.SearchModuleName}?search=${searchKeyword}`,
       {
         headers: {
           Authorization: 'Bearer ' + token,
@@ -67,10 +64,8 @@ export class UserRoleService {
     );
   }
 
-  create(userRoleData: any) {
-    return this._dbRef.add({
-      ...userRoleData,
-    });
+  create(newData: any) {
+    return this._dbRef.add({ ...newData });
   }
 
   update(id: string, data: any): Promise<void> {
