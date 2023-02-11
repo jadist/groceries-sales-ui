@@ -54,7 +54,7 @@ export class UserListService {
     const token = user.stsTokenManager.accessToken;
 
     return this.http.get(
-      `${environment.functions.url}/jktUserRoleSearchView?search=${searchKeyword}`,
+      `${environment.functions.url}/jktUserListSearchView?search=${searchKeyword}`,
       {
         headers: {
           Authorization: 'Bearer ' + token,
