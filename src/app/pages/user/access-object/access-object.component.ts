@@ -16,7 +16,7 @@ import { AccessObjectService as PageService } from './service/access-object.serv
   templateUrl: './access-object.component.html',
   styleUrls: ['./access-object.component.css'],
 })
-export class AccessObjectComponent {
+export class AccessObjectComponent implements AfterViewInit {
   constructor(private firestoreService: PageService) {}
 
   @ViewChild('myChild') child!: AsTableComponent<any>;
