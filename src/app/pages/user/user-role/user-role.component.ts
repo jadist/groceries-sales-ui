@@ -12,7 +12,7 @@ import {
   ColumnModel,
   IdentityValue,
 } from 'src/app/pages/user/user-role/model/user-role.model';
-import { UserRoleService } from './service/user-role.service';
+import { UserRoleService as PageService} from './service/user-role.service';
 
 @Component({
   selector: 'app-user-role',
@@ -20,7 +20,7 @@ import { UserRoleService } from './service/user-role.service';
   styleUrls: ['./user-role.component.css'],
 })
 export class UserRoleComponent implements AfterViewInit {
-  constructor(private userRoleFs: UserRoleService) {}
+  constructor(private firestoreService: PageService) {}
 
   @ViewChild('myChild') child!: AsTableComponent<any>;
 
@@ -47,7 +47,7 @@ export class UserRoleComponent implements AfterViewInit {
     this.child.showLoadingBar = true;
 
     if (searchKeyword === '') {
-      const [result, rowCount] = await this.userRoleFs.getPart(
+      const [result, rowCount] = await this.firestoreService.getPart(
         value.CurrentPageIndex,
         value.RowPerPage
       );
@@ -72,7 +72,7 @@ export class UserRoleComponent implements AfterViewInit {
       // hide loading bar
       this.child.showLoadingBar = false;
     } else {
-      this.userRoleFs
+      this.firestoreService
         .getPartSearch(searchKeyword)
         .subscribe((result: any[]) => {
           const newObj = result.map((item) => {
@@ -105,7 +105,7 @@ export class UserRoleComponent implements AfterViewInit {
   //#region Client Output Event
   clientDeleteEvent(Id: string) {
     // Pass the value to This Component's Parent
-    this.userRoleFs
+    this.firestoreService
       .delete(Id)
       .then(() => {
         // Get default value
@@ -131,7 +131,7 @@ export class UserRoleComponent implements AfterViewInit {
 
       newData.DocVersion = '1';
 
-      this.userRoleFs
+      this.firestoreService
         .create(newData)
         .then(() => {
           // Refresh
@@ -143,7 +143,7 @@ export class UserRoleComponent implements AfterViewInit {
     } else {
       const { Id, ...newData } = data;
 
-      this.userRoleFs
+      this.firestoreService
         .update(Id, newData)
         .then(() => {
           // Refresh

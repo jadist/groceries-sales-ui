@@ -9,7 +9,7 @@ import {
 import { ToolbarInputModel } from 'src/app/components/main/topbar/topbar.model';
 
 import { ColumnModel, IdentityValue } from './model/user-list.model';
-import { UserListService } from './service/user-list.service';
+import { UserListService as PageService } from './service/user-list.service';
 
 @Component({
   selector: 'app-user-list',
@@ -17,7 +17,7 @@ import { UserListService } from './service/user-list.service';
   styleUrls: ['./user-list.component.css'],
 })
 export class UserListComponent implements AfterViewInit {
-  constructor(private firestoreService: UserListService) {}
+  constructor(private firestoreService: PageService) {}
 
   @ViewChild('myChild') child!: AsTableComponent<any>;
 
