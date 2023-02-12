@@ -1,6 +1,15 @@
 import { Column } from 'src/app/components/content/as-table/as-table.model';
 import { PagesIdentityModel } from 'src/app/pages/models/pages.model';
 
+interface UserListDocumentModel {
+  UserRoleReference: string;
+  Username: string;
+  EmailAddress: string;
+  FullName: string;
+  PhoneNo: number;
+  DocVersion: number;
+}
+
 export const ColumnModel: Column[] = [
   {
     ColumnDef: 'Id',
@@ -33,6 +42,7 @@ export const ColumnModel: Column[] = [
     Header: 'Phone No',
     Cell: (element: Record<string, any>) => `${element['PhoneNo']}`,
     OrderIndex: 5,
+    ValueType: 'number',
   },
   {
     ColumnDef: 'UserRoleReference',
@@ -46,6 +56,7 @@ export const ColumnModel: Column[] = [
     Cell: (element: Record<string, any>) => `${element['DocVersion']}`,
     Hidden: true,
     OrderIndex: 7,
+    ValueType: 'number',
   },
 ];
 

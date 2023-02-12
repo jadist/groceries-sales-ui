@@ -10,8 +10,9 @@ import { QueryDocumentSnapshot } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../../../environments/environment';
+import columnTypeChecking from 'src/app/helpers/column-type-checking';
 
-import { IdentityValue } from '../model/user-role.model';
+import { ColumnModel, IdentityValue } from '../model/user-role.model';
 
 @Injectable({
   providedIn: 'root',
@@ -65,11 +66,13 @@ export class UserRoleService {
   }
 
   create(newData: any) {
-    return this._dbRef.add({ ...newData });
+    const newObj = columnTypeChecking(newData, ColumnModel);
+    return this._dbRef.add({ ...newObj });
   }
 
   update(id: string, data: any): Promise<void> {
-    return this._dbRef.doc(id).update(data);
+    const newObj = columnTypeChecking(data, ColumnModel);
+    return this._dbRef.doc(id).update(newObj);
   }
 
   delete(id: string): Promise<void> {

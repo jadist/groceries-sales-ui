@@ -7,6 +7,7 @@ export interface Column {
   id?: boolean;
   Readonly?: boolean;
   OrderIndex: number;
+  ValueType?: string;
 }
 
 export interface PaginatorModel {

@@ -35,6 +35,7 @@ export const ColumnModel: Column[] = [
     Cell: (element: Record<string, any>) => `${element['DocVersion']}`,
     Hidden: true,
     OrderIndex: 5,
+    ValueType: 'number',
   },
 ];
 

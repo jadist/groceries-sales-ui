@@ -28,24 +28,28 @@ export const ColumnModel: Column[] = [
     Header: 'Create',
     Cell: (element: Record<string, any>) => `${element['Create']}`,
     OrderIndex: 4,
+    ValueType: 'boolean',
   },
   {
     ColumnDef: 'Read',
     Header: 'Read',
     Cell: (element: Record<string, any>) => `${element['Read']}`,
     OrderIndex: 5,
+    ValueType: 'boolean',
   },
   {
     ColumnDef: 'Update',
     Header: 'Update',
     Cell: (element: Record<string, any>) => `${element['Update']}`,
     OrderIndex: 6,
+    ValueType: 'boolean',
   },
   {
     ColumnDef: 'Delete',
     Header: 'Delete',
     Cell: (element: Record<string, any>) => `${element['Delete']}`,
     OrderIndex: 7,
+    ValueType: 'boolean',
   },
   {
     ColumnDef: 'DocVersion',
@@ -53,6 +57,7 @@ export const ColumnModel: Column[] = [
     Cell: (element: Record<string, any>) => `${element['DocVersion']}`,
     Hidden: true,
     OrderIndex: 8,
+    ValueType: 'number',
   },
 ];
 
