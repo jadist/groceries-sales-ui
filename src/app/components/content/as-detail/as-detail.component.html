@@ -46,7 +46,11 @@
     <form class="example-form" *ngFor="let col of unifiedReadData">
       <div *ngIf="!col.Column.Hidden">
         <div
-          *ngIf="col.Column.RichTextString; then richTextString; else aString"
+          *ngIf="
+            col.Column.ValueType === 'richtext';
+            then richTextString;
+            else aString
+          "
         ></div>
 
         <ng-template #aString>

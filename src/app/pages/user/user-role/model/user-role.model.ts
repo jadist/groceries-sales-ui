@@ -26,7 +26,7 @@ export const ColumnModel: Column[] = [
     ColumnDef: 'RoleDescription',
     Header: 'Role Description',
     Cell: (element: Record<string, any>) => `${element['RoleDescription']}`,
-    RichTextString: true,
+    ValueType: 'richtext',
     OrderIndex: 4,
   },
   {

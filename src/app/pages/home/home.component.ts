@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       ColumnDef: 'description',
       Header: 'Description',
       Cell: (element: Record<string, any>) => `${element['description']}`,
-      RichTextString: true,
+      ValueType: 'richtext',
       OrderIndex: 5,
     },
   ];
