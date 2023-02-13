@@ -11,6 +11,11 @@ mat-card {
   width: 100%;
 }
 
+.example-margin {
+  width: 100%;
+  /* background-color: aqua; */
+}
+
 .example-full-width {
   width: 100%;
 }

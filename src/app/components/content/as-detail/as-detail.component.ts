@@ -7,6 +7,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
+import { MatCheckbox } from '@angular/material/checkbox';
 import { MatDialog } from '@angular/material/dialog';
 import { YesNoDialogComponent } from '../../dialog/yes-no-dialog/yes-no-dialog.component';
 import {
@@ -37,6 +38,10 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
   }[] = [];
 
   edit: boolean = false;
+
+  //#region CheckBox Value Holder
+  cbValueHash: IHash = {};
+  //#endregion
 
   constructor(public dialog: MatDialog) {}
 
@@ -71,6 +76,14 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
       } else {
         this.edit = true;
       }
+
+      // Set the CheckBox dictionary
+      this.unifiedReadData
+        .filter((item) => item.Column.ValueType === 'boolean')
+        .forEach((cb) => {
+          this.cbValueHash[cb.Column.ColumnDef] =
+            cb.Value.toLowerCase() === 'true';
+        });
     } catch {}
   }
 
@@ -80,12 +93,19 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
     // Convert this Data (Array type) into accepted Data (T type)
     const cleanDataArr = this.unifiedReadData.map((item) => {
       if (!item.Column.Hidden) {
-        const key = item.Column.ColumnDef;
-        const val = (
-          document.getElementById(key.toString()) as HTMLInputElement
-        ).value;
+        if (item.Column.ValueType === 'boolean') {
+          return [
+            item.Column.ColumnDef,
+            this.cbValueHash[item.Column.ColumnDef],
+          ];
+        } else {
+          const key = item.Column.ColumnDef;
+          const val = (
+            document.getElementById(key.toString()) as HTMLInputElement
+          ).value;
 
-        return [key, val];
+          return [key, val];
+        }
       } else {
         return [item.Column.ColumnDef, item.Value];
       }
@@ -128,4 +148,12 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
       }
     });
   }
+
+  protected setCeckBoxValue(event: any) {
+    this.cbValueHash[event.source.id] = event.checked;
+  }
+}
+
+export interface IHash {
+  [details: string]: boolean;
 }

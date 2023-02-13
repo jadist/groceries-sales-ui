@@ -44,45 +44,50 @@
 <mat-card>
   <mat-card-content>
     <form class="example-form" *ngFor="let col of unifiedReadData">
-      <div *ngIf="!col.Column.Hidden">
-        <div
-          *ngIf="
-            col.Column.ValueType === 'richtext';
-            then richTextString;
-            else aString
-          "
-        ></div>
+      <div *ngIf="!col.Column.Hidden" [ngSwitch]="col.Column.ValueType">
+        <mat-form-field
+          *ngSwitchCase="'richtext'"
+          class="example-full-width"
+          appearance="outline"
+        >
+          <mat-label>{{ col.Column.Header }}</mat-label>
+          <textarea
+            matInput
+            [id]="col.Column.ColumnDef"
+            [readonly]="!edit || col.Column.Readonly"
+            [disabled]="edit && col.Column.Readonly"
+            [placeholder]="'Ex. Description of the '.concat(col.Column.Header)"
+            rows="5"
+            >{{ col.Value }}</textarea
+          >
+        </mat-form-field>
 
-        <ng-template #aString>
-          <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>{{ col.Column.Header }}</mat-label>
-            <input
-              matInput
-              [placeholder]="'Ex. '.concat(col.Column.Header)"
-              [readonly]="!edit || col.Column.Readonly"
-              [disabled]="edit && col.Column.Readonly"
-              [value]="col.Value"
-              [id]="col.Column.ColumnDef"
-            />
-          </mat-form-field>
-        </ng-template>
+        <mat-checkbox
+          *ngSwitchCase="'boolean'"
+          [id]="col.Column.ColumnDef"
+          color="primary"
+          class="example-margin"
+          [disabled]="!edit || col.Column.Readonly"
+          [checked]="col.Value === '' ? false : col.Value"
+          (change)="setCeckBoxValue($event)"
+          >{{ col.Column.Header }}</mat-checkbox
+        >
 
-        <ng-template #richTextString>
-          <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>{{ col.Column.Header }}</mat-label>
-            <textarea
-              matInput
-              [placeholder]="
-                'Ex. Description of the '.concat(col.Column.Header)
-              "
-              rows="5"
-              [readonly]="!edit || col.Column.Readonly"
-              [disabled]="edit && col.Column.Readonly"
-              [id]="col.Column.ColumnDef"
-              >{{ col.Value }}</textarea
-            >
-          </mat-form-field>
-        </ng-template>
+        <mat-form-field
+          *ngSwitchDefault
+          class="example-full-width"
+          appearance="outline"
+        >
+          <mat-label>{{ col.Column.Header }}</mat-label>
+          <input
+            matInput
+            [id]="col.Column.ColumnDef"
+            [readonly]="!edit || col.Column.Readonly"
+            [disabled]="edit && col.Column.Readonly"
+            [placeholder]="'Ex. '.concat(col.Column.Header)"
+            [value]="col.Value"
+          />
+        </mat-form-field>
       </div>
     </form>
   </mat-card-content>
