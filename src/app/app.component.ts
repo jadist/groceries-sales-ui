@@ -40,6 +40,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   tableColumns: Array<Column> = [];
 
   ngAfterViewInit(): void {
+    // https://angular.io/errors/NG0100
     setTimeout(() => {
       this.appService.getChildData().subscribe((item) => {
         // Set Collection To be Read
@@ -52,16 +53,19 @@ export class AppComponent implements OnInit, AfterViewInit {
         // Column Rendering
         this.tableColumns = item.Column;
 
-        // Change TopBar
-        this.toolbarInputData.ToolbarTitle =
-          item.PagesIdentity.Component.ToolbarTitle;
+        // https://angular.io/errors/NG0100
+        setTimeout(() => {
+          // Change TopBar
+          this.toolbarInputData.ToolbarTitle =
+            item.PagesIdentity.Component.ToolbarTitle;
 
-        // Get default value
-        const defaultPaginator = this.child.getPaginatorValue();
+          // Get default value
+          const defaultPaginator = this.child.getPaginatorValue();
 
-        this.refreshTableData(defaultPaginator);
+          this.refreshTableData(defaultPaginator);
+        });
       });
-    }, 1);
+    });
   }
 
   async refreshTableData(value: PaginatorModel, searchKeyword: string = '') {
