@@ -21,8 +21,6 @@ import {
 export class AppComponent implements OnInit, AfterViewInit {
   hideSidebar = true;
 
-  detailSidebar = false;
-
   constructor(
     private sidebar: SidebarService,
     private firestoreService: FirestoreService,
@@ -63,7 +61,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
         this.refreshTableData(defaultPaginator);
       });
-    });
+    }, 1);
   }
 
   async refreshTableData(value: PaginatorModel, searchKeyword: string = '') {

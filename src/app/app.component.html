@@ -9,18 +9,18 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <app-topbar [ToolbarInputData]="toolbarInputData"></app-topbar>
-    <app-as-table
-      #myChild
-      (onPaginatorClick)="refreshTableData($event)"
-      (deleteEvent)="clientDeleteEvent($event)"
-      (updateEvent)="clientUpdateEvent($event)"
-      (tableRefreshRequest)="clientRefreshRequestEvent($event)"
-    ></app-as-table>
+    <div *ngIf="!hideSidebar">
+      <app-topbar [ToolbarInputData]="toolbarInputData"></app-topbar>
+      <app-as-table
+        #myChild
+        (onPaginatorClick)="refreshTableData($event)"
+        (deleteEvent)="clientDeleteEvent($event)"
+        (updateEvent)="clientUpdateEvent($event)"
+        (tableRefreshRequest)="clientRefreshRequestEvent($event)"
+      ></app-as-table>
+    </div>
+    <div [hidden]="!hideSidebar">
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-<div hidden>
-  <!-- This router outlet should not display anything -->
-  <router-outlet></router-outlet>
-</div>
