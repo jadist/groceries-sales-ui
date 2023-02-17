@@ -9,6 +9,18 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <router-outlet></router-outlet>
+    <app-topbar [ToolbarInputData]="toolbarInputData"></app-topbar>
+    <app-as-table
+      #myChild
+      (onPaginatorClick)="refreshTableData($event)"
+      (deleteEvent)="clientDeleteEvent($event)"
+      (updateEvent)="clientUpdateEvent($event)"
+      (tableRefreshRequest)="clientRefreshRequestEvent($event)"
+    ></app-as-table>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+<div hidden>
+  <!-- This router outlet should not display anything -->
+  <router-outlet></router-outlet>
+</div>
