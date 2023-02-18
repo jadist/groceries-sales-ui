@@ -81,6 +81,14 @@ export class AsTableComponent<T> implements OnInit, AfterViewInit {
     this.selectedRowData = asTObj as T;
   }
 
+  clearInput() {
+    const searchInput = document.getElementById(
+      'searchInput'
+    ) as HTMLInputElement;
+
+    searchInput.value = '';
+  }
+
   //#region Paginator Method
   setTableValue() {
     this.displayedColumns = this.tableColumns.map((c) => c.ColumnDef);

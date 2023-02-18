@@ -33,6 +33,9 @@ export class PagesRootComponent implements AfterViewInit {
     // https://angular.io/errors/NG0100
     setTimeout(() => {
       this.modelService.getChildData().subscribe((item) => {
+        // Clear filter on new child
+        this.child.clearInput();
+
         // Set Collection To be Read
         this.firestoreService.setServiceIdentity(
           item.PagesIdentity.Firebase.Firestore.RootCollectionName,
