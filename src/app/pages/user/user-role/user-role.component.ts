@@ -2,7 +2,7 @@ import { AfterViewInit, Component } from '@angular/core';
 
 import { ColumnModel, IdentityValue } from './model/user-role.model';
 
-import { AppService } from '../../../services/model/app.service';
+import { ModelService } from '../../pages-root/service/model/model.service'; 
 
 @Component({
   selector: 'app-user-role',
@@ -10,10 +10,10 @@ import { AppService } from '../../../services/model/app.service';
   styleUrls: ['./user-role.component.css'],
 })
 export class UserRoleComponent implements AfterViewInit {
-  constructor(private appService: AppService) {}
+  constructor(private modelService: ModelService) {}
 
   ngAfterViewInit() {
-    this.appService.setChildData({
+    this.modelService.setChildData({
       Column: ColumnModel,
       PagesIdentity: IdentityValue,
     });

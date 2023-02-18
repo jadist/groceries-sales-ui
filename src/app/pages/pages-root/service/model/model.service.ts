@@ -10,9 +10,9 @@ interface ChildModel {
 }
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class AppService {
+export class ModelService {
   private childModel$ = new BehaviorSubject<ChildModel>({} as ChildModel);
 
   setChildData(val: ChildModel) {

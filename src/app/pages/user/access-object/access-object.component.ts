@@ -2,7 +2,7 @@ import { AfterViewInit, Component } from '@angular/core';
 
 import { ColumnModel, IdentityValue } from './model/access-object.model';
 
-import { AppService } from '../../../services/model/app.service';
+import { ModelService } from '../../pages-root/service/model/model.service';
 
 @Component({
   selector: 'app-access-object',
@@ -10,10 +10,10 @@ import { AppService } from '../../../services/model/app.service';
   styleUrls: ['./access-object.component.css'],
 })
 export class AccessObjectComponent implements AfterViewInit {
-  constructor(private appService: AppService) {}
+  constructor(private modelService: ModelService) {}
 
   ngAfterViewInit() {
-    this.appService.setChildData({
+    this.modelService.setChildData({
       Column: ColumnModel,
       PagesIdentity: IdentityValue,
     });

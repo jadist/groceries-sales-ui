@@ -18,8 +18,8 @@ import { PagesIdentityModel } from 'src/app/pages/models/pages.model';
 @Injectable({
   providedIn: 'root',
 })
-export class AppService {
-  private dbPath: string = 'DEFAULT-COLLECTION';
+export class FirestoreService {
+  private dbPath: string = 'NON-EXIST-COLLECTION';
   private ColumnModel: Column[] = [];
   private IdentityValue: PagesIdentityModel = {} as PagesIdentityModel;
 

@@ -9,16 +9,8 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <div *ngIf="!hideSidebar">
-      <app-topbar [ToolbarInputData]="toolbarInputData"></app-topbar>
-      <app-as-table
-        #myChild
-        (onPaginatorClick)="refreshTableData($event)"
-        (deleteEvent)="clientDeleteEvent($event)"
-        (updateEvent)="clientUpdateEvent($event)"
-        (tableRefreshRequest)="clientRefreshRequestEvent($event)"
-      ></app-as-table>
-    </div>
+    <app-pages-root *ngIf="!hideSidebar"></app-pages-root>
+    
     <div [hidden]="!hideSidebar">
       <router-outlet></router-outlet>
     </div>

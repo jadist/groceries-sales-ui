@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 
 import { ColumnModel, IdentityValue } from './model/role-access-map.model';
 
-import { AppService } from '../../../services/model/app.service';
+import { ModelService } from '../../pages-root/service/model/model.service';
 
 @Component({
   selector: 'app-role-access-map',
@@ -10,10 +10,10 @@ import { AppService } from '../../../services/model/app.service';
   styleUrls: ['./role-access-map.component.css'],
 })
 export class RoleAccessMapComponent implements AfterViewInit {
-  constructor(private appService: AppService) {}
+  constructor(private modelService: ModelService) {}
 
   ngAfterViewInit() {
-    this.appService.setChildData({
+    this.modelService.setChildData({
       Column: ColumnModel,
       PagesIdentity: IdentityValue,
     });

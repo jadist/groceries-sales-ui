@@ -2,7 +2,7 @@ import { AfterViewInit, Component } from '@angular/core';
 
 import { ColumnModel, IdentityValue } from './model/user-list.model';
 
-import { AppService } from '../../../services/model/app.service';
+import { ModelService } from '../../pages-root/service/model/model.service';
 
 @Component({
   selector: 'app-user-list',
@@ -10,10 +10,10 @@ import { AppService } from '../../../services/model/app.service';
   styleUrls: ['./user-list.component.css'],
 })
 export class UserListComponent implements AfterViewInit {
-  constructor(private appService: AppService) {}
+  constructor(private modelService: ModelService) {}
 
   ngAfterViewInit() {
-    this.appService.setChildData({
+    this.modelService.setChildData({
       Column: ColumnModel,
       PagesIdentity: IdentityValue,
     });
