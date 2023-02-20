@@ -62,6 +62,23 @@
           >
         </mat-form-field>
 
+        <mat-form-field
+          *ngSwitchCase="'number'"
+          class="example-full-width"
+          appearance="outline"
+        >
+          <mat-label>{{ col.Column.Header }}</mat-label>
+          <input
+            matInput
+            [id]="col.Column.ColumnDef"
+            [readonly]="!edit || col.Column.Readonly"
+            [disabled]="edit && col.Column.Readonly"
+            [placeholder]="'Numbers only'"
+            numbersOnly
+            [value]="col.Value"
+          />
+        </mat-form-field>
+
         <mat-checkbox
           *ngSwitchCase="'boolean'"
           [id]="col.Column.ColumnDef"

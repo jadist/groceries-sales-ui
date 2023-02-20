@@ -15,6 +15,8 @@ import { MaterialModule } from './modules/material.module';
 
 import { AppComponent } from './app.component';
 
+import { NumberDirective } from './helpers/numbers-only.directive';
+
 import { AppRoutingModule } from './modules/app-routing.module';
 
 import { LoginComponent } from './pages/login/login.component';
@@ -39,6 +41,9 @@ import { PagesRootComponent } from './pages/pages-root/pages-root.component';
 @NgModule({
   declarations: [
     AppComponent,
+
+    NumberDirective,
+
     EntryComponent,
     LoginComponent,
     ForgotPasswordComponent,
