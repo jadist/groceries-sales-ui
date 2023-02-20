@@ -9,10 +9,6 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <app-pages-root *ngIf="!hideSidebar"></app-pages-root>
-    
-    <div [hidden]="!hideSidebar">
-      <router-outlet></router-outlet>
-    </div>
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

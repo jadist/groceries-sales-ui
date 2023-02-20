@@ -13,6 +13,7 @@ export class AccessObjectComponent implements AfterViewInit {
   constructor(private modelService: ModelService) {}
 
   ngAfterViewInit() {
+    console.log('HIT');
     this.modelService.setChildData({
       Column: ColumnModel,
       PagesIdentity: IdentityValue,
