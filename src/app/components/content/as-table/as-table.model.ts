@@ -1,10 +1,3 @@
-const ValueType = {
-  Boolean: 'boolean',
-  Number: 'number',
-  Richtext: 'richtext',
-  String: 'string',
-} as const;
-
 export interface Column {
   ColumnDef: string;
   Header: string;
@@ -13,7 +6,10 @@ export interface Column {
   id?: boolean;
   Readonly?: boolean;
   OrderIndex: number;
-  ValueType?: typeof ValueType[keyof typeof ValueType];
+  ValueType?: 'string' | 'number' | 'boolean' | 'richtext' | 'options';
+  Options?: {
+    [key: string]: 'string' | 'number' | 'boolean';
+  }[];
 }
 
 export interface PaginatorModel {
