@@ -39,8 +39,11 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
 
   edit: boolean = false;
 
-  //#region CheckBox Value Holder
+  //#region Custom Input Value Holder
   cbValueHash: IHash = {};
+
+  // Refer to src/app/components/content/as-table/as-table.model.ts
+  optionValue: string | undefined;
   //#endregion
 
   constructor(public dialog: MatDialog) {}
@@ -98,6 +101,8 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
             item.Column.ColumnDef,
             this.cbValueHash[item.Column.ColumnDef],
           ];
+        } else if (item.Column.ValueType === 'options') {
+          return [item.Column.ColumnDef, this.optionValue];
         } else {
           const key = item.Column.ColumnDef;
           const val = (
@@ -151,6 +156,10 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
 
   protected setCeckBoxValue(event: any) {
     this.cbValueHash[event.source.id] = event.checked;
+  }
+
+  protected setOptionValue(id: any) {
+    this.optionValue = String(id);
   }
 }
 

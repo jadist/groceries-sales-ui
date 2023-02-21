@@ -1,14 +1,14 @@
 import { Column } from 'src/app/components/content/as-table/as-table.model';
 import { PagesIdentityModel } from 'src/app/pages/models/pages.model';
 
-interface UserListDocumentModel {
-  UserRoleReference: string;
-  Username: string;
-  EmailAddress: string;
-  FullName: string;
-  PhoneNo: number;
-  DocVersion: number;
-}
+// interface UserListDocumentModel {
+//   UserRoleReference: string;
+//   Username: string;
+//   EmailAddress: string;
+//   FullName: string;
+//   PhoneNo: number;
+//   DocVersion: number;
+// }
 
 export const ColumnModel: Column[] = [
   {
@@ -49,6 +49,26 @@ export const ColumnModel: Column[] = [
     Header: 'User Role Reference',
     Cell: (element: Record<string, any>) => `${element['UserRoleReference']}`,
     OrderIndex: 6,
+    ValueType: 'options',
+    Options: {
+      List: [
+        {
+          name: 'Role 1',
+          value: 'USER-ROLE/1',
+        },
+        {
+          name: 'Role 2',
+          value: 'USER-ROLE/2',
+        },
+        {
+          name: 'Role 3',
+          value: 'USER-ROLE/3',
+        },
+      ],
+      RemoteUrl: {
+        FirestoreCollectionName: 'USER-ROLE',
+      },
+    },
   },
   {
     ColumnDef: 'DocVersion',

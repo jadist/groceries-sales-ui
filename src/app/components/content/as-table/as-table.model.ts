@@ -16,12 +16,12 @@ export interface Column {
   OrderIndex: number;
   ValueType?: typeof OptionType[keyof typeof OptionType];
   Options?: {
-    Local?: {
+    List: {
       name: string;
       value: string | number | boolean;
     }[];
-    Remote?: {
-      Url: string;
+    RemoteUrl?: {
+      [key: string]: string;
     };
   };
 }

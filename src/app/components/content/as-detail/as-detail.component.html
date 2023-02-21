@@ -91,6 +91,27 @@
         >
 
         <mat-form-field
+          *ngSwitchCase="'options'"
+          [id]="col.Column.ColumnDef"
+          class="example-full-width"
+          appearance="outline"
+        >
+          <mat-label>{{ col.Column.Header }}</mat-label>
+          <mat-select
+            [disabled]="!edit || col.Column.Readonly"
+            [value]="col.Value"
+            (valueChange)="setOptionValue($event)"
+          >
+            <mat-option value="#N/A"></mat-option>
+            <mat-option
+              [value]="option.value"
+              *ngFor="let option of col.Column.Options?.List"
+              >{{ option.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field
           *ngSwitchDefault
           class="example-full-width"
           appearance="outline"
