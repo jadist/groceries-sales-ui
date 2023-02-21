@@ -1,3 +1,11 @@
+const OptionType = {
+  String: 'string',
+  Number: 'number',
+  Boolean: 'boolean',
+  RichText: 'richtext',
+  Options: 'options',
+} as const;
+
 export interface Column {
   ColumnDef: string;
   Header: string;
@@ -6,10 +14,16 @@ export interface Column {
   id?: boolean;
   Readonly?: boolean;
   OrderIndex: number;
-  ValueType?: 'string' | 'number' | 'boolean' | 'richtext' | 'options';
+  ValueType?: typeof OptionType[keyof typeof OptionType];
   Options?: {
-    [key: string]: 'string' | 'number' | 'boolean';
-  }[];
+    Local?: {
+      name: string;
+      value: string | number | boolean;
+    }[];
+    Remote?: {
+      Url: string;
+    };
+  };
 }
 
 export interface PaginatorModel {
