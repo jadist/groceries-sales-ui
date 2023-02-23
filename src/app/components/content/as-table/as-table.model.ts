@@ -24,6 +24,7 @@ export interface Column {
       [key: string]: string;
     };
   };
+  Required?: boolean;
 }
 
 export interface PaginatorModel {

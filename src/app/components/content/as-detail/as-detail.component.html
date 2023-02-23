@@ -58,8 +58,13 @@
             [disabled]="edit && col.Column.Readonly"
             [placeholder]="'Ex. Description of the '.concat(col.Column.Header)"
             rows="5"
+            #RichtextReference
             >{{ col.Value }}</textarea
           >
+          <div
+            *ngIf="col.Column.Required && RichtextReference.value === ''"
+            class="error-alert"
+          ></div>
         </mat-form-field>
 
         <mat-form-field
@@ -76,7 +81,17 @@
             [placeholder]="'Numbers only'"
             numbersOnly
             [value]="col.Value"
+            #NumberReference
           />
+          <div
+            *ngIf="
+              col.Column.Required &&
+              (NumberReference.value === '' || NumberReference.value === '0')
+            "
+            class="error-alert"
+          >
+            {{ col.Column.Header }} is required.
+          </div>
         </mat-form-field>
 
         <mat-checkbox
@@ -101,14 +116,21 @@
             [disabled]="!edit || col.Column.Readonly"
             [value]="col.Value"
             (valueChange)="setOptionValue($event)"
+            #OptionsReference
           >
-            <mat-option value="#N/A"></mat-option>
+            <mat-option value=""></mat-option>
             <mat-option
               [value]="option.value"
               *ngFor="let option of col.Column.Options?.List"
               >{{ option.name }}</mat-option
             >
           </mat-select>
+          <div
+            *ngIf="col.Column.Required && OptionsReference.value === ''"
+            class="error-alert"
+          >
+            {{ col.Column.Header }} is required.
+          </div>
         </mat-form-field>
 
         <mat-form-field
@@ -124,7 +146,14 @@
             [disabled]="edit && col.Column.Readonly"
             [placeholder]="'Ex. '.concat(col.Column.Header)"
             [value]="col.Value"
+            #DefaultReference
           />
+          <div
+            *ngIf="col.Column.Required && DefaultReference.value === ''"
+            class="error-alert"
+          >
+            {{ col.Column.Header }} is required.
+          </div>
         </mat-form-field>
       </div>
     </form>

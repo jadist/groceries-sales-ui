@@ -91,34 +91,61 @@ export class AsDetailComponent<T> implements OnInit, OnChanges {
   }
 
   saveItem() {
-    this.edit = false;
+    // Backend validation check
+    const invalidInput = this.unifiedReadData.filter(
+      (item) => item.Column.Required === true && item.Value === ''
+    );
 
-    // Convert this Data (Array type) into accepted Data (T type)
-    const cleanDataArr = this.unifiedReadData.map((item) => {
-      if (!item.Column.Hidden) {
-        if (item.Column.ValueType === 'boolean') {
-          return [
-            item.Column.ColumnDef,
-            this.cbValueHash[item.Column.ColumnDef],
-          ];
-        } else if (item.Column.ValueType === 'options') {
-          return [item.Column.ColumnDef, this.optionValue];
+    if (invalidInput.length > 0) {
+      const data: YesNoDialogModel = {
+        Title: 'Required Field Notification',
+        Message: `Please fill in required field(s)!`,
+        SecondMessage: ``,
+        Button: {
+          No: {
+            Hidden: true,
+            Name: 'Cancel',
+            Value: YesNoDialogEnum.NO,
+          },
+          Yes: {
+            Color: '',
+            Name: 'OK',
+            Value: YesNoDialogEnum.YES,
+          },
+        },
+      };
+
+      this.dialog.open(YesNoDialogComponent, { data });
+    } else {
+      this.edit = false;
+
+      // Convert this Data (Array type) into accepted Data (T type)
+      const cleanDataArr = this.unifiedReadData.map((item) => {
+        if (!item.Column.Hidden) {
+          if (item.Column.ValueType === 'boolean') {
+            return [
+              item.Column.ColumnDef,
+              this.cbValueHash[item.Column.ColumnDef],
+            ];
+          } else if (item.Column.ValueType === 'options') {
+            return [item.Column.ColumnDef, this.optionValue];
+          } else {
+            const key = item.Column.ColumnDef;
+            const val = (
+              document.getElementById(key.toString()) as HTMLInputElement
+            ).value;
+
+            return [key, val];
+          }
         } else {
-          const key = item.Column.ColumnDef;
-          const val = (
-            document.getElementById(key.toString()) as HTMLInputElement
-          ).value;
-
-          return [key, val];
+          return [item.Column.ColumnDef, item.Value];
         }
-      } else {
-        return [item.Column.ColumnDef, item.Value];
-      }
-    });
+      });
 
-    const tObj: T = Object.fromEntries(cleanDataArr);
+      const tObj: T = Object.fromEntries(cleanDataArr);
 
-    this.updateEvent.emit(tObj);
+      this.updateEvent.emit(tObj);
+    }
   }
 
   deleteItem() {

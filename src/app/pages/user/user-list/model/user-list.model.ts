@@ -24,12 +24,14 @@ export const ColumnModel: Column[] = [
     Header: 'Username',
     Cell: (element: Record<string, any>) => `${element['Username']}`,
     OrderIndex: 2,
+    Required: true,
   },
   {
     ColumnDef: 'EmailAddress',
     Header: 'Email Address',
     Cell: (element: Record<string, any>) => `${element['EmailAddress']}`,
     OrderIndex: 3,
+    Required: true,
   },
   {
     ColumnDef: 'FullName',
@@ -43,6 +45,7 @@ export const ColumnModel: Column[] = [
     Cell: (element: Record<string, any>) => `${element['PhoneNo']}`,
     OrderIndex: 5,
     ValueType: 'number',
+    Required: true,
   },
   {
     ColumnDef: 'UserRoleReference',
@@ -51,24 +54,12 @@ export const ColumnModel: Column[] = [
     OrderIndex: 6,
     ValueType: 'options',
     Options: {
-      List: [
-        {
-          name: 'Role 1',
-          value: 'USER-ROLE/1',
-        },
-        {
-          name: 'Role 2',
-          value: 'USER-ROLE/2',
-        },
-        {
-          name: 'Role 3',
-          value: 'USER-ROLE/3',
-        },
-      ],
+      List: [],
       RemoteUrl: {
         FirestoreCollectionName: 'USER-ROLE',
       },
     },
+    Required: true,
   },
   {
     ColumnDef: 'DocVersion',

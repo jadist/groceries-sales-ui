@@ -27,3 +27,8 @@ mat-card {
 .example-spacer {
   flex: 1 1 auto;
 }
+
+.error-alert {
+  color: #820000 !important;
+  font-size: small !important;
+}
