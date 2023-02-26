@@ -10,6 +10,7 @@ export const enum RoutingEnum {
   RoleAccessMap = 'role-access-map',
 
   Quotations = 'sales-transaction-quotations',
+  QuotationDetail = 'sales-transaction-quotation-detail',
 
   DummyDetail = 'dummy-detail',
 }

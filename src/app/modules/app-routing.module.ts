@@ -18,6 +18,7 @@ import { AccessObjectComponent } from '../pages/user/access-object/access-object
 import { RoleAccessMapComponent } from '../pages/user/role-access-map/role-access-map.component';
 
 import { QuotationComponent } from '../pages/sales/transaction/quotation/quotation.component';
+import { QuotationDetailComponent } from '../pages/sales/transaction/quotation-detail/quotation-detail.component';
 
 const routes: Routes = [
   {
@@ -72,6 +73,11 @@ const routes: Routes = [
       {
         path: RoutingEnum.Quotations,
         component: QuotationComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: RoutingEnum.QuotationDetail,
+        component: QuotationDetailComponent,
         canActivate: [AuthGuard],
       },
     ],

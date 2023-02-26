@@ -37,6 +37,7 @@ import { UserListComponent } from './pages/user/user-list/user-list.component';
 import { AccessObjectComponent } from './pages/user/access-object/access-object.component';
 import { RoleAccessMapComponent } from './pages/user/role-access-map/role-access-map.component';
 import { PagesRootComponent } from './pages/pages-root/pages-root.component';
+import { QuotationDetailComponent } from './pages/sales/transaction/quotation-detail/quotation-detail.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { PagesRootComponent } from './pages/pages-root/pages-root.component';
     AccessObjectComponent,
     RoleAccessMapComponent,
     PagesRootComponent,
+    QuotationDetailComponent,
   ],
   imports: [
     BrowserModule,

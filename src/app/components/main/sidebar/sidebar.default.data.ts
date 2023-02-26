@@ -94,6 +94,13 @@ export const DefaultSidebarMenu: SidebarModel = {
           Description: 'Sales Transaction of Quotations',
           UrlSlug: ['/', 'sales-transaction-quotations'],
         },
+        {
+          Icon: 'description',
+          Name: 'Quotation Detail',
+          Value: 'sales-transaction-quotation',
+          Description: 'Sales Transaction of Quotation Detail',
+          UrlSlug: ['/', 'sales-transaction-quotation-detail'],
+        },
       ],
     },
   ],
