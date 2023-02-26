@@ -80,5 +80,21 @@ export const DefaultSidebarMenu: SidebarModel = {
         },
       ],
     },
+    {
+      Icon: 'shopping_cart',
+      Name: '[T] Sales',
+      Value: 'transaction-sales',
+      Description: 'Transaction of Sales Activity',
+      UrlSlug: [''],
+      Child: [
+        {
+          Icon: 'description',
+          Name: 'Quotation',
+          Value: 'sales-transaction-quotation',
+          Description: 'Sales Transaction of Quotations',
+          UrlSlug: ['/', 'sales-transaction-quotations'],
+        },
+      ],
+    },
   ],
 };

@@ -9,5 +9,7 @@ export const enum RoutingEnum {
   AccessObject = 'access-object',
   RoleAccessMap = 'role-access-map',
 
+  Quotations = 'sales-transaction-quotations',
+
   DummyDetail = 'dummy-detail',
 }

@@ -17,6 +17,8 @@ import { UserListComponent } from '../pages/user/user-list/user-list.component';
 import { AccessObjectComponent } from '../pages/user/access-object/access-object.component';
 import { RoleAccessMapComponent } from '../pages/user/role-access-map/role-access-map.component';
 
+import { QuotationComponent } from '../pages/sales/transaction/quotation/quotation.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -64,6 +66,12 @@ const routes: Routes = [
       {
         path: RoutingEnum.UserList,
         component: UserListComponent,
+        canActivate: [AuthGuard],
+      },
+
+      {
+        path: RoutingEnum.Quotations,
+        component: QuotationComponent,
         canActivate: [AuthGuard],
       },
     ],
