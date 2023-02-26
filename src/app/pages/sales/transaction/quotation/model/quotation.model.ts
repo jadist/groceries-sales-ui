@@ -15,17 +15,20 @@ export const ColumnModel: Column[] = [
     Header: 'Quotation No',
     Cell: (element: Record<string, any>) => `${element['QuotationNo']}`,
     OrderIndex: 2,
+    Required: true,
   },
   {
     ColumnDef: 'QuotationTitle',
     Header: 'Quotation Title',
     Cell: (element: Record<string, any>) => `${element['QuotationTitle']}`,
     OrderIndex: 3,
+    Required: true,
   },
   {
     ColumnDef: 'QuotationDescription',
     Header: 'Quotation Description',
-    Cell: (element: Record<string, any>) => `${element['QuotationDescription']}`,
+    Cell: (element: Record<string, any>) =>
+      `${element['QuotationDescription']}`,
     OrderIndex: 4,
   },
   {
@@ -33,12 +36,16 @@ export const ColumnModel: Column[] = [
     Header: 'Created At',
     Cell: (element: Record<string, any>) => `${element['CreatedDateTime']}`,
     OrderIndex: 5,
+    Hidden: true,
+    Readonly: true,
   },
   {
     ColumnDef: 'ModifiedDateTime',
     Header: 'Modified At',
     Cell: (element: Record<string, any>) => `${element['ModifiedDateTime']}`,
     OrderIndex: 6,
+    Hidden: true,
+    Readonly: true,
   },
   {
     ColumnDef: 'DocVersion',
